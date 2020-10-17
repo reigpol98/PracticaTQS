@@ -6,7 +6,7 @@ public class Tauler {
 	
 	public Tauler() {
 		
-		
+		tauler = new String[10][10];
 	}
 
 
