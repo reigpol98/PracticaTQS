@@ -13,9 +13,17 @@ public class Tauler {
 	}
 	
 	
+	/**
+	 * Inicializa el tablero a 0
+	 */
 	public void InicialitzarTauler() {
 		
-		tauler[0][0] = 0;
+		for (int i=0; i<fila; i++) {
+			for (int j=0; j<columna;j++) {
+			
+				tauler[i][j] = 0;
+			}
+		}
 		
 	}
 	

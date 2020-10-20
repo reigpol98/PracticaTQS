@@ -38,7 +38,14 @@ public class TaulerTest {
 	@Test public void InicialitzarTaulerTest() {	
 				
 		taulerTest.InicialitzarTauler();
-		assertNotEquals(0,taulerTest.tauler[0][0]);
+		
+		for (int i=0; i<taulerTest.fila; i++) {
+			for (int j=0; j<taulerTest.columna;j++) {
+				
+				assertNotEquals(1,taulerTest.tauler[i][j]);
+				assertEquals(0,taulerTest.tauler[i][j]);
+			}
+		}
 				
 				
 	}		
