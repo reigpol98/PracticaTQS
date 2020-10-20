@@ -42,7 +42,16 @@ public class TaulerTest {
 		for (int i=0; i<taulerTest.fila; i++) {
 			for (int j=0; j<taulerTest.columna;j++) {
 				
-				assertNotEquals(1,taulerTest.tauler[i][j]);
+				assertNotEquals(null,taulerTest.tauler[i][j]);
+				assertNotEquals(i+1,taulerTest.tauler[i][j]);
+				assertNotEquals(i+10,taulerTest.tauler[i][j]);
+				assertNotEquals(i+20,taulerTest.tauler[i][j]);
+				assertNotEquals(i+30,taulerTest.tauler[i][j]);
+				assertNotEquals(i+50,taulerTest.tauler[i][j]);
+				assertNotEquals(i+60,taulerTest.tauler[i][j]);
+				assertNotEquals(i+70,taulerTest.tauler[i][j]);
+				assertNotEquals(i+80,taulerTest.tauler[i][j]);
+				assertNotEquals(i+90,taulerTest.tauler[i][j]);				
 				assertEquals(0,taulerTest.tauler[i][j]);
 			}
 		}
