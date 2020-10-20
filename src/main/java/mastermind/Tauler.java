@@ -4,13 +4,21 @@ public class Tauler {
 	
 	static int fila = 10;
 	static int columna = 10;
-	String tauler[][];
+	char[][] tauler;
+	
 	
 	public Tauler() {
 		
-		tauler = new String[fila][columna];
+		tauler = new char[fila][columna];
 	}
-
+	
+	
+	public void InicialitzarTauler() {
+		
+		tauler[0][0] = 0;
+		
+	}
+	
 	
 	public int getFila() {
 		return fila;
