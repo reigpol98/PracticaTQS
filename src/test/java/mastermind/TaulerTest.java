@@ -9,9 +9,11 @@ public class TaulerTest {
 	Tauler taulerTest = new Tauler();
 	
 	/*
-	 * Test de la funcion Tauler() (Constructor)
+	 * Test Tauler() (Constructor)
 	 * 
-	 * Test de caja negra para comprovar que la matriz se ha creado correctamente
+	 * Tipo: Caja negra
+	 * 
+	 * Explicacion: Test de caja negra para comprovar que la matriz se ha creado correctamente
 	 * comprobando sus limites con los getters de fila y columna para ver si se ha 
 	 * creado siguiendo las dimensionnes indicadas (fila=10 y columnma =10).
 	 * 
@@ -30,9 +32,11 @@ public class TaulerTest {
 	 }
 	
 	/*
-	 * Test de la funcion InicializarTauler()
+	 * Test: InicializarTauler()
 	 * 
-	 * Test de caja negra que comprueba si se ha inicializado correctamente la matriz (Tauler).
+	 * Tipo: Caja negra
+	 * 
+	 * Explicacion: Comprueba si se ha inicializado correctamente la matriz (Tauler).
 	 * 
 	 */
 	@Test public void InicialitzarTaulerTest() {	
@@ -59,14 +63,23 @@ public class TaulerTest {
 				
 	}
 	
+	/**
+	 * Test: getCasella() y setCasella()
+	 * 
+	 * Tipo: Caja negra
+	 * 
+	 * Explicacion: 
+	 * 
+	 */
 	@Test public void SetGetCasella() {
 		
 
 		for (char i=0; i<taulerTest.fila; i++) {
-			for (char j=0; j<taulerTest.columna;j++) {
+			for (char j=0; j<taulerTest.columna;j++) {				
 				
 				taulerTest.setCasella(i, j,j);
 				assertEquals(taulerTest.getCasella(i,j),j);
+				
 			}
 			
 		}

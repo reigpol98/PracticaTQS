@@ -7,7 +7,9 @@ public class Tauler {
 	char[][] tauler;
 	char buit = 0;
 	
-	
+	/**
+	 * Constructor
+	 */
 	public Tauler() {
 		
 		tauler = new char[fila][columna];
@@ -38,7 +40,7 @@ public class Tauler {
 	
 	public char getCasella(int i, int j) {
 		
-		return 0;
+		return tauler[i][j];
 	}
 	
 	public int getFila() {
