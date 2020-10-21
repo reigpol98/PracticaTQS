@@ -34,7 +34,12 @@ public class Tauler {
 		
 		tauler[i][j] = buit;
 	
-	}	
+	}
+	
+	public char getCasella(int i, int j) {
+		
+		return 0;
+	}
 	
 	public int getFila() {
 		return fila;

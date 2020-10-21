@@ -57,8 +57,23 @@ public class TaulerTest {
 		}
 				
 				
-	}		
+	}
+	
+	@Test public void SetGetCasella() {
+		
+
+		for (char i=0; i<taulerTest.fila; i++) {
+			for (char j=0; j<taulerTest.columna;j++) {
+				
+				taulerTest.setCasella(i, j,j);
+				assertEquals(taulerTest.getCasella(i,j),j);
+			}
 			
+		}
+	}
+		
+		
+		
 			
 		
 	
