@@ -74,11 +74,31 @@ public class TaulerTest {
 	@Test public void SetGetCasella() {
 		
 
-		for (char i=0; i<taulerTest.fila; i++) {
-			for (char j=0; j<taulerTest.columna;j++) {				
+		for (int i=0; i<taulerTest.fila; i++) {
+			for (int j=0; j<taulerTest.columna;j++) {				
 				
-				taulerTest.setCasella(i, j,j);
-				assertEquals(taulerTest.getCasella(i,j),j);
+				char suma = (char) (j+0);
+				char deu = (char) (j+10);
+				char vint = (char) (j+20);
+				char trenta = (char) (j+30);				
+				char quaranta = (char) (j+40);
+				char cinquanta = (char) (j+50);
+				
+				
+				taulerTest.setCasella(i, j,suma);
+				assertEquals(taulerTest.getCasella(i,j),suma);				
+				taulerTest.setCasella(i, j,deu);
+				assertEquals(taulerTest.getCasella(i,j),deu);				
+				taulerTest.setCasella(i, j,vint);
+				assertEquals(taulerTest.getCasella(i,j),vint);				
+				taulerTest.setCasella(i, j,trenta);
+				assertEquals(taulerTest.getCasella(i,j),trenta);				
+				taulerTest.setCasella(i, j,quaranta);
+				assertEquals(taulerTest.getCasella(i,j),quaranta);				
+				taulerTest.setCasella(i, j,cinquanta);
+				assertEquals(taulerTest.getCasella(i,j),cinquanta);
+				
+				
 				
 			}
 			
