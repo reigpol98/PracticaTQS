@@ -130,11 +130,7 @@ public class TaulerTest {
 				String caracter = Character.toString(codigAscii);				
 				
 				taulerTest.setCasella(i, j,caracter);
-				assertEquals(taulerTest.getCasella(i,j),caracter);
-				assertNotEquals(taulerTest.getCasella(i+1,j+1),caracter);
-				assertNotEquals(taulerTest.getCasella(i+1,j+1),caracter);
-				
-				
+				assertEquals(taulerTest.getCasella(i,j),caracter);				
 				
 				
 			}
