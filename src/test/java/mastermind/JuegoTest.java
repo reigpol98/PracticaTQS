@@ -227,13 +227,42 @@ public class JuegoTest {
 		codigoSecretoTest = juegoTest.GenerarCodigoSecreto();
 		
 		//Combinacion de valores que puede tener el codigo secreto {A,B,C,D,E,F}
-		for (int i=0; i<juegoTest.longitudCodigo; i++) {
-					
+		for (int i=0; i<juegoTest.longitudCodigo; i++) {					
 			
-			assertEquals(juegoTest.getCodigoSecreto(i),codigoSecretoTest[i]);
-			
+			assertEquals(juegoTest.getCodigoSecreto(i),codigoSecretoTest[i]);			
 					
 		}
+		
+		
+		//Letras Minusculas
+		for (int i=0; i<juegoTest.longitudCodigo; i++) {
+		
+			int inc = 0;
+			int codigAscii = (char) Math.floor(Math.random()*(97 - 122)+97); 
+			String codiAscii = Character.toString(codigAscii);
+			assertNotEquals(juegoTest.getCodigo(i),codiAscii);
+			inc ++;			
+	}
+		
+		//Otros Caracteres
+		for (int i=0; i<juegoTest.longitudCodigo; i++) {
+		
+			int inc = 0;
+			int codigAscii = (char) Math.floor(Math.random()*(32 - 64)+32);
+			String codiAscii = Character.toString(codigAscii);
+			assertNotEquals(juegoTest.getCodigo(i),codiAscii);
+			inc ++;			
+	}
+	
+		//Otros Caracteres				
+		for (int i=0; i<juegoTest.longitudCodigo; i++) {
+		
+			int inc = 0;
+			int codigAscii = (char) Math.floor(Math.random()*(123 - 165)+123);
+			String codiAscii = Character.toString(codigAscii);
+			assertNotEquals(juegoTest.getCodigo(i),codiAscii);
+			inc ++;			
+	}
 		
 		
 		
