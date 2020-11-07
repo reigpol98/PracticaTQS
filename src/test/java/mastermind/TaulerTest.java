@@ -15,18 +15,43 @@ public class TaulerTest {
 	 * 
 	 * Explicacion: Test de caja negra para comprovar que la matriz se ha creado correctamente
 	 * comprobando sus limites con los getters de fila y columna para ver si se ha 
-	 * creado siguiendo las dimensionnes indicadas (fila=10 y columnma =10).
+	 * creado siguiendo las dimensionnes indicadas.
+	 * 
+	 * Valores Frontera  (fila=10 y columna=10)
 	 * 
 	 */
 	@Test public void ConstructorTaulerTest() {
 		
-		assertNotEquals(null,taulerTest.tauler);
+		//Valores Frontera
 		assertEquals(10, taulerTest.getFila());
 		assertEquals(10, taulerTest.getColumna());
-		assertNotEquals(9, taulerTest.getFila());
-		assertNotEquals(9, taulerTest.getColumna());
+		
+		//Valores Limite(exteriores a la frontera)
+		assertNotEquals(null,taulerTest.tauler);
 		assertNotEquals(11, taulerTest.getFila());
 		assertNotEquals(11, taulerTest.getColumna());
+		assertNotEquals(0, taulerTest.getFila());
+		assertNotEquals(0, taulerTest.getColumna());
+		
+		//Valores Limite(interiores a la frontera)		
+		assertNotEquals(9, taulerTest.getFila());
+		assertNotEquals(9, taulerTest.getColumna());
+		assertNotEquals(8, taulerTest.getFila());
+		assertNotEquals(8, taulerTest.getColumna());
+		assertNotEquals(7, taulerTest.getFila());
+		assertNotEquals(7, taulerTest.getColumna());
+		assertNotEquals(6, taulerTest.getFila());
+		assertNotEquals(6, taulerTest.getColumna());
+		assertNotEquals(5, taulerTest.getFila());
+		assertNotEquals(5, taulerTest.getColumna());
+		assertNotEquals(4, taulerTest.getFila());
+		assertNotEquals(4, taulerTest.getColumna());
+		assertNotEquals(3, taulerTest.getFila());
+		assertNotEquals(3, taulerTest.getColumna());
+		assertNotEquals(2, taulerTest.getFila());
+		assertNotEquals(2, taulerTest.getColumna());
+		assertNotEquals(1, taulerTest.getFila());
+		assertNotEquals(1, taulerTest.getColumna());		
 		 
 		 
 	 }
