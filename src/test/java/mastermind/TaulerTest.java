@@ -61,15 +61,19 @@ public class TaulerTest {
 	 * 
 	 * Explicacion: Comprueba si se ha inicializado correctamente la matriz (Tauler).
 	 * 
+	 * Valor Frontera = "0"
+	 * 
 	 */
 	@Test public void InicialitzarTaulerTest() {	
 				
 		taulerTest.InicialitzarTauler();
 		
+		
+		//Valores no validos
 		for (int i=0; i<taulerTest.fila; i++) {
 			for (int j=0; j<taulerTest.columna;j++) {				
 				
-				assertEquals(null,taulerTest.tauler[i][j]);
+				assertNotEquals(null,taulerTest.tauler[i][j]);
 				assertNotEquals(0,taulerTest.tauler[i][j]);
 				assertNotEquals(i+1,taulerTest.tauler[i][j]);
 				assertNotEquals(i+10,taulerTest.tauler[i][j]);
@@ -79,10 +83,32 @@ public class TaulerTest {
 				assertNotEquals(i+60,taulerTest.tauler[i][j]);
 				assertNotEquals(i+70,taulerTest.tauler[i][j]);
 				assertNotEquals(i+80,taulerTest.tauler[i][j]);
-				assertNotEquals(i+90,taulerTest.tauler[i][j]);				
+				assertNotEquals(i+90,taulerTest.tauler[i][j]);
+				
 				
 			}
 		}
+		
+		
+		//Valor Frontera
+		for (int i=0; i<taulerTest.fila; i++) {
+			for (int j=0; j<taulerTest.columna;j++) {					
+				
+				assertEquals("0",taulerTest.tauler[i][j]);
+				
+			}
+		}
+		
+		//Valores Limite (exteriores a la frontera)
+		for (int i=0; i<taulerTest.fila; i++) {
+			for (int j=0; j<taulerTest.columna;j++) {					
+						
+				assertEquals("-1",taulerTest.tauler[i][j]);
+				assertEquals("1",taulerTest.tauler[i][j]);
+						
+			}
+		}
+		
 				
 				
 	}
