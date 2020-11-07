@@ -8,6 +8,7 @@ public class JuegoTest {
 	
 	Juego juegoTest = new Juego();
 	
+	
 	/*
 	 * Test Tauler() (Constructor)
 	 * 
@@ -139,7 +140,17 @@ public class JuegoTest {
 	}
 	
 		
+	
+	@Test public void GenerarCodigoGamaTest() {			
 		
+		assertEquals(juegoTest.getCodigo(0),"B");
+		assertEquals(juegoTest.getCodigo(1),"C");
+		assertEquals(juegoTest.getCodigo(2),"D");
+		assertEquals(juegoTest.getCodigo(3),"E");
+		assertEquals(juegoTest.getCodigo(4),"F");
+			
+	}
+	
 			
 		
 	
