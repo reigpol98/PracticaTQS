@@ -147,11 +147,14 @@ public class JuegoTest {
 	 * Explicacion
 	 * 
 	 * Valores Frontera: A y F
-	 * 	
+	 * Valores Exteriores a la Frontera: Cogemos letras mayusculas random de la F a la Z (72-90 codigoAscii)
+	 * 									 Cogemos letras minuscuals random de la a a la z (97-122 codigoAscii)
+	 * 									 Otros Caracteres random (32-64) / Otros Caracteres random (123-165)
 	 */
 	
 	@Test public void GenerarCodigoGamaTest() {			
 		
+		juegoTest.GenerarCodigoGama();
 		
 		//Valores Frontera
 		assertEquals(juegoTest.getCodigo(0),"A");
@@ -165,16 +168,48 @@ public class JuegoTest {
 		assertEquals(juegoTest.getCodigo(2),"C");
 		assertEquals(juegoTest.getCodigo(3),"D");
 		
+		
 		//Valores exteriores a la frontera
-		assertNotEquals(juegoTest.getCodigo(0),"G");
-		assertNotEquals(juegoTest.getCodigo(1),"H");
-		assertNotEquals(juegoTest.getCodigo(2),"I");
-		assertNotEquals(juegoTest.getCodigo(3),"J");
-		assertNotEquals(juegoTest.getCodigo(4),"G");
-		assertNotEquals(juegoTest.getCodigo(5),"H");
-		assertNotEquals(juegoTest.getCodigo(6),"I");
-		assertNotEquals(juegoTest.getCodigo(4),"J");
+		
+		  //Letras Mayusculas
+			for (int i=0; i<juegoTest.longitudCodigo; i++) {
+				
+				int inc = 0;
+				int codigAscii = (int)Math.floor(72+inc);
+				String codiAscii = Character.toString(codigAscii);
+				assertNotEquals(juegoTest.getCodigo(i),codiAscii);
+				inc ++;			
+			}
 			
+		 //Letras Minusculas
+				for (int i=0; i<juegoTest.longitudCodigo; i++) {
+				
+				int inc = 0;
+				int codigAscii = (char) Math.floor(Math.random()*(97 - 122)+97); 
+				String codiAscii = Character.toString(codigAscii);
+				assertNotEquals(juegoTest.getCodigo(i),codiAscii);
+				inc ++;			
+			}
+				
+		 //Otros Caracteres
+				for (int i=0; i<juegoTest.longitudCodigo; i++) {
+				
+				int inc = 0;
+				int codigAscii = (char) Math.floor(Math.random()*(32 - 64)+32);
+				String codiAscii = Character.toString(codigAscii);
+				assertNotEquals(juegoTest.getCodigo(i),codiAscii);
+				inc ++;			
+			}
+			
+		  //Otros Caracteres				
+				for (int i=0; i<juegoTest.longitudCodigo; i++) {
+				
+				int inc = 0;
+				int codigAscii = (char) Math.floor(Math.random()*(123 - 165)+123);
+				String codiAscii = Character.toString(codigAscii);
+				assertNotEquals(juegoTest.getCodigo(i),codiAscii);
+				inc ++;			
+			}
 	}
 	
 			
