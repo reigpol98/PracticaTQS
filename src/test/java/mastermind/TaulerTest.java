@@ -30,8 +30,6 @@ public class TaulerTest {
 		assertNotEquals(null,taulerTest.tauler);
 		assertNotEquals(11, taulerTest.getFila());
 		assertNotEquals(11, taulerTest.getColumna());
-		assertNotEquals(0, taulerTest.getFila());
-		assertNotEquals(0, taulerTest.getColumna());
 		
 		//Valores Limite(interiores a la frontera)		
 		assertNotEquals(9, taulerTest.getFila());
@@ -69,9 +67,10 @@ public class TaulerTest {
 		taulerTest.InicialitzarTauler();
 		
 		for (int i=0; i<taulerTest.fila; i++) {
-			for (int j=0; j<taulerTest.columna;j++) {
+			for (int j=0; j<taulerTest.columna;j++) {				
 				
-				assertNotEquals(null,taulerTest.tauler[i][j]);
+				assertEquals(null,taulerTest.tauler[i][j]);
+				assertNotEquals(0,taulerTest.tauler[i][j]);
 				assertNotEquals(i+1,taulerTest.tauler[i][j]);
 				assertNotEquals(i+10,taulerTest.tauler[i][j]);
 				assertNotEquals(i+20,taulerTest.tauler[i][j]);
@@ -81,7 +80,7 @@ public class TaulerTest {
 				assertNotEquals(i+70,taulerTest.tauler[i][j]);
 				assertNotEquals(i+80,taulerTest.tauler[i][j]);
 				assertNotEquals(i+90,taulerTest.tauler[i][j]);				
-				assertEquals(0,taulerTest.tauler[i][j]);
+				
 			}
 		}
 				
@@ -129,7 +128,7 @@ public class TaulerTest {
 			
 		}
 	}
-		
+	
 		
 		
 			

@@ -4,15 +4,15 @@ public class Tauler {
 	
 	static int fila = 10;
 	static int columna = 10;
-	char[][] tauler;
-	char buit = 0;
+	String[][] tauler;
+	String buit = "0";
 	
 	/**
 	 * Constructor
 	 */
 	public Tauler() {
 		
-		tauler = new char[fila][columna];
+		tauler = new String[fila][columna];
 	}
 	
 	
@@ -32,13 +32,13 @@ public class Tauler {
 	
 	
 	
-	public void setCasella(int i, int j, char buit ) {
+	public void setCasella(int i, int j, String buit ) {
 		
 		tauler[i][j] = buit;
 	
 	}
 	
-	public char getCasella(int i, int j) {
+	public String getCasella(int i, int j) {
 		
 		return tauler[i][j];
 	}
