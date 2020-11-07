@@ -1,4 +1,4 @@
-package mastermind;
+package Vista;
 
 public class Tablero {
 	

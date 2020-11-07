@@ -1,6 +1,6 @@
-package mastermind;
+package Controlador;
 
-
+import Vista.Tablero;
 
 public class Main {
 	
