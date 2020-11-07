@@ -84,8 +84,7 @@ public class TaulerTest {
 				assertNotEquals(i+70,taulerTest.tauler[i][j]);
 				assertNotEquals(i+80,taulerTest.tauler[i][j]);
 				assertNotEquals(i+90,taulerTest.tauler[i][j]);
-				
-				
+								
 			}
 		}
 		
@@ -103,8 +102,8 @@ public class TaulerTest {
 		for (int i=0; i<taulerTest.fila; i++) {
 			for (int j=0; j<taulerTest.columna;j++) {					
 						
-				assertEquals("-1",taulerTest.tauler[i][j]);
-				assertEquals("1",taulerTest.tauler[i][j]);
+				assertNotEquals("-1",taulerTest.tauler[i][j]);
+				assertNotEquals("1",taulerTest.tauler[i][j]);
 						
 			}
 		}
@@ -121,32 +120,20 @@ public class TaulerTest {
 	 * Explicacion: 
 	 * 
 	 */
-	@Test public void SetGetCasella() {
+	@Test public void SetGetCasellaTest() {
 		
-
+		//Valores
 		for (int i=0; i<taulerTest.fila; i++) {
 			for (int j=0; j<taulerTest.columna;j++) {				
 				
-				char suma = (char) (j+0);
-				char deu = (char) (j+10);
-				char vint = (char) (j+20);
-				char trenta = (char) (j+30);				
-				char quaranta = (char) (j+40);
-				char cinquanta = (char) (j+50);
+				int codigAscii = (int)Math.floor(65+i);
+				String caracter = Character.toString(codigAscii);				
 				
+				taulerTest.setCasella(i, j,caracter);
+				assertEquals(taulerTest.getCasella(i,j),caracter);
+				assertNotEquals(taulerTest.getCasella(i+1,j+1),caracter);
+				assertNotEquals(taulerTest.getCasella(i+1,j+1),caracter);
 				
-				taulerTest.setCasella(i, j,suma);
-				assertEquals(taulerTest.getCasella(i,j),suma);				
-				taulerTest.setCasella(i, j,deu);
-				assertEquals(taulerTest.getCasella(i,j),deu);				
-				taulerTest.setCasella(i, j,vint);
-				assertEquals(taulerTest.getCasella(i,j),vint);				
-				taulerTest.setCasella(i, j,trenta);
-				assertEquals(taulerTest.getCasella(i,j),trenta);				
-				taulerTest.setCasella(i, j,quaranta);
-				assertEquals(taulerTest.getCasella(i,j),quaranta);				
-				taulerTest.setCasella(i, j,cinquanta);
-				assertEquals(taulerTest.getCasella(i,j),cinquanta);
 				
 				
 				
