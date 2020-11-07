@@ -30,11 +30,21 @@ public class Juego {
 		
 	}
 	
+	/**
+	 * Genera las letras possibles que se podran introducir
+	 * 
+	 * Codigo = {A,B,C,D,E,F}
+	 * 
+	 * @return codigo
+	 */
 	public String[] GenerarCodigoGama(){	        
 		
 		for (int i=0; i<longitudCodigo; i++) {
 			
-			codigo[i] = "0";
+			char codigAscii =  (char) Math.floor(Math.random()*(71 - 65)+65); 
+			String codiAscii = Character.toString(codigAscii);
+			codigo[i]= codiAscii;
+			
 		}
 		  return codigo; 
 	}
