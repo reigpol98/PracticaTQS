@@ -33,14 +33,22 @@ public class Juego {
 	}
 	
 	/**
-	 * Genera aleatoriamente el CodigoSecreto
+	 * Genera aleatoriamente el CodigoSecreto mediante el codigo Ascii (65=A,66=B,67=C,68=D,69=E,70=F)
+	 * 
 	 * 
 	 * @return
 	 */
 	public String[] GenerarCodigoSecreto(){	        
 		
 		
-		  return codigoSecreto; 
+		for (int i=0; i<longitudCodigo; i++){ 
+			
+			 char codigAscii =  (char) Math.floor(Math.random()*(71 - 65)+65); 
+			 String codiAscii = Character.toString(codigAscii);
+			 codigoSecreto[i]= codiAscii;
+			         
+			} 
+		return codigoSecreto; 
 	}
 	
 	
@@ -66,6 +74,12 @@ public class Juego {
 	}
 	
 		
+	public String getCodigoSecreto(int i) {
+		
+		String letra = codigoSecreto[i];	
+		return letra;
+		
+	}
 	
 	public String getCodigo(int i) {
 		

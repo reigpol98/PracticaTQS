@@ -224,12 +224,13 @@ public class JuegoTest {
 	@Test public void GenerarCodigoSecretoTest() {	
 		
 		String[] codigoSecretoTest = new String[juegoTest.longitudCodigo];
+		codigoSecretoTest = juegoTest.GenerarCodigoSecreto();
 		
 		//Combinacion de valores que puede tener el codigo secreto {A,B,C,D,E,F}
 		for (int i=0; i<juegoTest.longitudCodigo; i++) {
 					
 			
-			assertNotEquals(juegoTest.getCodigo(i),codigoSecretoTest[i]);
+			assertEquals(juegoTest.getCodigoSecreto(i),codigoSecretoTest[i]);
 			
 					
 		}
