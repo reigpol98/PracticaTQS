@@ -230,6 +230,8 @@ public class JuegoTest {
 		codigoSecretoTest = juegoTest.GenerarCodigoSecreto();
 		
 		
+		
+		
 		//Lomgitud CodigoSecreto = 7
 		assertEquals(juegoTest.codigoSecreto.length,7);
 		
@@ -238,8 +240,8 @@ public class JuegoTest {
 		//Combinacion de valores que puede tener el codigo secreto {A,B,C,D,E,F}
 		for (int i=0; i<juegoTest.longitudCodigo; i++) {					
 			
-			assertEquals(juegoTest.getCodigoSecreto(i),codigoSecretoTest[i]);			
-			
+			assertEquals(juegoTest.getCodigoSecreto(i),codigoSecretoTest[i]);		
+						
 		}
 		
 		
