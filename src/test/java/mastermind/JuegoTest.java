@@ -212,6 +212,32 @@ public class JuegoTest {
 			}
 	}
 	
+	
+	/**
+	 * Test: GenerarCodigoTest()
+	 * 
+	 * Tipo: Caja Negra
+	 * 
+	 * Explicacion: Al ser un codigo que se genera automaticamente comprobaremos que puede contener las letras permitidas
+	 * 				y que no tiene ninguna letra no permitida	  
+	 */
+	@Test public void GenerarCodigoSecretoTest() {	
+		
+		String[] codigoSecretoTest = new String[juegoTest.longitudCodigo];
+		
+		//Combinacion de valores que puede tener el codigo secreto {A,B,C,D,E,F}
+		for (int i=0; i<juegoTest.longitudCodigo; i++) {
+					
+			
+			assertNotEquals(juegoTest.getCodigo(i),codigoSecretoTest[i]);
+			
+					
+		}
+		
+		
+		
+	}
+	
 			
 		
 	

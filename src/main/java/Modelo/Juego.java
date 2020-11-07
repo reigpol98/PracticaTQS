@@ -7,12 +7,14 @@ public class Juego {
 	public static int longitudCodigo = 7;
 	public String[][] tablero;
 	public String codigo[];
+	public String codigoSecreto[];
 	String vacio = "0";
 
 	public Juego() {
 		
 		tablero = new String[fila][columna];
 		codigo = new String[longitudCodigo];
+		codigoSecreto = new String[longitudCodigo];
 		
 	}
 	
@@ -31,11 +33,23 @@ public class Juego {
 	}
 	
 	/**
+	 * Genera aleatoriamente el CodigoSecreto
+	 * 
+	 * @return
+	 */
+	public String[] GenerarCodigoSecreto(){	        
+		
+		
+		  return codigoSecreto; 
+	}
+	
+	
+	/**
 	 * Genera las letras possibles que se podran introducir
 	 * 
 	 * Codigo = {A,B,C,D,E,F}
 	 * 
-	 * @return codigo
+	 * @return
 	 */
 	public String[] GenerarCodigoGama(){	        
 		
