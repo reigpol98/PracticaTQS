@@ -52,7 +52,7 @@ public class Tablero {
 			
 		}
 		
-		System.out.print("\n Colores = {A,B,C,D,E,F} \n");	
+		System.out.print("\n Letras = {A,B,C,D,E,F} \n");	
 	}
 	
 	
