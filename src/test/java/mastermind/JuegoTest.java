@@ -156,6 +156,9 @@ public class JuegoTest {
 		
 		juegoTest.GenerarCodigoGama();
 		
+		//Longitud Codigo = 7
+		assertEquals(juegoTest.codigo.length,7);
+		
 		//Valores Frontera
 		assertEquals(juegoTest.getCodigo(0),"A");
 		assertEquals(juegoTest.getCodigo(5),"F");
@@ -226,11 +229,17 @@ public class JuegoTest {
 		String[] codigoSecretoTest = new String[juegoTest.longitudCodigo];
 		codigoSecretoTest = juegoTest.GenerarCodigoSecreto();
 		
+		
+		//Lomgitud CodigoSecreto = 7
+		assertEquals(juegoTest.codigoSecreto.length,7);
+		
+		
+		
 		//Combinacion de valores que puede tener el codigo secreto {A,B,C,D,E,F}
 		for (int i=0; i<juegoTest.longitudCodigo; i++) {					
 			
 			assertEquals(juegoTest.getCodigoSecreto(i),codigoSecretoTest[i]);			
-					
+			
 		}
 		
 		

@@ -33,8 +33,7 @@ public class Juego {
 	}
 	
 	/**
-	 * Genera aleatoriamente el CodigoSecreto mediante el codigo Ascii (65=A,66=B,67=C,68=D,69=E,70=F)
-	 * 
+	 * Genera aleatoriamente el CodigoSecreto mediante el codigo Ascii (65=A,66=B,67=C,68=D,69=E,70=F)	 * 
 	 * 
 	 * @return
 	 */
