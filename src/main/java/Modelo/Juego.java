@@ -30,10 +30,13 @@ public class Juego {
 		
 	}
 	
-	public String GenerarCodigoGama(){	        
+	public String[] GenerarCodigoGama(){	        
 		
-		
-		  return "0"; 
+		for (int i=0; i<longitudCodigo; i++) {
+			
+			codigo[i] = "0";
+		}
+		  return codigo; 
 	}
 	
 		

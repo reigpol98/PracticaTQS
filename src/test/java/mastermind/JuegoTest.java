@@ -139,15 +139,41 @@ public class JuegoTest {
 		}
 	}
 	
-		
+	/**
+	 * Test: GenerarCodigoGama()
+	 * 
+	 * Tipo: Caja Negra
+	 * 
+	 * Explicacion
+	 * 
+	 * Valores Frontera: A y F
+	 * 	
+	 */
 	
 	@Test public void GenerarCodigoGamaTest() {			
 		
-		assertEquals(juegoTest.getCodigo(0),"B");
-		assertEquals(juegoTest.getCodigo(1),"C");
-		assertEquals(juegoTest.getCodigo(2),"D");
-		assertEquals(juegoTest.getCodigo(3),"E");
-		assertEquals(juegoTest.getCodigo(4),"F");
+		
+		//Valores Frontera
+		assertEquals(juegoTest.getCodigo(0),"A");
+		assertEquals(juegoTest.getCodigo(5),"F");
+		
+		//Valores interiores a la frontera
+		assertEquals(juegoTest.getCodigo(1),"B");
+		assertEquals(juegoTest.getCodigo(4),"E");
+		
+		//Valores interiores
+		assertEquals(juegoTest.getCodigo(2),"C");
+		assertEquals(juegoTest.getCodigo(3),"D");
+		
+		//Valores exteriores a la frontera
+		assertNotEquals(juegoTest.getCodigo(0),"G");
+		assertNotEquals(juegoTest.getCodigo(1),"H");
+		assertNotEquals(juegoTest.getCodigo(2),"I");
+		assertNotEquals(juegoTest.getCodigo(3),"J");
+		assertNotEquals(juegoTest.getCodigo(4),"G");
+		assertNotEquals(juegoTest.getCodigo(5),"H");
+		assertNotEquals(juegoTest.getCodigo(6),"I");
+		assertNotEquals(juegoTest.getCodigo(4),"J");
 			
 	}
 	
