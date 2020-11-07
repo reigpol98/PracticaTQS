@@ -17,6 +17,13 @@ public class Teclado {
 		return columna;
 	}
 	
+	public String IntroducirLetra() {
+		
+		System.out.print("\n Introduce una Letra:");
+		String letra = sn.next();			
+		return letra;	
+	}
+	
 	
 	
 }
