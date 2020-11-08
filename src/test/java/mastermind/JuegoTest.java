@@ -633,6 +633,8 @@ public class JuegoTest {
 	 */
 	@Test public void LetraPosicionCorrectoTest() {
 		
+		//Todas las posiciones son correctas
+		
 		//Fila 9
 		
 		//Forçamos que el codigoSecreto sea {A,B,C,D,E,F}
@@ -659,8 +661,144 @@ public class JuegoTest {
 				
 		}
 		
+		//Fila 7
+		
+		//Forçamos que el codigoSecreto sea {B,B,B,B,B,B}
+		for (int i = 0; i<juegoTest.longitudCodigo; i++) {			
+			
+			int codigAscii = (int)Math.floor(66);
+			String codiAscii = Character.toString(codigAscii);
+			juegoTest.codigoSecreto[i] = codiAscii;
+			juegoTest.setCasilla(7, i, codiAscii);
+			assertTrue(juegoTest.LetraPosicionCorrecto(7,i));
+			
+		}
+		
+		//Fila 6
+		
+		//Forçamos que el codigoSecreto sea {C,C,C,C,C,C}
+		for (int i = 0; i<juegoTest.longitudCodigo; i++) {			
+					
+			int codigAscii = (int)Math.floor(67);
+			String codiAscii = Character.toString(codigAscii);
+			juegoTest.codigoSecreto[i] = codiAscii;
+			juegoTest.setCasilla(6, i, codiAscii);
+			assertTrue(juegoTest.LetraPosicionCorrecto(6,i));
+			
+		}
+		
+		//Fila 5
+		
+		//Forçamos que el codigoSecreto sea {D,D,D,D,D,D}
+		for (int i = 0; i<juegoTest.longitudCodigo; i++) {			
+							
+			int codigAscii = (int)Math.floor(68);
+			String codiAscii = Character.toString(codigAscii);
+			juegoTest.codigoSecreto[i] = codiAscii;
+			juegoTest.setCasilla(5, i, codiAscii);
+			assertTrue(juegoTest.LetraPosicionCorrecto(5,i));
+					
+		}
 		
 		
+		//Fila 4
+		
+		//Forçamos que el codigoSecreto sea {E,E,E,E,E,E}
+		for (int i = 0; i<juegoTest.longitudCodigo; i++) {			
+					
+			int codigAscii = (int)Math.floor(69);
+			String codiAscii = Character.toString(codigAscii);
+			juegoTest.codigoSecreto[i] = codiAscii;
+			juegoTest.setCasilla(4, i, codiAscii);
+			assertTrue(juegoTest.LetraPosicionCorrecto(4,i));
+					
+		}
+		
+		
+		//Fila 3
+		
+		//Forçamos que el codigoSecreto sea {F,F,F,F,F,F}
+		for (int i = 0; i<juegoTest.longitudCodigo; i++) {			
+						
+			int codigAscii = (int)Math.floor(70);
+			String codiAscii = Character.toString(codigAscii);
+			juegoTest.codigoSecreto[i] = codiAscii;
+			juegoTest.setCasilla(3, i, codiAscii);
+			assertTrue(juegoTest.LetraPosicionCorrecto(3,i));
+							
+		}
+		
+		
+		//Fila 2
+		
+		//Forçamos que el codigoSecreto sea {F,E,D,C,B,A}
+		for (int i = 0; i<juegoTest.longitudCodigo; i++) {			
+						
+			int codigAscii = (int)Math.floor(70-i);
+			String codiAscii = Character.toString(codigAscii);
+			juegoTest.codigoSecreto[i] = codiAscii;
+			juegoTest.setCasilla(2, i, codiAscii);
+			assertTrue(juegoTest.LetraPosicionCorrecto(2,i));
+			
+		}
+		
+		
+		//Fila 1
+		
+		//Forçamos que el codigoSecreto sea {A,C,E,A,C,E}
+		int inc_1 = 2;
+		for (int i = 0; i<juegoTest.longitudCodigo; i++) {							
+			
+			int codigAscii = (int)Math.floor(63+inc_1);
+			String codiAscii = Character.toString(codigAscii);
+			juegoTest.codigoSecreto[i] = codiAscii;
+			juegoTest.setCasilla(1, i, codiAscii);
+			assertTrue(juegoTest.LetraPosicionCorrecto(1,i));
+			inc_1 = inc_1*2;
+			if (inc_1==6) {
+				inc_1=2;
+			}
+					
+		}
+		
+		
+		//Fila 0
+		
+		//Forçamos que el codigoSecreto sea {B,D,F,B,D,F}
+		int inc_0 = 2;
+		for (int i = 0; i<juegoTest.longitudCodigo; i++) {							
+					
+			int codigAscii = (int)Math.floor(64+inc_0);
+			String codiAscii = Character.toString(codigAscii);
+			juegoTest.codigoSecreto[i] = codiAscii;
+			juegoTest.setCasilla(0, i, codiAscii);
+			assertTrue(juegoTest.LetraPosicionCorrecto(0,i));
+			inc_0 = inc_0*2;
+			if (inc_0==6) {
+				inc_0=2;
+			}
+							
+		}
+		
+		
+		//Todas las posiciones son incorrectas
+		
+		//Fila 9
+				
+		//Forçamos que el codigoSecreto sea {A,B,C,D,E,F} y el codigo insertado {F,E,D,C,B,A}
+		for (int i = 0; i<juegoTest.longitudCodigo; i++) {			
+							
+			int codigAscii = (int)Math.floor(65+i);
+			String codiAscii = Character.toString(codigAscii);
+			juegoTest.codigoSecreto[i] = codiAscii;	
+			int codigoAscii = (int)Math.floor(70-i);	
+			String codiiAscii = Character.toString(codigoAscii);
+			juegoTest.setCasilla(9, i, codiAscii);		
+			assertFalse(juegoTest.LetraPosicionCorrecto(9,i));
+				
+		}
+				
+				
 	}
 	
 	
