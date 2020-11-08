@@ -178,9 +178,18 @@ public class Juego {
 	
 	public boolean LetraCasiCorrecto(int fila, int columna) {
 		
+		boolean letra_correcto = false;	
 		
-		return false;
+		for (int i = 0; i<longitudCodigo; i++) {
+			
+			if (getCasilla(fila,columna) == codigoSecreto[columna]) {				
+				
+				letra_correcto = true;						
+			}		
+			
+		}
 		
+		return letra_correcto;	
 	}
 	
 	
