@@ -15,8 +15,10 @@ public class Main {
 		
 		j.InicializarTablero();
 		t.DibujaTablero(j.getTablero());
-		e.IntroducirColumna();
+		int columna = e.IntroducirColumna();
+		j.VerificarLimitesColumna(columna);
 		e.IntroducirLetra();
+		
 		
 		
 	}

@@ -72,7 +72,28 @@ public class Juego {
 		  return codigo; 
 	}
 	
+	/**
+	 * Verifca que la columna introducida sea entre los limites 1-5
+	 * 	  
+	 */
+	public boolean VerificaLimitesColumna(int columna) {		
 		
+		
+			return false;
+		
+	}
+	
+	
+	
+	
+	
+	
+	/**
+	 * 
+	 * Getters y Setters 
+	 * 
+	 */
+	
 	public String getCodigoSecreto(int i) {
 		
 		String letra = codigoSecreto[i];	

@@ -279,8 +279,28 @@ public class JuegoTest {
 		
 	}
 	
-			
+	
+	/**
+	 * Test: VerificaLimitesColumna()
+	 * 
+	 * Tipo: Caja Negra
+	 * 
+	 * Explicacion: Verificamos que la funcion nos debuelve true cuando el valor introducido esta entre [1-5]
+	 * 
+	 * 
+	 */
+	@Test public void VerificaLimitesColumnaTest() {
 		
+	
+		assertTrue(juegoTest.VerificaLimitesColumna(1));
+		assertTrue(juegoTest.VerificaLimitesColumna(2));
+		assertTrue(juegoTest.VerificaLimitesColumna(3));
+		assertTrue(juegoTest.VerificaLimitesColumna(4));
+		assertTrue(juegoTest.VerificaLimitesColumna(5));
+		
+		
+		
+	}
 	
 	
 
