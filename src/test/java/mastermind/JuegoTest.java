@@ -622,11 +622,39 @@ public class JuegoTest {
 		
 		
 		
+	}
+	
+	/**
+	 * Test: LetraPosciconCorrecto()
+	 * 
+	 * Tipo: Caja Negra
+	 * 
+	 * Comprueba que el codigo introducido por el usuario coincida con el codigo secreto
+	 */
+	@Test public void LetraPosicionCorrectoTest() {
 		
+		//Forçamos que el codigoSecreto sea {A,B,C,D,E,F}
+		for (int i = 0; i<juegoTest.longitudCodigo; i++) {			
+					
+			int codigAscii = (int)Math.floor(65+i);
+			String codiAscii = Character.toString(codigAscii);
+			juegoTest.codigoSecreto[i] = codiAscii;		
 		
+		}
 		
+		//Introducimos en la primera fila de la matriz el codigo {A,B,C,D,E,F}
+		for (int i = 0; i<juegoTest.longitudCodigo; i++) {			
+			
+			int codigAscii = (int)Math.floor(65+i);
+			String codiAscii = Character.toString(codigAscii);
+			juegoTest.setCasilla(9, i, codiAscii);		
+		
+		}
+		
+		assertTrue(juegoTest.LetraPosicionCorrecto(9));
 		
 	}
+	
 	
 
 

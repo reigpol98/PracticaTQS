@@ -118,7 +118,7 @@ public class Juego {
 	 *  
 	 *  @return
 	 */
-	public Boolean VerificaLetra(String letra) {
+	public boolean VerificaLetra(String letra) {
 		
 		boolean letra_correcta = false;		
 		
@@ -134,6 +134,17 @@ public class Juego {
 		return letra_correcta;		
 	}
 	
+	/**
+	 * Verifica si la posicion en la que se ha introducido la letra coincide con la posicion y letra del codigo secreto.
+	 * 
+	 * @return
+	 */
+	public boolean LetraPosicionCorrecto(int fila) {
+		
+		return false;
+		
+		
+	}
 	
 	
 	/**
