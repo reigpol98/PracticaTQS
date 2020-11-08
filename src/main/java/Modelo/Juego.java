@@ -9,6 +9,8 @@ public class Juego {
 	public String codigo[];
 	public String codigoSecreto[];
 	String vacio = "0";
+	String acierto = "O";
+	String casi_acierto = "X";
 
 	public Juego() {
 		
@@ -134,6 +136,25 @@ public class Juego {
 		return letra_correcta;		
 	}
 	
+	
+	
+	public void GenerarPista(int fila) {
+		
+		for (int i=0; i<longitudCodigo; i++) {		
+			
+			if (LetraPosicionCorrecto(fila, i)) {
+				
+				setCasilla(fila, i, acierto);
+				
+			}
+			
+			
+		}
+		
+		
+		
+	}
+	
 	/**
 	 * Verifica si la posicion en la que se ha introducido la letra coincide con la posicion y letra del codigo secreto.
 	 * 
@@ -141,15 +162,13 @@ public class Juego {
 	 */
 	public boolean LetraPosicionCorrecto(int fila, int columna) {
 		
-		boolean letraPosicion_correcto = false;	
-		
-		for (int i=0; i<longitudCodigo; i++) {			
+		boolean letraPosicion_correcto = false;				
 			
-			if (codigoSecreto[i] == getCasilla(fila,i))  {
+			if (codigoSecreto[columna] == getCasilla(fila,columna))  {
 				
 				letraPosicion_correcto = true;
 				
-			}	
+			
 		}
 		
 		return letraPosicion_correcto;	
