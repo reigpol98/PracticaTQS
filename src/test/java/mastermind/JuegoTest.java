@@ -783,19 +783,22 @@ public class JuegoTest {
 		
 		//Todas las posiciones son incorrectas
 		
-		//Fila 9
+		//Todas las Filas
 				
 		//Forçamos que el codigoSecreto sea {A,B,C,D,E,F} y el codigo insertado {F,E,D,C,B,A}
-		for (int i = 0; i<juegoTest.longitudCodigo; i++) {			
-							
-			int codigAscii = (int)Math.floor(65+i);
-			String codiAscii = Character.toString(codigAscii);
-			juegoTest.codigoSecreto[i] = codiAscii;	
-			int codigoAscii = (int)Math.floor(70-i);	
-			String codiiAscii = Character.toString(codigoAscii);
-			juegoTest.setCasilla(9, i, codiAscii);		
-			assertFalse(juegoTest.LetraPosicionCorrecto(9,i));
-				
+		for (int j=1; j<juegoTest.fila; j++) {
+			for (int i = 0; i<juegoTest.longitudCodigo; i++) {			
+								
+				int codigAscii = (int)Math.floor(65+i);
+				String codiAscii = Character.toString(codigAscii);
+				juegoTest.codigoSecreto[i] = codiAscii;	
+				int codigoAscii = (int)Math.floor(70-i);	
+				String codiiAscii = Character.toString(codigoAscii);
+				juegoTest.setCasilla(j, i, codiiAscii);		
+				assertFalse(juegoTest.LetraPosicionCorrecto(j,i));
+					
+			}
+		
 		}
 				
 				
