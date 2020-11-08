@@ -400,7 +400,15 @@ public class JuegoTest {
 		
 	}
 	
-	
+	/**
+	 * Test: VerificaPosicionOcupada()
+	 * 
+	 * Tipo: Caja Negra
+	 * 
+	 * Verificamos que todas las posiciones esten libres.
+	 * Luego rellenamos todo el tablero y comporbamos que estas esten ocupadas.
+	 * 
+	 */
 	@Test public void VerificaPosicionOcupadaTest() {
 		
 		String letra = "A";
@@ -477,7 +485,7 @@ public class JuegoTest {
 		assertFalse(juegoTest.VerificaPosicionOcupada(0, 4));
 		
 		
-		
+		//Ocupamos todas las posiciones
 		//Fila 9
 		juegoTest.setCasilla(9, 0, letra);
 		juegoTest.setCasilla(9, 1, letra);
@@ -540,6 +548,7 @@ public class JuegoTest {
 		juegoTest.setCasilla(0, 4, letra);
 		
 		
+		//Verificamos que todas las posiciones del tablero estan ocupadas
 		assertTrue(juegoTest.VerificaPosicionOcupada(9, 0));
 		assertTrue(juegoTest.VerificaPosicionOcupada(9, 1));
 		assertTrue(juegoTest.VerificaPosicionOcupada(9, 2));
