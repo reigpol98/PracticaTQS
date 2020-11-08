@@ -341,13 +341,32 @@ public class JuegoTest {
 	 */
 	@Test public void VerificaLetraTest() {
 		
-		
+		//Valores Frontera (A,F)
 		assertTrue(juegoTest.VerificaLetra("A"));
-		assertTrue(juegoTest.VerificaLetra("B"));
+		assertTrue(juegoTest.VerificaLetra("F"));
+		
+		//Valores Limite Interiores a la Frontera
+		assertTrue(juegoTest.VerificaLetra("B"));		
+		assertTrue(juegoTest.VerificaLetra("E"));
+		
+		//Valores Interiores a la Frontera
 		assertTrue(juegoTest.VerificaLetra("C"));
 		assertTrue(juegoTest.VerificaLetra("D"));
-		assertTrue(juegoTest.VerificaLetra("E"));
-		assertTrue(juegoTest.VerificaLetra("F"));
+		
+		
+		//Valores Exterires a la Frontera
+		
+		//Letras Mayusculas
+		for (int i=0; i<juegoTest.longitudCodigo; i++) {
+			
+			int inc = 0;
+			int codigAscii = (int)Math.floor(72+inc);
+			String codiAscii = Character.toString(codigAscii);
+			assertFalse(juegoTest.VerificaLetra(codiAscii));
+			inc ++;			
+		}
+		
+		
 		
 		
 		
