@@ -292,12 +292,39 @@ public class JuegoTest {
 	@Test public void VerificaLimitesColumnaTest() {
 		
 		
-		
+		//Valores Frontera
 		assertTrue(juegoTest.VerificaLimitesColumna(1));
-		assertTrue(juegoTest.VerificaLimitesColumna(2));
-		assertTrue(juegoTest.VerificaLimitesColumna(3));
-		assertTrue(juegoTest.VerificaLimitesColumna(4));
 		assertTrue(juegoTest.VerificaLimitesColumna(5));
+		
+		//Valor Interior
+		assertTrue(juegoTest.VerificaLimitesColumna(3));
+		
+		//Valores Limite Interiores a la Frontera
+		assertTrue(juegoTest.VerificaLimitesColumna(2));		
+		assertTrue(juegoTest.VerificaLimitesColumna(4));
+		
+		//Valores Limite Exteriores a la Frontera
+		assertFalse(juegoTest.VerificaLimitesColumna(0));
+		assertFalse(juegoTest.VerificaLimitesColumna(-1));
+		assertFalse(juegoTest.VerificaLimitesColumna(-2));
+		assertFalse(juegoTest.VerificaLimitesColumna(-3));
+		assertFalse(juegoTest.VerificaLimitesColumna(-4));
+		assertFalse(juegoTest.VerificaLimitesColumna(-5));
+		assertFalse(juegoTest.VerificaLimitesColumna(-6));
+		assertFalse(juegoTest.VerificaLimitesColumna(-7));
+		assertFalse(juegoTest.VerificaLimitesColumna(-8));
+		assertFalse(juegoTest.VerificaLimitesColumna(-9));
+		assertFalse(juegoTest.VerificaLimitesColumna(-10));
+		assertFalse(juegoTest.VerificaLimitesColumna(6));
+		assertFalse(juegoTest.VerificaLimitesColumna(7));
+		assertFalse(juegoTest.VerificaLimitesColumna(8));
+		assertFalse(juegoTest.VerificaLimitesColumna(9));
+		assertFalse(juegoTest.VerificaLimitesColumna(10));
+		assertFalse(juegoTest.VerificaLimitesColumna(11));
+		assertFalse(juegoTest.VerificaLimitesColumna(12));
+		assertFalse(juegoTest.VerificaLimitesColumna(13));
+		assertFalse(juegoTest.VerificaLimitesColumna(14));
+		assertFalse(juegoTest.VerificaLimitesColumna(15));		
 		
 		
 		
