@@ -400,6 +400,17 @@ public class JuegoTest {
 		
 	}
 	
+	
+	@Test public void VerificaPosicionOcupada() {
+		
+		String letra = "A";
+		juegoTest.setCasilla(9, 0, letra);
+		assertTrue(juegoTest.VerificaPosicionOcupada(9, 0));
+		
+		
+		
+	}
+	
 
 
 }

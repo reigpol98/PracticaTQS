@@ -75,6 +75,7 @@ public class Juego {
 	/**
 	 * Verifca que la columna introducida sea entre los limites 1-5
 	 * 	  
+	 * @return
 	 */
 	public boolean VerificaLimitesColumna(int columna) {		
 		
@@ -89,8 +90,24 @@ public class Juego {
 	}
 	
 	/**
-	 * Verifica si la letra introducida es correcta
+	 * Verifica que la columna introducida por el usuario este libre
 	 * 
+	 * @param fila
+	 * @param columna
+	 * @return
+	 */
+	public boolean VerificaPosicionOcupada(int fila, int columna) {	
+			
+			return false;		
+	
+	}	
+	
+	
+	/**
+	 * Verifica si la letra introducida es correcta (Mayusculas)
+	 * 
+	 * {A,B,C,D,E,F}
+	 *  
 	 *  @return
 	 */
 	public Boolean VerificaLetra(String letra) {
