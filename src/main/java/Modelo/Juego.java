@@ -4,7 +4,7 @@ public class Juego {
 	
 	public static int fila = 10;
 	public static int columna = 10;
-	public static int longitudCodigo = 7;
+	public static int longitudCodigo = 6;
 	public String[][] tablero;
 	public String codigo[];
 	public String codigoSecreto[];
@@ -96,14 +96,16 @@ public class Juego {
 	public Boolean VerificaLetra(String letra) {
 		
 		boolean letra_correcta = false;		
+		
 		for (int i=0; i<longitudCodigo; i++) {			
 			
-			if (letra.equals(codigo[i]) ) {
+			if (codigo[i].equals(letra))  {
 				
 				letra_correcta = true;
 				
 			}	
 		}
+		
 		return letra_correcta;		
 	}
 	

@@ -156,8 +156,8 @@ public class JuegoTest {
 		
 		juegoTest.GenerarCodigoGama();
 		
-		//Longitud Codigo = 7
-		assertEquals(juegoTest.codigo.length,7);
+		//Longitud Codigo = 6
+		assertEquals(juegoTest.codigo.length,6);
 		
 		//Valores Frontera
 		assertEquals(juegoTest.getCodigo(0),"A");
@@ -232,8 +232,8 @@ public class JuegoTest {
 		
 		
 		
-		//Lomgitud CodigoSecreto = 7
-		assertEquals(juegoTest.codigoSecreto.length,7);
+		//Lomgitud CodigoSecreto = 6
+		assertEquals(juegoTest.codigoSecreto.length,6);
 		
 		
 		
@@ -340,6 +340,8 @@ public class JuegoTest {
 	 * 
 	 */
 	@Test public void VerificaLetraTest() {
+		
+		juegoTest.GenerarCodigoGama();
 		
 		//Valores Frontera (A,F)
 		assertTrue(juegoTest.VerificaLetra("A"));
