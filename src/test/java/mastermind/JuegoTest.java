@@ -800,8 +800,42 @@ public class JuegoTest {
 			}
 		
 		}
+		
+		//Falta comprobar si un codigo tiene correctas y incorrectas
 				
 				
+	}
+	
+	
+	/**
+	 * Test: LetraCasiCorrecto()
+	 * 
+	 * Tipo: Caja Negra
+	 * 
+	 * Comprueba que el codigo introducido por el usuario las letras estan en el CodigoSecreto pero en distinas posiciones.
+	 */
+	@Test public void LetraCasiCorrectoTest() {
+		
+		//Fila 9
+		
+		//Forçamos que el codigoSecreto sea {A,B,C,D,E,F} y el introducido {F,E,D,C,B,A}
+		for (int j=1; j<juegoTest.fila; j++) {
+			for (int i = 0; i<juegoTest.longitudCodigo; i++) {			
+							
+			int codigAscii = (int)Math.floor(65+i);
+			String codiAscii = Character.toString(codigAscii);
+			juegoTest.codigoSecreto[i] = codiAscii;			
+			int codigoAscii = (int)Math.floor(70-i);	
+			String codiiAscii = Character.toString(codigoAscii);
+			juegoTest.setCasilla(j, i, codiiAscii);		
+			assertTrue(juegoTest.LetraCasiCorrecto(j,i));
+				
+			}
+		}
+		
+		
+		
+	
 	}
 	
 	

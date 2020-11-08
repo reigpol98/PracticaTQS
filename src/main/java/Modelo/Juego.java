@@ -137,7 +137,11 @@ public class Juego {
 	}
 	
 	
-	
+	/**
+	 * Genera la Pista en funcion de codigo introducido en cada fila
+	 * 
+	 * @param fila
+	 */
 	public void GenerarPista(int fila) {
 		
 		for (int i=0; i<longitudCodigo; i++) {		
@@ -146,13 +150,9 @@ public class Juego {
 				
 				setCasilla(fila, i, acierto);
 				
-			}
+			}	
 			
-			
-		}
-		
-		
-		
+		}		
 	}
 	
 	/**
@@ -166,13 +166,20 @@ public class Juego {
 			
 			if (codigoSecreto[columna] == getCasilla(fila,columna))  {
 				
-				letraPosicion_correcto = true;
-				
+				letraPosicion_correcto = true;		
 			
 		}
 		
 		return letraPosicion_correcto;	
 		
+		
+	}
+	
+	
+	public boolean LetraCasiCorrecto(int fila, int columna) {
+		
+		
+		return false;
 		
 	}
 	
