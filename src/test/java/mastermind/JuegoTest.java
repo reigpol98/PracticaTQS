@@ -633,25 +633,33 @@ public class JuegoTest {
 	 */
 	@Test public void LetraPosicionCorrectoTest() {
 		
+		//Fila 9
+		
 		//Forçamos que el codigoSecreto sea {A,B,C,D,E,F}
 		for (int i = 0; i<juegoTest.longitudCodigo; i++) {			
 					
 			int codigAscii = (int)Math.floor(65+i);
 			String codiAscii = Character.toString(codigAscii);
-			juegoTest.codigoSecreto[i] = codiAscii;		
-		
-		}
-		
-		//Introducimos en la primera fila de la matriz el codigo {A,B,C,D,E,F}
-		for (int i = 0; i<juegoTest.longitudCodigo; i++) {			
-			
-			int codigAscii = (int)Math.floor(65+i);
-			String codiAscii = Character.toString(codigAscii);
+			juegoTest.codigoSecreto[i] = codiAscii;			
 			juegoTest.setCasilla(9, i, codiAscii);		
+			assertTrue(juegoTest.LetraPosicionCorrecto(9,i));
 		
 		}
 		
-		assertTrue(juegoTest.LetraPosicionCorrecto(9));
+		//Fila 8
+		
+		//Forçamos que el codigoSecreto sea {A,A,A,A,A,A}
+		for (int i = 0; i<juegoTest.longitudCodigo; i++) {			
+							
+			int codigAscii = (int)Math.floor(65);
+			String codiAscii = Character.toString(codigAscii);
+			juegoTest.codigoSecreto[i] = codiAscii;
+			juegoTest.setCasilla(9, i, codiAscii);
+			assertTrue(juegoTest.LetraPosicionCorrecto(8,i));
+				
+		}
+		
+		
 		
 	}
 	

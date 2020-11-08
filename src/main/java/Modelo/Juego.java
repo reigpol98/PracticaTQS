@@ -139,7 +139,7 @@ public class Juego {
 	 * 
 	 * @return
 	 */
-	public boolean LetraPosicionCorrecto(int fila) {
+	public boolean LetraPosicionCorrecto(int fila, int columna) {
 		
 		return false;
 		
