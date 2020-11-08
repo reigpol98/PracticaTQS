@@ -78,7 +78,12 @@ public class Juego {
 	 */
 	public boolean VerificaLimitesColumna(int columna) {		
 		
-		
+		if (columna>0 && columna<6) {
+			
+			
+			return true;
+		}
+			
 			return false;
 		
 	}

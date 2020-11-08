@@ -291,7 +291,8 @@ public class JuegoTest {
 	 */
 	@Test public void VerificaLimitesColumnaTest() {
 		
-	
+		
+		
 		assertTrue(juegoTest.VerificaLimitesColumna(1));
 		assertTrue(juegoTest.VerificaLimitesColumna(2));
 		assertTrue(juegoTest.VerificaLimitesColumna(3));
