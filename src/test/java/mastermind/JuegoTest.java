@@ -654,7 +654,7 @@ public class JuegoTest {
 			int codigAscii = (int)Math.floor(65);
 			String codiAscii = Character.toString(codigAscii);
 			juegoTest.codigoSecreto[i] = codiAscii;
-			juegoTest.setCasilla(9, i, codiAscii);
+			juegoTest.setCasilla(8, i, codiAscii);
 			assertTrue(juegoTest.LetraPosicionCorrecto(8,i));
 				
 		}

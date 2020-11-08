@@ -141,7 +141,18 @@ public class Juego {
 	 */
 	public boolean LetraPosicionCorrecto(int fila, int columna) {
 		
-		return false;
+		boolean letraPosicion_correcto = false;	
+		
+		for (int i=0; i<longitudCodigo; i++) {			
+			
+			if (codigoSecreto[i] == getCasilla(fila,i))  {
+				
+				letraPosicion_correcto = true;
+				
+			}	
+		}
+		
+		return letraPosicion_correcto;	
 		
 		
 	}
