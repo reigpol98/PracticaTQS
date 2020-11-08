@@ -356,15 +356,16 @@ public class JuegoTest {
 		
 		//Valores Exterires a la Frontera
 		
-		//Letras Mayusculas
-		for (int i=0; i<juegoTest.longitudCodigo; i++) {
+		//Letras Mayusculas (G-Z) (71-90)
+		for (int i=0; i<20; i++) {			
 			
-			int inc = 0;
-			int codigAscii = (int)Math.floor(72+inc);
+			int codigAscii = (int)Math.floor(71+i);
 			String codiAscii = Character.toString(codigAscii);
 			assertFalse(juegoTest.VerificaLetra(codiAscii));
-			inc ++;			
+				
 		}
+		
+		
 		
 		
 		
