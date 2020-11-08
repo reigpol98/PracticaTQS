@@ -95,9 +95,16 @@ public class Juego {
 	 */
 	public Boolean VerificaLetra(String letra) {
 		
-		boolean correcta = false;		
-	
-		return correcta;			
+		boolean letra_correcta = false;		
+		for (int i=0; i<longitudCodigo; i++) {			
+			
+			if (letra.equals(codigo[i]) ) {
+				
+				letra_correcta = true;
+				
+			}	
+		}
+		return letra_correcta;		
 	}
 	
 	
