@@ -365,9 +365,34 @@ public class JuegoTest {
 				
 		}
 		
+		//Letras Minusculas (a-z) (97-122)
+		for (int i=0; i<26; i++) {			
+					
+			int codigAscii = (int)Math.floor(97+i);
+			String codiAscii = Character.toString(codigAscii);
+			assertFalse(juegoTest.VerificaLetra(codiAscii));
+						
+		}		
 		
 		
+		//Letras Mayusculas (espacio-@) (32-64)
+		for (int i=0; i<32; i++) {			
+					
+			int codigAscii = (int)Math.floor(32+i);
+			String codiAscii = Character.toString(codigAscii);
+			assertFalse(juegoTest.VerificaLetra(codiAscii));
+						
+		}	
 		
+
+		//Letras Mayusculas (espacio-@) (123-255) ({-nbsp)
+		for (int i=0; i<134; i++) {			
+					
+			int codigAscii = (int)Math.floor(123+i);
+			String codiAscii = Character.toString(codigAscii);
+			assertFalse(juegoTest.VerificaLetra(codiAscii));
+						
+		}
 		
 		
 		
