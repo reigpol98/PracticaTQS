@@ -411,6 +411,8 @@ public class JuegoTest {
 	 */
 	@Test public void VerificaPosicionOcupadaTest() {
 		
+		juegoTest.InicializarTablero();
+		
 		String letra = "A";
 		
 		//Ninguna posicion esta Ocupada

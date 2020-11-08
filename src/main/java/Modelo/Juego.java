@@ -98,13 +98,13 @@ public class Juego {
 	 */
 	public boolean VerificaPosicionOcupada(int fila, int columna) {	
 			
-		if (getCasilla(fila, columna).equals(vacio)) {
+		if (getCasilla(fila, columna) != vacio) {
 			
-			return false;
+			return true;
 			
 		}else {
 			
-			return true;
+			return false;
 			
 		}			
 	
