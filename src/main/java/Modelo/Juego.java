@@ -88,8 +88,17 @@ public class Juego {
 		
 	}
 	
+	/**
+	 * Verifica si la letra introducida es correcta
+	 * 
+	 *  @return
+	 */
+	public Boolean VerificaLetra(String letra) {
+		
+		boolean correcta = false;		
 	
-	
+		return correcta;			
+	}
 	
 	
 	

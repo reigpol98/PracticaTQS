@@ -330,6 +330,28 @@ public class JuegoTest {
 		
 	}
 	
+	/**
+	 * Test: VerificaLetra()
+	 * 
+	 * Tipo: Caja Negra
+	 * 
+	 * Explicacion: Comprobamos que las letras introducidas sean las permitidas {A,B,C,D,E,F}
+	 * 
+	 * 
+	 */
+	@Test public void VerificaLetraTest() {
+		
+		
+		assertTrue(juegoTest.VerificaLetra("A"));
+		assertTrue(juegoTest.VerificaLetra("B"));
+		assertTrue(juegoTest.VerificaLetra("C"));
+		assertTrue(juegoTest.VerificaLetra("D"));
+		assertTrue(juegoTest.VerificaLetra("E"));
+		assertTrue(juegoTest.VerificaLetra("F"));
+		
+		
+		
+	}
 	
 
 
