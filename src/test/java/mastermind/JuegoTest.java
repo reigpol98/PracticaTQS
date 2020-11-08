@@ -819,21 +819,21 @@ public class JuegoTest {
 		//Fila 9
 		
 		//Forçamos que el codigoSecreto sea {A,B,C,D,E,F} y el introducido {F,E,D,C,B,A}
-		for (int j=1; j<juegoTest.fila; j++) {
+		//for (int j=1; j<juegoTest.fila; j++) {
 			for (int i = 0; i<juegoTest.longitudCodigo; i++) {			
 							
-			int codigAscii = (int)Math.floor(65+i);
-			String codiAscii = Character.toString(codigAscii);
-			juegoTest.codigoSecreto[i] = codiAscii;			
-			int codigoAscii = (int)Math.floor(70-i);	
-			String codiiAscii = Character.toString(codigoAscii);
-			juegoTest.setCasilla(j, i, codiiAscii);		
-			assertTrue(juegoTest.LetraCasiCorrecto(j,i));
+				int codigAscii = (int)Math.floor(65+i);
+				String codiAscii = Character.toString(codigAscii);
+				juegoTest.codigoSecreto[i] = codiAscii;			
+				int codigoAscii = (int)Math.floor(70-i);	
+				String codiiAscii = Character.toString(codigoAscii);
+				juegoTest.setCasilla(9, i, codiiAscii);		
+				assertFalse(juegoTest.LetraCasiCorrecto(9,i));
 				
 			}
-		}	
+		
 	
-	}
+	
 	
 	//Forçamos que el codigoSecreto sea {A,B,C,D,E,F} y el introducido {A,B,C,D,E,F}
 			for (int j=1; j<juegoTest.fila; j++) {
@@ -843,11 +843,11 @@ public class JuegoTest {
 				String codiAscii = Character.toString(codigAscii);
 				juegoTest.codigoSecreto[i] = codiAscii;					
 				juegoTest.setCasilla(j, i, codiAscii);		
-				assertFalse(juegoTest.LetraCasiCorrecto(j,i));
+				assertTrue(juegoTest.LetraCasiCorrecto(j,i));
 					
 				}
 			}
-		}
+}
 	
 	
 

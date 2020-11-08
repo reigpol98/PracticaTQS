@@ -182,7 +182,7 @@ public class Juego {
 		
 		for (int i = 0; i<longitudCodigo; i++) {
 			
-			if (getCasilla(fila,columna) == codigoSecreto[columna]) {				
+			if (getCasilla(fila,columna) == codigoSecreto[i]) {				
 				
 				letra_correcto = true;						
 			}		
