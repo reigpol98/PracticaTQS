@@ -401,11 +401,217 @@ public class JuegoTest {
 	}
 	
 	
-	@Test public void VerificaPosicionOcupada() {
+	@Test public void VerificaPosicionOcupadaTest() {
 		
 		String letra = "A";
+		
+		//Ninguna posicion esta Ocupada
+		//Fila 9
+		assertFalse(juegoTest.VerificaPosicionOcupada(9, 0));
+		assertFalse(juegoTest.VerificaPosicionOcupada(9, 1));
+		assertFalse(juegoTest.VerificaPosicionOcupada(9, 2));
+		assertFalse(juegoTest.VerificaPosicionOcupada(9, 3));
+		assertFalse(juegoTest.VerificaPosicionOcupada(9, 4));
+		
+		//Fila 8
+		assertFalse(juegoTest.VerificaPosicionOcupada(8, 0));
+		assertFalse(juegoTest.VerificaPosicionOcupada(8, 1));
+		assertFalse(juegoTest.VerificaPosicionOcupada(8, 2));
+		assertFalse(juegoTest.VerificaPosicionOcupada(8, 3));
+		assertFalse(juegoTest.VerificaPosicionOcupada(8, 4));
+		
+		//Fila 7
+		assertFalse(juegoTest.VerificaPosicionOcupada(7, 0));
+		assertFalse(juegoTest.VerificaPosicionOcupada(7, 1));
+		assertFalse(juegoTest.VerificaPosicionOcupada(7, 2));
+		assertFalse(juegoTest.VerificaPosicionOcupada(7, 3));
+		assertFalse(juegoTest.VerificaPosicionOcupada(7, 4));
+		
+		//Fila6
+		assertFalse(juegoTest.VerificaPosicionOcupada(6, 0));
+		assertFalse(juegoTest.VerificaPosicionOcupada(6, 1));
+		assertFalse(juegoTest.VerificaPosicionOcupada(6, 2));
+		assertFalse(juegoTest.VerificaPosicionOcupada(6, 3));
+		assertFalse(juegoTest.VerificaPosicionOcupada(6, 4));
+		
+		//Fila5
+		assertFalse(juegoTest.VerificaPosicionOcupada(5, 0));
+		assertFalse(juegoTest.VerificaPosicionOcupada(5, 1));
+		assertFalse(juegoTest.VerificaPosicionOcupada(5, 2));
+		assertFalse(juegoTest.VerificaPosicionOcupada(5, 3));
+		assertFalse(juegoTest.VerificaPosicionOcupada(5, 4));
+		
+		//Fila4
+		assertFalse(juegoTest.VerificaPosicionOcupada(4, 0));
+		assertFalse(juegoTest.VerificaPosicionOcupada(4, 1));
+		assertFalse(juegoTest.VerificaPosicionOcupada(4, 2));
+		assertFalse(juegoTest.VerificaPosicionOcupada(4, 3));
+		assertFalse(juegoTest.VerificaPosicionOcupada(4, 4));
+		
+		//Fila3
+		assertFalse(juegoTest.VerificaPosicionOcupada(3, 0));
+		assertFalse(juegoTest.VerificaPosicionOcupada(3, 1));
+		assertFalse(juegoTest.VerificaPosicionOcupada(3, 2));
+		assertFalse(juegoTest.VerificaPosicionOcupada(3, 3));
+		assertFalse(juegoTest.VerificaPosicionOcupada(3, 4));
+		
+		//Fila2
+		assertFalse(juegoTest.VerificaPosicionOcupada(2, 0));
+		assertFalse(juegoTest.VerificaPosicionOcupada(2, 1));
+		assertFalse(juegoTest.VerificaPosicionOcupada(2, 2));
+		assertFalse(juegoTest.VerificaPosicionOcupada(2, 3));
+		assertFalse(juegoTest.VerificaPosicionOcupada(2, 4));
+		
+		//Fila1
+		assertFalse(juegoTest.VerificaPosicionOcupada(1, 0));
+		assertFalse(juegoTest.VerificaPosicionOcupada(1, 1));
+		assertFalse(juegoTest.VerificaPosicionOcupada(1, 2));
+		assertFalse(juegoTest.VerificaPosicionOcupada(1, 3));
+		assertFalse(juegoTest.VerificaPosicionOcupada(1, 4));
+		
+		//Fila0
+		assertFalse(juegoTest.VerificaPosicionOcupada(0, 0));
+		assertFalse(juegoTest.VerificaPosicionOcupada(0, 1));
+		assertFalse(juegoTest.VerificaPosicionOcupada(0, 2));
+		assertFalse(juegoTest.VerificaPosicionOcupada(0, 3));
+		assertFalse(juegoTest.VerificaPosicionOcupada(0, 4));
+		
+		
+		
+		//Fila 9
 		juegoTest.setCasilla(9, 0, letra);
+		juegoTest.setCasilla(9, 1, letra);
+		juegoTest.setCasilla(9, 2, letra);
+		juegoTest.setCasilla(9, 3, letra);
+		juegoTest.setCasilla(9, 4, letra);
+		//Fila 8
+		juegoTest.setCasilla(8, 0, letra);
+		juegoTest.setCasilla(8, 1, letra);
+		juegoTest.setCasilla(8, 2, letra);
+		juegoTest.setCasilla(8, 3, letra);
+		juegoTest.setCasilla(8, 4, letra);
+		//Fila 7
+		juegoTest.setCasilla(7, 0, letra);
+		juegoTest.setCasilla(7, 1, letra);
+		juegoTest.setCasilla(7, 2, letra);
+		juegoTest.setCasilla(7, 3, letra);
+		juegoTest.setCasilla(7, 4, letra);
+		//Fila 6
+		juegoTest.setCasilla(6, 0, letra);
+		juegoTest.setCasilla(6, 1, letra);
+		juegoTest.setCasilla(6, 2, letra);
+		juegoTest.setCasilla(6, 3, letra);
+		juegoTest.setCasilla(6, 4, letra);
+		//Fila 5
+		juegoTest.setCasilla(5, 0, letra);
+		juegoTest.setCasilla(5, 1, letra);
+		juegoTest.setCasilla(5, 2, letra);
+		juegoTest.setCasilla(5, 3, letra);
+		juegoTest.setCasilla(5, 4, letra);
+		//Fila 4
+		juegoTest.setCasilla(4, 0, letra);
+		juegoTest.setCasilla(4, 1, letra);
+		juegoTest.setCasilla(4, 2, letra);
+		juegoTest.setCasilla(4, 3, letra);
+		juegoTest.setCasilla(4, 4, letra);
+		//Fila 3
+		juegoTest.setCasilla(3, 0, letra);
+		juegoTest.setCasilla(3, 1, letra);
+		juegoTest.setCasilla(3, 2, letra);
+		juegoTest.setCasilla(3, 3, letra);
+		juegoTest.setCasilla(3, 4, letra);
+		//Fila 2
+		juegoTest.setCasilla(2, 0, letra);
+		juegoTest.setCasilla(2, 1, letra);
+		juegoTest.setCasilla(2, 2, letra);
+		juegoTest.setCasilla(2, 3, letra);
+		juegoTest.setCasilla(2, 4, letra);
+		//Fila 1
+		juegoTest.setCasilla(1, 0, letra);
+		juegoTest.setCasilla(1, 1, letra);
+		juegoTest.setCasilla(1, 2, letra);
+		juegoTest.setCasilla(1, 3, letra);
+		juegoTest.setCasilla(1, 4, letra);
+		//Fila 0
+		juegoTest.setCasilla(0, 0, letra);
+		juegoTest.setCasilla(0, 1, letra);
+		juegoTest.setCasilla(0, 2, letra);
+		juegoTest.setCasilla(0, 3, letra);
+		juegoTest.setCasilla(0, 4, letra);
+		
+		
 		assertTrue(juegoTest.VerificaPosicionOcupada(9, 0));
+		assertTrue(juegoTest.VerificaPosicionOcupada(9, 1));
+		assertTrue(juegoTest.VerificaPosicionOcupada(9, 2));
+		assertTrue(juegoTest.VerificaPosicionOcupada(9, 3));
+		assertTrue(juegoTest.VerificaPosicionOcupada(9, 4));
+		
+		//Fila 8
+		assertTrue(juegoTest.VerificaPosicionOcupada(8, 0));
+		assertTrue(juegoTest.VerificaPosicionOcupada(8, 1));
+		assertTrue(juegoTest.VerificaPosicionOcupada(8, 2));
+		assertTrue(juegoTest.VerificaPosicionOcupada(8, 3));
+		assertTrue(juegoTest.VerificaPosicionOcupada(8, 4));
+		
+		//Fila 7
+		assertTrue(juegoTest.VerificaPosicionOcupada(7, 0));
+		assertTrue(juegoTest.VerificaPosicionOcupada(7, 1));
+		assertTrue(juegoTest.VerificaPosicionOcupada(7, 2));
+		assertTrue(juegoTest.VerificaPosicionOcupada(7, 3));
+		assertTrue(juegoTest.VerificaPosicionOcupada(7, 4));
+		
+		//Fila6
+		assertTrue(juegoTest.VerificaPosicionOcupada(6, 0));
+		assertTrue(juegoTest.VerificaPosicionOcupada(6, 1));
+		assertTrue(juegoTest.VerificaPosicionOcupada(6, 2));
+		assertTrue(juegoTest.VerificaPosicionOcupada(6, 3));
+		assertTrue(juegoTest.VerificaPosicionOcupada(6, 4));
+		
+		//Fila5
+		assertTrue(juegoTest.VerificaPosicionOcupada(5, 0));
+		assertTrue(juegoTest.VerificaPosicionOcupada(5, 1));
+		assertTrue(juegoTest.VerificaPosicionOcupada(5, 2));
+		assertTrue(juegoTest.VerificaPosicionOcupada(5, 3));
+		assertTrue(juegoTest.VerificaPosicionOcupada(5, 4));
+		
+		//Fila4
+		assertTrue(juegoTest.VerificaPosicionOcupada(4, 0));
+		assertTrue(juegoTest.VerificaPosicionOcupada(4, 1));
+		assertTrue(juegoTest.VerificaPosicionOcupada(4, 2));
+		assertTrue(juegoTest.VerificaPosicionOcupada(4, 3));
+		assertTrue(juegoTest.VerificaPosicionOcupada(4, 4));
+		
+		//Fila3
+		assertTrue(juegoTest.VerificaPosicionOcupada(3, 0));
+		assertTrue(juegoTest.VerificaPosicionOcupada(3, 1));
+		assertTrue(juegoTest.VerificaPosicionOcupada(3, 2));
+		assertTrue(juegoTest.VerificaPosicionOcupada(3, 3));
+		assertTrue(juegoTest.VerificaPosicionOcupada(3, 4));
+		
+		//Fila2
+		assertTrue(juegoTest.VerificaPosicionOcupada(2, 0));
+		assertTrue(juegoTest.VerificaPosicionOcupada(2, 1));
+		assertTrue(juegoTest.VerificaPosicionOcupada(2, 2));
+		assertTrue(juegoTest.VerificaPosicionOcupada(2, 3));
+		assertTrue(juegoTest.VerificaPosicionOcupada(2, 4));
+		
+		//Fila1
+		assertTrue(juegoTest.VerificaPosicionOcupada(1, 0));
+		assertTrue(juegoTest.VerificaPosicionOcupada(1, 1));
+		assertTrue(juegoTest.VerificaPosicionOcupada(1, 2));
+		assertTrue(juegoTest.VerificaPosicionOcupada(1, 3));
+		assertTrue(juegoTest.VerificaPosicionOcupada(1, 4));
+		
+		//Fila0
+		assertTrue(juegoTest.VerificaPosicionOcupada(0, 0));
+		assertTrue(juegoTest.VerificaPosicionOcupada(0, 1));
+		assertTrue(juegoTest.VerificaPosicionOcupada(0, 2));
+		assertTrue(juegoTest.VerificaPosicionOcupada(0, 3));
+		assertTrue(juegoTest.VerificaPosicionOcupada(0, 4));
+		
+		
+		
+		
 		
 		
 		
