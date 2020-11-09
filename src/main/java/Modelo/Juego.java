@@ -209,11 +209,25 @@ public class Juego {
 		return letra_correcto;	
 	}
 	
-	
+	/**
+	 * Verificamos si la Pista es toda aciertos ('O') para controlar el final de la partida
+	 * @param fila
+	 * @return
+	 */
 	public boolean FinalPartida(int fila) {
 		
 		
-		return false;
+		boolean fin = false;	
+		String letra = getCasilla(fila,columna);
+		for (int i = 0; i<longitudCodigoSecreto; i++) {			
+			if (codigoSecreto[columna+longitudCodigoSecreto].equals(acierto))  {
+				
+				fin = true;		
+			
+			}
+		}
+		
+		return fin;	
 		
 	}
 	

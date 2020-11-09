@@ -867,7 +867,7 @@ public class JuegoTest {
 	 * 
 	 * Comprueba que el codigo introducido por el usuario sea el mismo que el codigoSecreto.
 	 */
-	@Test public void FinaPartidaTest() {
+	@Test public void FinalPartidaTest() {
 	
 	
 		
