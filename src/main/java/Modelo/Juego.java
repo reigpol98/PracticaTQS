@@ -216,14 +216,17 @@ public class Juego {
 	 */
 	public boolean FinalPartida(int fila) {
 		
-		int aux=1;
+		int aux=0;
 		boolean fin = false;	
-		String letra = getCasilla(fila,columna);
-		for (int i = 0; i<longitudCodigoSecreto; i++) {			
-			if (codigoSecreto[columna+longitudCodigoSecreto].equals(acierto))  {
+		
+		for (int i = 0; i<longitudCodigoSecreto; i++) {		
+			
+			
+			
+			if (getCasilla(fila,i+longitudCodigoSecreto).equals(acierto))  {
 				
 				
-				if (aux==5) {
+				if (aux==4) {
 				fin = true;	
 				}
 				aux++;

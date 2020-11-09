@@ -870,7 +870,7 @@ public class JuegoTest {
 	@Test public void FinalPartidaTest() {
 	
 	
-		//Forçamos que el codigoSecreto sea {A,B,C,D,E,F} y el introducido {A,B,C,D,E,F}
+		//Forçamos que el codigoSecreto sea {A,B,C,D,E} y el introducido {A,B,C,D,E}
 		//Forçamos que se termine la partida
 		for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
 			
@@ -884,9 +884,11 @@ public class JuegoTest {
 			
 		}
 		
+		juegoTest.GenerarPista(9);
+		
 		assertTrue(juegoTest.FinalPartida(9));
 		
-		//Forçamos que el codigoSecreto sea {A,B,C,B,B} y el introducido {C,B,A,B,B}
+		/*//Forçamos que el codigoSecreto sea {A,B,C,B,B} y el introducido {C,B,A,B,B}
 		for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
 			
 			if (i<3) {
@@ -910,8 +912,8 @@ public class JuegoTest {
 			
 			
 		}
-		
-		assertFalse(juegoTest.FinalPartida(8));
+		juegoTest.GenerarPista(8);
+		assertFalse(juegoTest.FinalPartida(8));*/
 		
 		
 	}
