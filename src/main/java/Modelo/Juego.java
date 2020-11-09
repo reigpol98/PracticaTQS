@@ -5,6 +5,7 @@ public class Juego {
 	public static int fila = 10;
 	public static int columna = 10;
 	public static int longitudCodigo = 6;
+	public static int desplacamiento = 5;
 	public String[][] tablero;
 	public String codigo[];
 	public String codigoSecreto[];
@@ -81,7 +82,7 @@ public class Juego {
 	 */
 	public boolean VerificaLimitesColumna(int columna) {		
 		
-		if (columna>0 && columna<6) {
+		if (columna>-1 && columna<5) {
 			
 			
 			return true;
@@ -102,11 +103,12 @@ public class Juego {
 			
 		if (getCasilla(fila, columna) != vacio) {
 			
-			return true;
+			return false;
 			
 		}else {
 			
-			return false;
+			
+			return true;
 			
 		}			
 	
@@ -144,15 +146,28 @@ public class Juego {
 	 */
 	public void GenerarPista(int fila) {
 		
-		for (int i=0; i<longitudCodigo; i++) {		
+		for (int i=0; i<desplacamiento; i++) {		
 			
 			if (LetraPosicionCorrecto(fila, i)) {
 				
-				setCasilla(fila, i, acierto);
+				setCasilla(fila, i+desplacamiento, acierto);
 				
-			}	
+			}
 			
-		}		
+		}
+		
+		for (int i=0; i<longitudCodigo-1; i++) {		
+			
+			if (LetraCasiCorrecto(fila, i)) {
+				
+				setCasilla(fila, i+desplacamiento, casi_acierto);
+				
+			}
+			
+		}
+		
+		
+		
 	}
 	
 	/**
@@ -162,9 +177,10 @@ public class Juego {
 	 */
 	public boolean LetraPosicionCorrecto(int fila, int columna) {
 		
-		boolean letraPosicion_correcto = false;				
+		boolean letraPosicion_correcto = false;	
+		String letra = getCasilla(fila,columna);
 			
-			if (codigoSecreto[columna] == getCasilla(fila,columna))  {
+			if (codigoSecreto[columna].equals(letra))  {
 				
 				letraPosicion_correcto = true;		
 			
@@ -179,10 +195,11 @@ public class Juego {
 	public boolean LetraCasiCorrecto(int fila, int columna) {
 		
 		boolean letra_correcto = false;	
+		String letra = getCasilla(fila,columna);
 		
-		for (int i = 0; i<longitudCodigo; i++) {
+		for (int i = 0; i<desplacamiento; i++) {
 			
-			if (getCasilla(fila,columna) == codigoSecreto[i]) {				
+			if ((codigoSecreto[i].equals(letra)) && (!getCasilla(fila,columna+5).equals(acierto)) ) {				
 				
 				letra_correcto = true;						
 			}		
