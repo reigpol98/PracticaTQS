@@ -5,7 +5,7 @@ public class Juego {
 	public static int fila = 10;
 	public static int columna = 10;
 	public static int longitudCodigoSecreto = 5;
-	public static int longitudCodigo = 6;	
+	public static int longitudCodigo = 7;	
 	public String[][] tablero;
 	public String codigo[];
 	public String codigoSecreto[];
@@ -45,7 +45,7 @@ public class Juego {
 		
 		for (int i=0; i<longitudCodigoSecreto; i++){ 
 			
-			 char codigAscii =  (char) Math.floor(Math.random()*(71 - 65)+65); 
+			 char codigAscii =  (char) Math.floor(Math.random()*(72 - 65)+65); 
 			 String codiAscii = Character.toString(codigAscii);
 			 codigoSecreto[i]= codiAscii;
 			         
@@ -57,19 +57,19 @@ public class Juego {
 	/**
 	 * Genera las letras possibles que se podran introducir
 	 * 
-	 * Codigo = {A,B,C,D,E,F}
+	 * Codigo = {A,B,C,D,E,F,G}
 	 * 
 	 * @return
 	 */
 	public String[] GenerarCodigoGama(){	        
 		
-		int inc = 0;
+		
 		for (int i=0; i<longitudCodigo; i++) {
 			
-			 int codigAscii = (int)Math.floor(65+inc);
+			 int codigAscii = (int)Math.floor(65+i);
 			 String codiAscii = Character.toString(codigAscii);
 			 codigo[i]= codiAscii;
-			 inc ++;
+			
 			
 		}
 		  return codigo; 
@@ -101,14 +101,14 @@ public class Juego {
 	 */
 	public boolean VerificaPosicionOcupada(int fila, int columna) {	
 			
-		if (getCasilla(fila, columna) != vacio) {
+		if (getCasilla(fila, columna).equals(vacio)) {
 			
 			return false;
 			
 		}else {
 			
-			
 			return true;
+			
 			
 		}			
 	

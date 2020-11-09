@@ -47,7 +47,7 @@ public class Main {
 							
 						}else {
 							
-							System.out.print("\n Color Incorrecto! Debe de ser{A,B,C,D,E,F} \n");
+							System.out.print("\n Color Incorrecto! Debe de ser{A,B,C,D,E,F,G} \n");
 							
 						}
 					}else {

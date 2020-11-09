@@ -94,7 +94,7 @@ public class JuegoTest {
 		for (int i=0; i<juegoTest.fila; i++) {
 			for (int j=0; j<juegoTest.columna;j++) {					
 				
-				assertEquals("0",juegoTest.tablero[i][j]);
+				assertEquals("-",juegoTest.tablero[i][j]);
 				
 			}
 		}
@@ -156,20 +156,21 @@ public class JuegoTest {
 		
 		juegoTest.GenerarCodigoGama();
 		
-		//Longitud Codigo = 6
-		assertEquals(juegoTest.codigo.length,6);
+		//Longitud Codigo = 7
+		assertEquals(juegoTest.codigo.length,7);
 		
 		//Valores Frontera
 		assertEquals(juegoTest.getCodigo(0),"A");
-		assertEquals(juegoTest.getCodigo(5),"F");
+		assertEquals(juegoTest.getCodigo(6),"G");
 		
 		//Valores interiores a la frontera
 		assertEquals(juegoTest.getCodigo(1),"B");
-		assertEquals(juegoTest.getCodigo(4),"E");
+		assertEquals(juegoTest.getCodigo(5),"F");
 		
 		//Valores interiores
 		assertEquals(juegoTest.getCodigo(2),"C");
 		assertEquals(juegoTest.getCodigo(3),"D");
+		assertEquals(juegoTest.getCodigo(4),"E");
 		
 		
 		//Valores exteriores a la frontera
@@ -177,41 +178,41 @@ public class JuegoTest {
 		  //Letras Mayusculas
 			for (int i=0; i<juegoTest.longitudCodigo; i++) {
 				
-				int inc = 0;
-				int codigAscii = (int)Math.floor(72+inc);
+				
+				int codigAscii = (char) Math.floor(Math.random()*(72 - 90)+90); 
 				String codiAscii = Character.toString(codigAscii);
 				assertNotEquals(juegoTest.getCodigo(i),codiAscii);
-				inc ++;			
+						
 			}
 			
 		 //Letras Minusculas
 				for (int i=0; i<juegoTest.longitudCodigo; i++) {
 				
-				int inc = 0;
+				
 				int codigAscii = (char) Math.floor(Math.random()*(97 - 122)+97); 
 				String codiAscii = Character.toString(codigAscii);
 				assertNotEquals(juegoTest.getCodigo(i),codiAscii);
-				inc ++;			
+						
 			}
 				
 		 //Otros Caracteres
 				for (int i=0; i<juegoTest.longitudCodigo; i++) {
 				
-				int inc = 0;
+				
 				int codigAscii = (char) Math.floor(Math.random()*(32 - 64)+32);
 				String codiAscii = Character.toString(codigAscii);
 				assertNotEquals(juegoTest.getCodigo(i),codiAscii);
-				inc ++;			
+						
 			}
 			
 		  //Otros Caracteres				
 				for (int i=0; i<juegoTest.longitudCodigo; i++) {
 				
-				int inc = 0;
+				
 				int codigAscii = (char) Math.floor(Math.random()*(123 - 165)+123);
 				String codiAscii = Character.toString(codigAscii);
 				assertNotEquals(juegoTest.getCodigo(i),codiAscii);
-				inc ++;			
+						
 			}
 	}
 	
@@ -226,19 +227,19 @@ public class JuegoTest {
 	 */
 	@Test public void GenerarCodigoSecretoTest() {	
 		
-		String[] codigoSecretoTest = new String[juegoTest.longitudCodigo];
+		String[] codigoSecretoTest = new String[juegoTest.longitudCodigoSecreto];
 		codigoSecretoTest = juegoTest.GenerarCodigoSecreto();
 		
 		
 		
 		
-		//Lomgitud CodigoSecreto = 6
-		assertEquals(juegoTest.codigoSecreto.length,6);
+		//Lomgitud CodigoSecreto = 5
+		assertEquals(juegoTest.codigoSecreto.length,5);
 		
 		
 		
-		//Combinacion de valores que puede tener el codigo secreto {A,B,C,D,E,F}
-		for (int i=0; i<juegoTest.longitudCodigo; i++) {					
+		//Combinacion de valores que puede tener el codigo secreto {A,B,C,D,E,F,G}
+		for (int i=0; i<juegoTest.longitudCodigoSecreto; i++) {					
 			
 			assertEquals(juegoTest.getCodigoSecreto(i),codigoSecretoTest[i]);		
 						
@@ -246,7 +247,7 @@ public class JuegoTest {
 		
 		
 		//Letras Minusculas
-		for (int i=0; i<juegoTest.longitudCodigo; i++) {
+		for (int i=0; i<juegoTest.longitudCodigoSecreto; i++) {
 		
 			int inc = 0;
 			int codigAscii = (char) Math.floor(Math.random()*(97 - 122)+97); 
@@ -256,7 +257,7 @@ public class JuegoTest {
 	}
 		
 		//Otros Caracteres
-		for (int i=0; i<juegoTest.longitudCodigo; i++) {
+		for (int i=0; i<juegoTest.longitudCodigoSecreto; i++) {
 		
 			int inc = 0;
 			int codigAscii = (char) Math.floor(Math.random()*(32 - 64)+32);
@@ -266,7 +267,7 @@ public class JuegoTest {
 	}
 	
 		//Otros Caracteres				
-		for (int i=0; i<juegoTest.longitudCodigo; i++) {
+		for (int i=0; i<juegoTest.longitudCodigoSecreto; i++) {
 		
 			int inc = 0;
 			int codigAscii = (char) Math.floor(Math.random()*(123 - 165)+123);
@@ -291,20 +292,20 @@ public class JuegoTest {
 	 */
 	@Test public void VerificaLimitesColumnaTest() {
 		
+		//Recordamos que el programa [1-5], para el es [0-4]
 		
 		//Valores Frontera
-		assertTrue(juegoTest.VerificaLimitesColumna(1));
-		assertTrue(juegoTest.VerificaLimitesColumna(5));
-		
-		//Valor Interior
-		assertTrue(juegoTest.VerificaLimitesColumna(3));
-		
-		//Valores Limite Interiores a la Frontera
-		assertTrue(juegoTest.VerificaLimitesColumna(2));		
+		assertTrue(juegoTest.VerificaLimitesColumna(0));
 		assertTrue(juegoTest.VerificaLimitesColumna(4));
 		
-		//Valores Limite Exteriores a la Frontera
-		assertFalse(juegoTest.VerificaLimitesColumna(0));
+		//Valor Interior
+		assertTrue(juegoTest.VerificaLimitesColumna(2));
+		
+		//Valores Limite Interiores a la Frontera
+		assertTrue(juegoTest.VerificaLimitesColumna(1));		
+		assertTrue(juegoTest.VerificaLimitesColumna(3));
+		
+		//Valores Limite Exteriores a la Frontera		
 		assertFalse(juegoTest.VerificaLimitesColumna(-1));
 		assertFalse(juegoTest.VerificaLimitesColumna(-2));
 		assertFalse(juegoTest.VerificaLimitesColumna(-3));
@@ -345,23 +346,24 @@ public class JuegoTest {
 		
 		//Valores Frontera (A,F)
 		assertTrue(juegoTest.VerificaLetra("A"));
-		assertTrue(juegoTest.VerificaLetra("F"));
+		assertTrue(juegoTest.VerificaLetra("G"));
 		
 		//Valores Limite Interiores a la Frontera
 		assertTrue(juegoTest.VerificaLetra("B"));		
-		assertTrue(juegoTest.VerificaLetra("E"));
+		assertTrue(juegoTest.VerificaLetra("F"));
 		
 		//Valores Interiores a la Frontera
 		assertTrue(juegoTest.VerificaLetra("C"));
 		assertTrue(juegoTest.VerificaLetra("D"));
+		assertTrue(juegoTest.VerificaLetra("E"));
 		
 		
 		//Valores Exterires a la Frontera
 		
-		//Letras Mayusculas (G-Z) (71-90)
+		//Letras Mayusculas (H-Z) (71-90)
 		for (int i=0; i<20; i++) {			
 			
-			int codigAscii = (int)Math.floor(71+i);
+			int codigAscii = (int)Math.floor(72+i);
 			String codiAscii = Character.toString(codigAscii);
 			assertFalse(juegoTest.VerificaLetra(codiAscii));
 				
@@ -408,6 +410,8 @@ public class JuegoTest {
 	 * Verificamos que todas las posiciones esten libres.
 	 * Luego rellenamos todo el tablero y comporbamos que estas esten ocupadas.
 	 * 
+	 * //Recordamos que el programa [1-5], para el es [0-4]
+	 * 
 	 */
 	@Test public void VerificaPosicionOcupadaTest() {
 		
@@ -424,7 +428,7 @@ public class JuegoTest {
 		assertFalse(juegoTest.VerificaPosicionOcupada(9, 4));
 		
 		//Fila 8
-		assertFalse(juegoTest.VerificaPosicionOcupada(8, 0));
+		assertFalse(juegoTest.VerificaPosicionOcupada(8, 1));
 		assertFalse(juegoTest.VerificaPosicionOcupada(8, 1));
 		assertFalse(juegoTest.VerificaPosicionOcupada(8, 2));
 		assertFalse(juegoTest.VerificaPosicionOcupada(8, 3));
@@ -637,8 +641,8 @@ public class JuegoTest {
 		
 		//Fila 9
 		
-		//Forçamos que el codigoSecreto sea {A,B,C,D,E,F}
-		for (int i = 0; i<juegoTest.longitudCodigo; i++) {			
+		//Forçamos que el codigoSecreto sea {A,B,C,D,E}
+		for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
 					
 			int codigAscii = (int)Math.floor(65+i);
 			String codiAscii = Character.toString(codigAscii);
@@ -650,8 +654,8 @@ public class JuegoTest {
 		
 		//Fila 8
 		
-		//Forçamos que el codigoSecreto sea {A,A,A,A,A,A}
-		for (int i = 0; i<juegoTest.longitudCodigo; i++) {			
+		//Forçamos que el codigoSecreto sea {A,A,A,A,A}
+		for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
 							
 			int codigAscii = (int)Math.floor(65);
 			String codiAscii = Character.toString(codigAscii);
@@ -663,8 +667,8 @@ public class JuegoTest {
 		
 		//Fila 7
 		
-		//Forçamos que el codigoSecreto sea {B,B,B,B,B,B}
-		for (int i = 0; i<juegoTest.longitudCodigo; i++) {			
+		//Forçamos que el codigoSecreto sea {B,B,B,B,B}
+		for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
 			
 			int codigAscii = (int)Math.floor(66);
 			String codiAscii = Character.toString(codigAscii);
@@ -676,8 +680,8 @@ public class JuegoTest {
 		
 		//Fila 6
 		
-		//Forçamos que el codigoSecreto sea {C,C,C,C,C,C}
-		for (int i = 0; i<juegoTest.longitudCodigo; i++) {			
+		//Forçamos que el codigoSecreto sea {C,C,C,C,C}
+		for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
 					
 			int codigAscii = (int)Math.floor(67);
 			String codiAscii = Character.toString(codigAscii);
@@ -689,8 +693,8 @@ public class JuegoTest {
 		
 		//Fila 5
 		
-		//Forçamos que el codigoSecreto sea {D,D,D,D,D,D}
-		for (int i = 0; i<juegoTest.longitudCodigo; i++) {			
+		//Forçamos que el codigoSecreto sea {D,D,D,D,D}
+		for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
 							
 			int codigAscii = (int)Math.floor(68);
 			String codiAscii = Character.toString(codigAscii);
@@ -703,8 +707,8 @@ public class JuegoTest {
 		
 		//Fila 4
 		
-		//Forçamos que el codigoSecreto sea {E,E,E,E,E,E}
-		for (int i = 0; i<juegoTest.longitudCodigo; i++) {			
+		//Forçamos que el codigoSecreto sea {E,E,E,E,E}
+		for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
 					
 			int codigAscii = (int)Math.floor(69);
 			String codiAscii = Character.toString(codigAscii);
@@ -717,8 +721,8 @@ public class JuegoTest {
 		
 		//Fila 3
 		
-		//Forçamos que el codigoSecreto sea {F,F,F,F,F,F}
-		for (int i = 0; i<juegoTest.longitudCodigo; i++) {			
+		//Forçamos que el codigoSecreto sea {F,F,F,F,F}
+		for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
 						
 			int codigAscii = (int)Math.floor(70);
 			String codiAscii = Character.toString(codigAscii);
@@ -731,8 +735,8 @@ public class JuegoTest {
 		
 		//Fila 2
 		
-		//Forçamos que el codigoSecreto sea {F,E,D,C,B,A}
-		for (int i = 0; i<juegoTest.longitudCodigo; i++) {			
+		//Forçamos que el codigoSecreto sea {F,E,D,C,B}
+		for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
 						
 			int codigAscii = (int)Math.floor(70-i);
 			String codiAscii = Character.toString(codigAscii);
@@ -745,9 +749,9 @@ public class JuegoTest {
 		
 		//Fila 1
 		
-		//Forçamos que el codigoSecreto sea {A,C,E,A,C,E}
+		//Forçamos que el codigoSecreto sea {A,C,E,G,A}
 		int inc_1 = 2;
-		for (int i = 0; i<juegoTest.longitudCodigo; i++) {							
+		for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {							
 			
 			int codigAscii = (int)Math.floor(63+inc_1);
 			String codiAscii = Character.toString(codigAscii);
@@ -755,7 +759,7 @@ public class JuegoTest {
 			juegoTest.setCasilla(1, i, codiAscii);
 			assertTrue(juegoTest.LetraPosicionCorrecto(1,i));
 			inc_1 = inc_1*2;
-			if (inc_1==6) {
+			if (inc_1==8) {
 				inc_1=2;
 			}
 					
@@ -764,9 +768,9 @@ public class JuegoTest {
 		
 		//Fila 0
 		
-		//Forçamos que el codigoSecreto sea {B,D,F,B,D,F}
+		//Forçamos que el codigoSecreto sea {B,D,F,B,D}
 		int inc_0 = 2;
-		for (int i = 0; i<juegoTest.longitudCodigo; i++) {							
+		for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {							
 					
 			int codigAscii = (int)Math.floor(64+inc_0);
 			String codiAscii = Character.toString(codigAscii);
@@ -787,7 +791,7 @@ public class JuegoTest {
 				
 		//Forçamos que el codigoSecreto sea {A,B,C,D,E,F} y el codigo insertado {F,E,D,C,B,A}
 		for (int j=1; j<juegoTest.fila; j++) {
-			for (int i = 0; i<juegoTest.longitudCodigo; i++) {			
+			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
 								
 				int codigAscii = (int)Math.floor(65+i);
 				String codiAscii = Character.toString(codigAscii);
@@ -819,22 +823,25 @@ public class JuegoTest {
 		//Fila 9
 		
 			
-		//Forçamos que el codigoSecreto sea {A,B,C,D,E,F} y el introducido {F,E,D,C,B,A}
+		//Forçamos que el codigoSecreto sea {A,B,C,D,E} y el introducido {F,F,F,F,F}
 		//for (int j=1; j<juegoTest.fila; j++) {
-			for (int i = 0; i<juegoTest.longitudCodigo; i++) {			
+			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
 							
 				int codigAscii = (int)Math.floor(65+i);
 				String codiAscii = Character.toString(codigAscii);
 				juegoTest.codigoSecreto[i] = codiAscii;			
-				int codigoAscii = (int)Math.floor(70-i);	
+				int codigoAscii = (int)Math.floor(70);	
 				String codiiAscii = Character.toString(codigoAscii);
 				juegoTest.setCasilla(9, i, codiiAscii);	
-				juegoTest.LetraPosicionCorrecto(9, i);
-				assertFalse(juegoTest.LetraCasiCorrecto(9,i));
+				
+				
 				
 			}
 		
-	
+			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {	
+				//juegoTest.LetraPosicionCorrecto(9, i);
+				assertFalse(juegoTest.LetraCasiCorrecto(9,i));
+			}
 	
 	
 	/*//Forçamos que el codigoSecreto sea {A,B,C,D,E,F} y el introducido {A,B,C,D,E,F}
