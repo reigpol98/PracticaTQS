@@ -4,12 +4,12 @@ public class Juego {
 	
 	public static int fila = 10;
 	public static int columna = 10;
-	public static int longitudCodigo = 6;
-	public static int desplacamiento = 5;
+	public static int longitudCodigoSecreto = 5;
+	public static int longitudCodigo = 6;	
 	public String[][] tablero;
 	public String codigo[];
 	public String codigoSecreto[];
-	String vacio = "0";
+	String vacio = "-";
 	String acierto = "O";
 	String casi_acierto = "X";
 
@@ -17,7 +17,7 @@ public class Juego {
 		
 		tablero = new String[fila][columna];
 		codigo = new String[longitudCodigo];
-		codigoSecreto = new String[longitudCodigo];
+		codigoSecreto = new String[longitudCodigoSecreto];
 		
 	}
 	
@@ -43,7 +43,7 @@ public class Juego {
 	public String[] GenerarCodigoSecreto(){	        
 		
 		
-		for (int i=0; i<longitudCodigo; i++){ 
+		for (int i=0; i<longitudCodigoSecreto; i++){ 
 			
 			 char codigAscii =  (char) Math.floor(Math.random()*(71 - 65)+65); 
 			 String codiAscii = Character.toString(codigAscii);
@@ -146,11 +146,11 @@ public class Juego {
 	 */
 	public void GenerarPista(int fila) {
 		
-		for (int i=0; i<desplacamiento; i++) {		
+		for (int i=0; i<longitudCodigoSecreto; i++) {		
 			
 			if (LetraPosicionCorrecto(fila, i)) {
 				
-				setCasilla(fila, i+desplacamiento, acierto);
+				setCasilla(fila, i+longitudCodigoSecreto, acierto);
 				
 			}
 			
@@ -160,7 +160,7 @@ public class Juego {
 			
 			if (LetraCasiCorrecto(fila, i)) {
 				
-				setCasilla(fila, i+desplacamiento, casi_acierto);
+				setCasilla(fila, i+longitudCodigoSecreto, casi_acierto);
 				
 			}
 			
@@ -197,7 +197,7 @@ public class Juego {
 		boolean letra_correcto = false;	
 		String letra = getCasilla(fila,columna);
 		
-		for (int i = 0; i<desplacamiento; i++) {
+		for (int i = 0; i<longitudCodigoSecreto; i++) {
 			
 			if ((codigoSecreto[i].equals(letra)) && (!getCasilla(fila,columna+5).equals(acierto)) ) {				
 				
