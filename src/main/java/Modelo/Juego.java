@@ -210,6 +210,14 @@ public class Juego {
 	}
 	
 	
+	public boolean FinalPartida(int fila) {
+		
+		
+		return false;
+		
+	}
+	
+	
 	/**
 	 * 
 	 * Getters y Setters 
