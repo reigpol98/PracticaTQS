@@ -221,8 +221,6 @@ public class Juego {
 		
 		for (int i = 0; i<longitudCodigoSecreto; i++) {		
 			
-			
-			
 			if (getCasilla(fila,i+longitudCodigoSecreto).equals(acierto))  {
 				
 				
