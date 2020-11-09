@@ -870,7 +870,7 @@ public class JuegoTest {
 	@Test public void FinalPartidaTest() {
 	
 	
-		
+		//Forçamos que el codigoSecreto sea {A,B,C,D,E,F} y el introducido {A,B,C,D,E,F}
 		//Forçamos que se termine la partida
 		for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
 			
@@ -885,6 +885,33 @@ public class JuegoTest {
 		}
 		
 		assertTrue(juegoTest.FinalPartida(9));
+		
+		//Forçamos que el codigoSecreto sea {A,B,C,B,B} y el introducido {C,B,A,B,B}
+		for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
+			
+			if (i<3) {
+				int codigAscii = (int)Math.floor(65+i);
+				String codiAscii = Character.toString(codigAscii);
+				juegoTest.codigoSecreto[i] = codiAscii;			
+				int codigoAscii = (int)Math.floor(67-i);	
+				String codiiAscii = Character.toString(codigoAscii);
+				juegoTest.setCasilla(8, i, codiiAscii);	
+				
+			}else {
+				
+				int codigAscii = (int)Math.floor(66);
+				String codiAscii = Character.toString(codigAscii);
+				juegoTest.codigoSecreto[i] = codiAscii;			
+				int codigoAscii = (int)Math.floor(66);	
+				String codiiAscii = Character.toString(codigoAscii);
+				juegoTest.setCasilla(8, i, codiiAscii);	
+				
+			}
+			
+			
+		}
+		
+		assertFalse(juegoTest.FinalPartida(8));
 		
 		
 	}
