@@ -69,7 +69,7 @@ public class JuegoTest {
 				
 		juegoTest.InicializarTablero();
 		
-		
+			
 		//Valores no validos
 		for (int i=0; i<juegoTest.fila; i++) {
 			for (int j=0; j<juegoTest.columna;j++) {				
@@ -917,7 +917,8 @@ public class JuegoTest {
 		
 		
 	}
-		
+	
+
 		
 		
 		

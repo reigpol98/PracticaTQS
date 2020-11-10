@@ -156,7 +156,7 @@ public class Juego {
 			
 		}
 		
-		for (int i=0; i<longitudCodigo-1; i++) {		
+		for (int i=0; i<longitudCodigoSecreto; i++) {		
 			
 			if (LetraCasiCorrecto(fila, i)) {
 				
@@ -207,6 +207,7 @@ public class Juego {
 		}
 		
 		return letra_correcto;	
+		
 	}
 	
 	/**
