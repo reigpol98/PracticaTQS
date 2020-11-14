@@ -861,6 +861,166 @@ public class JuegoTest {
 	
 	
 	/**
+	 * Test: LetraCasiCorrecto()
+	 * 
+	 * Tipo: Caja Blanca
+	 * 
+	 * Comprueba que el codigo introducido por el usuario las letras estan en el CodigoSecreto pero en distinas posiciones.
+	 */
+	@Test public void LetraCasiCorrectoTest2() {
+		
+		
+		
+		//Decision (IF false)
+					
+		//Forçamos que el codigoSecreto sea {A,B,C,D,E} y el introducido {F,F,F,F,F}		
+			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
+							
+				int codigAscii = (int)Math.floor(65+i);
+				String codiAscii = Character.toString(codigAscii);
+				juegoTest.codigoSecreto[i] = codiAscii;			
+				int codigoAscii = (int)Math.floor(70);	
+				String codiiAscii = Character.toString(codigoAscii);
+				juegoTest.setCasilla(9, i, codiiAscii);	
+				
+				
+				
+			}
+			juegoTest.InicializarTablero();
+			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {	
+				//juegoTest.LetraPosicionCorrecto(9, i);
+				assertFalse(juegoTest.LetraCasiCorrecto(9,i));
+			}
+			
+		//Decision (IF true: Entra dentro del IF)
+			
+		//Forçamos que el codigoSecreto sea {A,B,C,D,E} y el introducido {B,C,D,E,A}
+			
+			
+			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
+				
+				int codigAscii = (int)Math.floor(65+i);
+				String codiAscii = Character.toString(codigAscii);
+				juegoTest.codigoSecreto[i] = codiAscii;			
+				int codigoAscii = (int)Math.floor(66+i);
+				if (i==4) {
+					codigoAscii = (int)Math.floor(65);
+				}
+				String codiiAscii = Character.toString(codigoAscii);
+				juegoTest.setCasilla(9, i, codiiAscii);	
+				
+				
+				
+			}
+		
+			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {	
+				//juegoTest.LetraPosicionCorrecto(9, i);
+				assertTrue(juegoTest.LetraCasiCorrecto(9,i));
+			}
+			
+			
+			
+			
+			//Condition (True && False)
+			//Forçamos que el codigoSecreto sea {C,D,E,F,G} y el introducido {G,F,E,D,C}
+			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
+				
+				int codigoAscii = (int)Math.floor(67+i);
+				int codiAscii = (int)Math.floor(71-i);
+				String LetraSecreta = Character.toString(codigoAscii);
+				String Letra = Character.toString(codiAscii);
+				juegoTest.codigoSecreto[i] = LetraSecreta;					
+				juegoTest.setCasilla(9, i, Letra);
+				juegoTest.setCasilla(9, i+5, juegoTest.acierto);		
+				
+			}
+			
+			
+		
+			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {	
+				
+				assertFalse(juegoTest.LetraCasiCorrecto(9,i));
+			}
+			
+			
+			//Condition (False && True)
+			//Forçamos que el codigoSecreto sea {C,D,E,F,G} y el introducido {G,F,E,D,C}
+			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
+				
+				int codigoAscii = (int)Math.floor(67+i);
+				int codiAscii = (int)Math.floor(71-i);
+				String LetraSecreta = Character.toString(codigoAscii);
+				String Letra = Character.toString(codiAscii);
+				juegoTest.codigoSecreto[i] = LetraSecreta;					
+				juegoTest.setCasilla(9, i, Letra);
+				juegoTest.setCasilla(9, i+5, juegoTest.acierto);		
+				
+			}
+			
+			
+		
+			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {	
+				
+				assertFalse(juegoTest.LetraCasiCorrecto(9,i));
+			}
+			
+			
+			
+			
+			//Condition (False && False)
+			//Forçamos que el codigoSecreto sea {C,D,E,F,G} y el introducido {A,A,A,B,B}
+			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
+				
+				int codigo_secreto = (int)Math.floor(67+i);
+				int codigo_introducido = (int)Math.floor(65);
+				if (i<2) {
+				codigo_introducido = (int)Math.floor(66);
+				}
+				String LetraSecreta = Character.toString(codigo_secreto);
+				String Letra = Character.toString(codigo_introducido);
+				juegoTest.codigoSecreto[i] = LetraSecreta;					
+				juegoTest.setCasilla(9, i, Letra);
+				juegoTest.setCasilla(9, i+5, juegoTest.acierto);		
+				
+			}
+			
+			
+		
+			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {	
+				
+				assertFalse(juegoTest.LetraCasiCorrecto(9,i));
+			}
+			
+			
+			//Condition (True && True)
+			//Forçamos que el codigoSecreto sea {C,D,E,F,G} y el introducido {G,F,E,D,C}
+			
+			juegoTest.InicializarTablero();
+			
+			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
+				
+				int codigoAscii = (int)Math.floor(67+i);
+				int codiAscii = (int)Math.floor(71-i);
+				String LetraSecreta = Character.toString(codigoAscii);
+				String Letra = Character.toString(codiAscii);
+				juegoTest.codigoSecreto[i] = LetraSecreta;					
+				juegoTest.setCasilla(9, i, Letra);				
+				
+			}
+			
+			
+		
+			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {	
+				
+				assertTrue(juegoTest.LetraCasiCorrecto(9,i));
+			}
+			
+			
+			
+	}
+	
+	
+	/**
 	 * Test: FinPartida()
 	 * 
 	 * Tipo: Caja Negra

@@ -9,9 +9,9 @@ public class Juego {
 	public String[][] tablero;
 	public String codigo[];
 	public String codigoSecreto[];
-	String vacio = "-";
-	String acierto = "O";
-	String casi_acierto = "X";
+	public String vacio = "-";
+	public String acierto = "O";
+	public String casi_acierto = "X";
 
 	public Juego() {
 		
@@ -32,7 +32,7 @@ public class Juego {
 				setCasilla(i,j,vacio);
 			}
 		}
-		
+		 
 	}
 	
 	/**
