@@ -8,25 +8,32 @@ import Vista.Tablero;
 
 public class Main {
 		
-	Juego j = new Juego();
+	public Juego j = new Juego();
 	Tablero t = new Tablero();
-	Teclado e = new Teclado();
+	static Teclado e = new Teclado();
 			
 			
-	int control = 0;	
+	public int control = 0;	
 	public	int fila = 9;
-	int columna = 0;
+	public int columna = 0;
 	String letra;
+	public static void setTeclat(Teclado tec) {e = tec;}	
 	
+	
+	public void InicializarJuego() {
+		
+		j.InicializarTablero();
+		j.GenerarCodigoGama();
+		j.GenerarCodigoSecreto();
+	
+	}
 	
 	public void BucleJuego() {
 		
 		//System.out.print(GamaColor);
-		j.InicializarTablero();
-		j.GenerarCodigoGama();
-		j.GenerarCodigoSecreto();
 		
-		while(fila>1) {
+		
+		while(fila>-1) {
 								
 			t.DibujaTablero(j.getTablero());
 			columna = e.IntroducirColumna();			
@@ -34,7 +41,7 @@ public class Main {
 			
 			if (j.VerificaLimitesColumna(columna)) {
 			
-				if (j.VerificaPosicionOcupada(fila,columna)) {
+				if (!j.VerificaPosicionOcupada(fila,columna)) {
 				
 					letra = e.IntroducirLetra();
 					

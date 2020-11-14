@@ -1052,6 +1052,54 @@ public class JuegoTest {
 	}
 	
 	
+	
+	/**
+	 * Test: GenerarPista()
+	 * 
+	 * Tipo: Caja Blanca
+	 * 
+	 * Se comprueba para los dos fors de la funcion 
+	 */
+	@Test public void GenerarPistaTest() {
+		
+		
+		juegoTest.InicializarTablero();
+		
+		for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
+			
+			int codigAscii = (int)Math.floor(65+i);
+			String codiAscii = Character.toString(codigAscii);
+			juegoTest.codigoSecreto[i] = codiAscii;			
+			int codigoAscii = (int)Math.floor(65+i);	
+			String codiiAscii = Character.toString(codigoAscii);
+			juegoTest.setCasilla(5, i, codiiAscii);		
+			
+			
+		}
+		
+		//Evitar el Loop
+		juegoTest.longitudCodigoSecreto = 0;		
+		juegoTest.GenerarPista(5);
+		
+		//Una passada por el loop
+		juegoTest.longitudCodigoSecreto = 1;		
+		juegoTest.GenerarPista(5);
+		
+		//Dos passadas por el loop
+		juegoTest.longitudCodigoSecreto = 2;		
+		juegoTest.GenerarPista(5);
+		
+		//m passades pel loop m<n
+		juegoTest.longitudCodigoSecreto = 3;		
+		juegoTest.GenerarPista(5);		
+		
+		//(n-1), n passades pel loop
+		juegoTest.longitudCodigoSecreto = 5;		
+		juegoTest.GenerarPista(5);
+		
+		
+	}
+	
 	/**
 	 * Test: FinPartida()
 	 * 

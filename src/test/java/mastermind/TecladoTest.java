@@ -11,17 +11,43 @@ public class TecladoTest {
 
 	
 	Juego juegoTest = new Juego();
+	MockTeclado MockTeclado = new MockTeclado();
+	
 	
 	@Test public void IntroducirColumnaTest() {		
 		
-		MockTeclado teclado = new MockTeclado();
-		int columna_1 = teclado.IntroducirColumna();		
-		assertEquals(columna_1,1);
-		int columna_2 = teclado.IntroducirColumna();		
-		assertEquals(columna_2,2);
+	
+		int columna = MockTeclado.IntroducirColumna();		
+		assertEquals(columna,-1);
+		columna = MockTeclado.IntroducirColumna();		
+		assertEquals(columna,1);
+		columna = MockTeclado.IntroducirColumna();		
+		assertEquals(columna,2);
+		columna = MockTeclado.IntroducirColumna();		
+		assertEquals(columna,3);
 		
-		
+	
 	}
+	
+	
+	
+	
+	@Test public void IntroducirLetraTest() {	
+		
+		
+		String letra = MockTeclado.IntroducirLetra();
+		assertEquals(letra,"H");
+		letra = MockTeclado.IntroducirLetra();
+		assertEquals(letra,"A");
+			
+		
+			
+			
+
+	
+
+	
+}
 	
 	
 	

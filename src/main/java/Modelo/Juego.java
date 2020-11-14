@@ -4,7 +4,7 @@ public class Juego {
 	
 	public static int fila = 10;
 	public static int columna = 10;
-	public static int longitudCodigoSecreto = 5;
+	public int longitudCodigoSecreto = 5;
 	public static int longitudCodigo = 7;	
 	public String[][] tablero;
 	public String codigo[];
