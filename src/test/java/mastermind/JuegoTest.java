@@ -1021,6 +1021,38 @@ public class JuegoTest {
 	
 	
 	/**
+	 * Test: VerificarLimitesColumna()
+	 * 
+	 * Tipo: Caja Blanca
+	 * 
+	 * Se comprueba que se ejecute el if (tanto si es cierto como no) y que se ejecuten las decision (true-true/true-false/false-true/false-false)
+	 */
+	@Test public void VerificarLimitesColumnaTest2() {
+		
+		//Condition (IF True)
+		assertTrue(juegoTest.VerificaLimitesColumna(3));
+		
+		//Condition (IF False)
+		assertFalse(juegoTest.VerificaLimitesColumna(-10));
+		
+		//Decision (True-True)
+		assertTrue(juegoTest.VerificaLimitesColumna(4));
+		
+		//Decision (False-False)
+		assertFalse(juegoTest.VerificaLimitesColumna(-5));
+		assertFalse(juegoTest.VerificaLimitesColumna(6));
+		
+		//Decision (True-False)
+		assertFalse(juegoTest.VerificaLimitesColumna(5));
+		
+		//Decision (False-True)
+		assertFalse(juegoTest.VerificaLimitesColumna(-1));
+		
+		
+	}
+	
+	
+	/**
 	 * Test: FinPartida()
 	 * 
 	 * Tipo: Caja Negra
