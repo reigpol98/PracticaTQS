@@ -1,5 +1,8 @@
 package mastermind;
 import Modelo.Juego;
+import Modelo.MockAleatorio;
+import Modelo.MockTeclado;
+
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -225,7 +228,7 @@ public class JuegoTest {
 	 * Explicacion: Al ser un codigo que se genera automaticamente comprobaremos que puede contener las letras permitidas
 	 * 				y que no tiene ninguna letra no permitida	  
 	 */
-	@Test public void GenerarCodigoSecretoTest() {	
+	/*@Test public void GenerarCodigoSecretoTest() {	
 		
 		String[] codigoSecretoTest = new String[juegoTest.longitudCodigoSecreto];
 		codigoSecretoTest = juegoTest.GenerarCodigoSecreto();
@@ -278,7 +281,7 @@ public class JuegoTest {
 		
 		
 		
-	}
+	}*/
 	
 	
 	/**
@@ -1097,6 +1100,44 @@ public class JuegoTest {
 		juegoTest.longitudCodigoSecreto = 5;		
 		juegoTest.GenerarPista(5);
 		
+		
+	}
+	
+	
+	
+	@Test public void GenerarCodigoSecretoTest2() {
+		
+		
+		
+		MockAleatorio MockAleatorio = new MockAleatorio();
+		String letra = MockAleatorio.GenerarLetrasAleatorias();
+		assertEquals(letra,"A");
+		letra = MockAleatorio.GenerarLetrasAleatorias();
+		assertEquals(letra,"B");
+		letra = MockAleatorio.GenerarLetrasAleatorias();
+		assertEquals(letra,"C");
+		letra = MockAleatorio.GenerarLetrasAleatorias();
+		assertEquals(letra,"D");
+		letra = MockAleatorio.GenerarLetrasAleatorias();
+		assertEquals(letra,"E");
+		letra = MockAleatorio.GenerarLetrasAleatorias();
+		assertEquals(letra,"F");
+		letra = MockAleatorio.GenerarLetrasAleatorias();
+		assertEquals(letra,"G");
+		letra = MockAleatorio.GenerarLetrasAleatorias();
+		assertEquals(letra,"B");
+		letra = MockAleatorio.GenerarLetrasAleatorias();
+		assertEquals(letra,"D");
+		letra = MockAleatorio.GenerarLetrasAleatorias();
+		assertEquals(letra,"E");
+		letra = MockAleatorio.GenerarLetrasAleatorias();
+		assertEquals(letra,"G");
+		letra = MockAleatorio.GenerarLetrasAleatorias();
+		assertEquals(letra,"A");
+		letra = MockAleatorio.GenerarLetrasAleatorias();
+		assertEquals(letra,"C");
+		
+	
 		
 	}
 	

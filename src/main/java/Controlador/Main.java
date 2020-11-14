@@ -1,6 +1,7 @@
 package Controlador;
 
 
+import Modelo.Aleatorio;
 import Modelo.Juego;
 import Vista.Teclado;
 import Vista.Tablero;
@@ -10,6 +11,7 @@ public class Main {
 		
 	public Juego j = new Juego();
 	Tablero t = new Tablero();
+	Aleatorio a = new Aleatorio();
 	static Teclado e = new Teclado();
 			
 			
@@ -24,9 +26,14 @@ public class Main {
 		
 		j.InicializarTablero();
 		j.GenerarCodigoGama();
-		j.GenerarCodigoSecreto();
+		for (int i=0; i<5; i++) {
+		String letra = a.GenerarLetrasAleatorias();
+		j.setCodigoSecreto(i, letra);
+		}
+		
 	
 	}
+	
 	
 	public void BucleJuego() {
 		

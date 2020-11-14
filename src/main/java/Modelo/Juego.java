@@ -40,17 +40,19 @@ public class Juego {
 	 * 
 	 * @return
 	 */
-	public String[] GenerarCodigoSecreto(){	        
-		
-		
-		for (int i=0; i<longitudCodigoSecreto; i++){ 
+	/*public String[] GenerarCodigoSecreto(int i,String letra){
 			
-			 char codigAscii =  (char) Math.floor(Math.random()*(72 - 65)+65); 
-			 String codiAscii = Character.toString(codigAscii);
-			 codigoSecreto[i]= codiAscii;
+			
+			 codigoSecreto[i]= letra;
 			         
-			} 
-		return codigoSecreto; 
+			 
+		
+	}*/
+	
+	public void setCodigoSecreto( int i,String  letra) {
+		
+		 codigoSecreto[i]= letra;
+		
 	}
 	
 	
