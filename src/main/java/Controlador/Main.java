@@ -1,53 +1,55 @@
 package Controlador;
-
-
 import Modelo.Aleatorio;
 import Modelo.Juego;
 import Vista.Teclado;
 import Vista.Tablero;
 
-
+/**
+ * Classe Main: Es el Controlador que comunica la interaccion entre el controlador y la vista.
+ */
 public class Main {
 		
-	public Juego j = new Juego();
-	Tablero t = new Tablero();
-	Aleatorio a = new Aleatorio();
-	static Teclado e = new Teclado();
-			
-			
-	public int control = 0;	
-	public	int fila = 9;
-	public int columna = 0;
-	String letra;
-	public static void setTeclat(Teclado tec) {e = tec;}	
+	public static Juego j = new Juego();
+	static Tablero t = new Tablero();
+	static Aleatorio a = new Aleatorio();
+	static Teclado e = new Teclado();			
+	public static int control = 0;	
+	public static	int fila = 9;
+	public static int columna = 0;
+	static String letra;	
 	
+	public static void main(String[] args) {
+		
+		InicializarJuego();
+		BucleJuego();
+	}
 	
-	public void InicializarJuego() {
+	/**
+	 * Inicializa el Tablero, Genera el CodigoGama y el CodigoSecreto
+	 */
+	public static void InicializarJuego() {
 		
 		j.InicializarTablero();
 		j.GenerarCodigoGama();
 		for (int i=0; i<5; i++) {
 		String letra = a.GenerarLetrasAleatorias();
 		j.setCodigoSecreto(i, letra);
-		}
 		
-	
+		}	
 	}
 	
-	
-	public void BucleJuego() {
+	/**
+	 * Control del Juego
+	 */
+	public static void BucleJuego() {	
 		
-		//System.out.print(GamaColor);
-		
-		
-		while(fila>-1) {
-								
+		while(fila>-1) {								
 			t.DibujaTablero(j.getTablero());
 			columna = e.IntroducirColumna();			
-			columna = columna-1;
+			columna = columna-1;		
 			
 			if (j.VerificaLimitesColumna(columna)) {
-			
+				
 				if (!j.VerificaPosicionOcupada(fila,columna)) {
 				
 					letra = e.IntroducirLetra();
@@ -85,6 +87,8 @@ public class Main {
 		}
 		
 		
-	}	
+	}
+	
+	public static void setTeclat(Teclado tec) {e = tec;}	
 
 }

@@ -2,8 +2,14 @@ package Modelo;
 
 public class Aleatorio {
 	
+	/**
+	 * Classe que genera las letras aleatorias para el CodigoSecreto
+	 */
 	
-	
+	/**
+	 * Retorna un valor aleatorio entre (65 y 72 codigoAscii) equivalente a (A-G)
+	 * @return
+	 */
 	public String GenerarLetrasAleatorias() {
 		
 		char codigoAscii =  (char) Math.floor(Math.random()*(72 - 65)+65); 

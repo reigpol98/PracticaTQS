@@ -1,23 +1,24 @@
 package Vista;
 
+
+/**
+ * Classe que imlpementa los Prints para dibujar el Tablero por pantalla.
+ * @author Victor
+ */
 public class Tablero {
 	
+	/**
+	 * Atributos
+	 */
 	static int fila = 10;
 	static int columna = 10;
-
 	
 	/**
 	 * Constructor
 	 */
-	public Tablero() {
-		
-		
-				
-	}
-	
+	public Tablero() {	}	
 	
 	/**
-	 * (VISTA)
 	 * Printa el tablero en la pantalla 
 	 */
 	public void DibujaTablero(String tauler[][]) {
@@ -34,29 +35,18 @@ public class Tablero {
 				System.out.print("|" + " " + tauler[i][j] + " ");
 				
 				if (j==(columna/2)-1)
-				{						
-					
-					System.out.print("|" + "|" );
-					
-					
+				{					
+					System.out.print("|" + "|" );					
 				}
 				
 				if(j==columna-1) {
 					System.out.print("|");
-					System.out.print("\n+---+---+---+---+---+++---+---+---+---+---+");
-					
+					System.out.print("\n+---+---+---+---+---+++---+---+---+---+---+");					
 				}
 			}
 			
-			System.out.print("\n");
-			
-		}
-		
+			System.out.print("\n");			
+		}		
 		System.out.print("\n Letras = {A,B,C,D,E,F,G} \n");	
 	}
-	
-	
-
-
-
 }

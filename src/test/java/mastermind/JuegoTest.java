@@ -53,10 +53,9 @@ public class JuegoTest {
 		assertNotEquals(2, juegoTest.getFila());
 		assertNotEquals(2, juegoTest.getColumna());
 		assertNotEquals(1, juegoTest.getFila());
-		assertNotEquals(1, juegoTest.getColumna());		
-		 
-		 
+		assertNotEquals(1, juegoTest.getColumna());			 
 	 }
+	
 	
 	/*
 	 * Test: InicializarTauler()
@@ -65,7 +64,10 @@ public class JuegoTest {
 	 * 
 	 * Explicacion: Comprueba si se ha inicializado correctamente la matriz (Tauler).
 	 * 
-	 * Valor Frontera = "0"
+	 * Valor Frontera = "-"
+	 * Valor Interior = "-"
+	 * Valor Interior Frontera = "-"
+	 * Valor Exterior Frontera = Cualquiera excepto "-"
 	 * 
 	 */
 	@Test public void InicialitzarTableroTest() {	
@@ -73,7 +75,7 @@ public class JuegoTest {
 		juegoTest.InicializarTablero();
 		
 			
-		//Valores no validos
+		//Valores Exteriores Frontera
 		for (int i=0; i<juegoTest.fila; i++) {
 			for (int j=0; j<juegoTest.columna;j++) {				
 				
@@ -87,72 +89,54 @@ public class JuegoTest {
 				assertNotEquals(i+60,juegoTest.tablero[i][j]);
 				assertNotEquals(i+70,juegoTest.tablero[i][j]);
 				assertNotEquals(i+80,juegoTest.tablero[i][j]);
-				assertNotEquals(i+90,juegoTest.tablero[i][j]);
+				assertNotEquals(i+90,juegoTest.tablero[i][j]);				
+				assertNotEquals(i-1,juegoTest.tablero[i][j]);
+				assertNotEquals(i-10,juegoTest.tablero[i][j]);
+				assertNotEquals(i-20,juegoTest.tablero[i][j]);
+				assertNotEquals(i-30,juegoTest.tablero[i][j]);
+				assertNotEquals(i-50,juegoTest.tablero[i][j]);
+				assertNotEquals(i-60,juegoTest.tablero[i][j]);
+				assertNotEquals(i-70,juegoTest.tablero[i][j]);
+				assertNotEquals(i-80,juegoTest.tablero[i][j]);
+				assertNotEquals(i-90,juegoTest.tablero[i][j]);
+				assertNotEquals("-1",juegoTest.tablero[i][j]);
+				assertNotEquals("1",juegoTest.tablero[i][j]);
+				
 								
 			}
 		}
 		
 		
-		//Valor Frontera
+		//Valor Frontera / Valor Interior / Valor Interior Frontera
 		for (int i=0; i<juegoTest.fila; i++) {
 			for (int j=0; j<juegoTest.columna;j++) {					
 				
-				assertEquals("-",juegoTest.tablero[i][j]);
+				assertEquals(juegoTest.vacio,juegoTest.tablero[i][j]);
 				
 			}
 		}
 		
 		//Valores Limite (exteriores a la frontera)
 		for (int i=0; i<juegoTest.fila; i++) {
-			for (int j=0; j<juegoTest.columna;j++) {					
-						
-				assertNotEquals("-1",juegoTest.tablero[i][j]);
-				assertNotEquals("1",juegoTest.tablero[i][j]);
+			for (int j=0; j<juegoTest.columna;j++) {			
 						
 			}
-		}
-		
-				
-				
-	}
+		}				
+	}	
 	
-	/**
-	 * Test: getCasella() y setCasella()
-	 * 
-	 * Tipo: Caja negra
-	 * 
-	 * Explicacion: 
-	 * 
-	 */
-	@Test public void SetGetCasillaTest() {
-		
-		//Valores
-		for (int i=0; i<juegoTest.fila; i++) {
-			for (int j=0; j<juegoTest.columna;j++) {				
-				
-				int codigAscii = (int)Math.floor(65+i);
-				String caracter = Character.toString(codigAscii);				
-				
-				juegoTest.setCasilla(i, j,caracter);
-				assertEquals(juegoTest.getCasilla(i,j),caracter);				
-				
-				
-			}
-			
-		}
-	}
 	
 	/**
 	 * Test: GenerarCodigoGama()
 	 * 
 	 * Tipo: Caja Negra
 	 * 
-	 * Explicacion
+	 * Explicacion: Se comprueba que el codigoGamma generado sea {A,B,C,D,E,F,G}
 	 * 
-	 * Valores Frontera: A y F
-	 * Valores Exteriores a la Frontera: Cogemos letras mayusculas random de la F a la Z (72-90 codigoAscii)
-	 * 									 Cogemos letras minuscuals random de la a a la z (97-122 codigoAscii)
-	 * 									 Otros Caracteres random (32-64) / Otros Caracteres random (123-165)
+	 * Valores Frontera: A y G
+	 * Valores Interiores: C,D,E
+	 * Valores Interiores Frontera: B,F
+	 * Valores Exteriores Frontera: @,H 							
+	 * 									
 	 */
 	
 	@Test public void GenerarCodigoGamaTest() {			
@@ -166,122 +150,57 @@ public class JuegoTest {
 		assertEquals(juegoTest.getCodigo(0),"A");
 		assertEquals(juegoTest.getCodigo(6),"G");
 		
-		//Valores interiores a la frontera
-		assertEquals(juegoTest.getCodigo(1),"B");
-		assertEquals(juegoTest.getCodigo(5),"F");
-		
-		//Valores interiores
+		//Valores Interiores
 		assertEquals(juegoTest.getCodigo(2),"C");
 		assertEquals(juegoTest.getCodigo(3),"D");
 		assertEquals(juegoTest.getCodigo(4),"E");
 		
+		//Valores Interiores Frontera
+		assertEquals(juegoTest.getCodigo(1),"B");
+		assertEquals(juegoTest.getCodigo(5),"F");		
 		
-		//Valores exteriores a la frontera
+		//Valores Exteriores Frontera
+		assertNotEquals(juegoTest.getCodigo(1),"@");
+		assertNotEquals(juegoTest.getCodigo(5),"H");		
 		
-		  //Letras Mayusculas
-			for (int i=0; i<juegoTest.longitudCodigo; i++) {
+		//Valores Exteriores  
+		//Letras Mayusculas: Cogemos letras mayusculas random de la H a la Z (72-90 codigoAscii)		
+		for (int i=0; i<juegoTest.longitudCodigo; i++) {
 				
-				
-				int codigAscii = (char) Math.floor(Math.random()*(72 - 90)+90); 
-				String codiAscii = Character.toString(codigAscii);
-				assertNotEquals(juegoTest.getCodigo(i),codiAscii);
+			int codigoAscii = (char) Math.floor(Math.random()*(72 - 90)+90); 
+			String codiAscii = Character.toString(codigoAscii);
+			assertNotEquals(juegoTest.getCodigo(i),codiAscii);
 						
-			}
+		}			
+		 //Letras Minusculas:  Cogemos letras minuscuals random de la a a la z (97-122 codigoAscii)
+		for (int i=0; i<juegoTest.longitudCodigo; i++) {				
 			
-		 //Letras Minusculas
-				for (int i=0; i<juegoTest.longitudCodigo; i++) {
 				
-				
-				int codigAscii = (char) Math.floor(Math.random()*(97 - 122)+97); 
-				String codiAscii = Character.toString(codigAscii);
-				assertNotEquals(juegoTest.getCodigo(i),codiAscii);
-						
-			}
-				
-		 //Otros Caracteres
-				for (int i=0; i<juegoTest.longitudCodigo; i++) {
-				
-				
-				int codigAscii = (char) Math.floor(Math.random()*(32 - 64)+32);
-				String codiAscii = Character.toString(codigAscii);
-				assertNotEquals(juegoTest.getCodigo(i),codiAscii);
-						
-			}
-			
-		  //Otros Caracteres				
-				for (int i=0; i<juegoTest.longitudCodigo; i++) {
-				
-				
-				int codigAscii = (char) Math.floor(Math.random()*(123 - 165)+123);
-				String codiAscii = Character.toString(codigAscii);
-				assertNotEquals(juegoTest.getCodigo(i),codiAscii);
-						
-			}
-	}
-	
-	
-	/**
-	 * Test: GenerarCodigoTest()
-	 * 
-	 * Tipo: Caja Negra
-	 * 
-	 * Explicacion: Al ser un codigo que se genera automaticamente comprobaremos que puede contener las letras permitidas
-	 * 				y que no tiene ninguna letra no permitida	  
-	 */
-	/*@Test public void GenerarCodigoSecretoTest() {	
-		
-		String[] codigoSecretoTest = new String[juegoTest.longitudCodigoSecreto];
-		codigoSecretoTest = juegoTest.GenerarCodigoSecreto();
-		
-		
-		
-		
-		//Lomgitud CodigoSecreto = 5
-		assertEquals(juegoTest.codigoSecreto.length,5);
-		
-		
-		
-		//Combinacion de valores que puede tener el codigo secreto {A,B,C,D,E,F,G}
-		for (int i=0; i<juegoTest.longitudCodigoSecreto; i++) {					
-			
-			assertEquals(juegoTest.getCodigoSecreto(i),codigoSecretoTest[i]);		
-						
-		}
-		
-		
-		//Letras Minusculas
-		for (int i=0; i<juegoTest.longitudCodigoSecreto; i++) {
-		
-			int inc = 0;
 			int codigAscii = (char) Math.floor(Math.random()*(97 - 122)+97); 
 			String codiAscii = Character.toString(codigAscii);
 			assertNotEquals(juegoTest.getCodigo(i),codiAscii);
-			inc ++;			
-	}
-		
-		//Otros Caracteres
-		for (int i=0; i<juegoTest.longitudCodigoSecreto; i++) {
-		
-			int inc = 0;
+						
+		}
+				
+		//Otros Caracteres: (32-64 codigoAscii)
+		for (int i=0; i<juegoTest.longitudCodigo; i++) {
+				
+				
 			int codigAscii = (char) Math.floor(Math.random()*(32 - 64)+32);
 			String codiAscii = Character.toString(codigAscii);
 			assertNotEquals(juegoTest.getCodigo(i),codiAscii);
-			inc ++;			
-	}
-	
-		//Otros Caracteres				
-		for (int i=0; i<juegoTest.longitudCodigoSecreto; i++) {
-		
-			int inc = 0;
+						
+		}
+			
+		//Otros Caracteres: (123-165 codigoAscii)		
+		for (int i=0; i<juegoTest.longitudCodigo; i++) {
+				
 			int codigAscii = (char) Math.floor(Math.random()*(123 - 165)+123);
 			String codiAscii = Character.toString(codigAscii);
 			assertNotEquals(juegoTest.getCodigo(i),codiAscii);
-			inc ++;			
-	}
-		
-		
-		
-	}*/
+						
+		}
+	}	
 	
 	
 	/**
@@ -289,50 +208,40 @@ public class JuegoTest {
 	 * 
 	 * Tipo: Caja Negra
 	 * 
-	 * Explicacion: Verificamos que la funcion nos debuelve true cuando el valor introducido esta entre [1-5]
+	 * Explicacion: Verificamos que la funcion nos debuelve True cuando el valor introducido esta entre [1-5], sino False.
+	 * 				Para el usuario es [1-5], pero para el programa es [0-4].
 	 * 
+	 * Valores Frontera: 0,4
+	 * Valores Interior: 2
+	 * Valores Interiores Frontera: 1,3
+	 * Valores Exteriores Frontera: -1,5
 	 * 
 	 */
 	@Test public void VerificaLimitesColumnaTest() {
-		
-		//Recordamos que el programa [1-5], para el es [0-4]
 		
 		//Valores Frontera
 		assertTrue(juegoTest.VerificaLimitesColumna(0));
 		assertTrue(juegoTest.VerificaLimitesColumna(4));
 		
-		//Valor Interior
+		//Valor Interior 
 		assertTrue(juegoTest.VerificaLimitesColumna(2));
 		
-		//Valores Limite Interiores a la Frontera
+		//Valores Interiores Frontera
 		assertTrue(juegoTest.VerificaLimitesColumna(1));		
 		assertTrue(juegoTest.VerificaLimitesColumna(3));
 		
-		//Valores Limite Exteriores a la Frontera		
-		assertFalse(juegoTest.VerificaLimitesColumna(-1));
-		assertFalse(juegoTest.VerificaLimitesColumna(-2));
-		assertFalse(juegoTest.VerificaLimitesColumna(-3));
-		assertFalse(juegoTest.VerificaLimitesColumna(-4));
+		//Valores Exteriores Frontera		
+		assertFalse(juegoTest.VerificaLimitesColumna(-1));		
 		assertFalse(juegoTest.VerificaLimitesColumna(-5));
-		assertFalse(juegoTest.VerificaLimitesColumna(-6));
-		assertFalse(juegoTest.VerificaLimitesColumna(-7));
-		assertFalse(juegoTest.VerificaLimitesColumna(-8));
-		assertFalse(juegoTest.VerificaLimitesColumna(-9));
-		assertFalse(juegoTest.VerificaLimitesColumna(-10));
-		assertFalse(juegoTest.VerificaLimitesColumna(6));
-		assertFalse(juegoTest.VerificaLimitesColumna(7));
-		assertFalse(juegoTest.VerificaLimitesColumna(8));
-		assertFalse(juegoTest.VerificaLimitesColumna(9));
-		assertFalse(juegoTest.VerificaLimitesColumna(10));
-		assertFalse(juegoTest.VerificaLimitesColumna(11));
-		assertFalse(juegoTest.VerificaLimitesColumna(12));
-		assertFalse(juegoTest.VerificaLimitesColumna(13));
-		assertFalse(juegoTest.VerificaLimitesColumna(14));
-		assertFalse(juegoTest.VerificaLimitesColumna(15));		
 		
-		
-		
-	}
+		//Valores Exteriores
+		for (int  i=5; i<100; i++) {			
+		assertFalse(juegoTest.VerificaLimitesColumna(i));
+		assertFalse(juegoTest.VerificaLimitesColumna(-i));				
+		}
+			
+	}	
+	
 	
 	/**
 	 * Test: VerificaLetra()
@@ -341,67 +250,61 @@ public class JuegoTest {
 	 * 
 	 * Explicacion: Comprobamos que las letras introducidas sean las permitidas {A,B,C,D,E,F}
 	 * 
+	 * Valores Frontera: A,G
+	 * Valores Interiores: C,D,E
+	 * Valores Interiores Frontera: B,F
+	 * Valores Exteriores Frontera: @,H
 	 * 
 	 */
 	@Test public void VerificaLetraTest() {
 		
 		juegoTest.GenerarCodigoGama();
 		
-		//Valores Frontera (A,F)
+		//Valores Frontera
 		assertTrue(juegoTest.VerificaLetra("A"));
 		assertTrue(juegoTest.VerificaLetra("G"));
 		
-		//Valores Limite Interiores a la Frontera
-		assertTrue(juegoTest.VerificaLetra("B"));		
-		assertTrue(juegoTest.VerificaLetra("F"));
-		
-		//Valores Interiores a la Frontera
+		//Valores Interiores
 		assertTrue(juegoTest.VerificaLetra("C"));
 		assertTrue(juegoTest.VerificaLetra("D"));
 		assertTrue(juegoTest.VerificaLetra("E"));
 		
+		//Valores Interiores Frontera
+		assertTrue(juegoTest.VerificaLetra("B"));		
+		assertTrue(juegoTest.VerificaLetra("F"));		
+	
+		//Valores Exteriores Frontera
+		assertNotEquals(juegoTest.getCodigo(1),"@");
+		assertNotEquals(juegoTest.getCodigo(5),"H");		
 		
-		//Valores Exterires a la Frontera
-		
-		//Letras Mayusculas (H-Z) (71-90)
-		for (int i=0; i<20; i++) {			
-			
+		//Valores Exteriores
+		//Letras Mayusculas: (H-Z) (72-90 codigoAscii)
+		for (int i=0; i<20; i++) {				
 			int codigAscii = (int)Math.floor(72+i);
 			String codiAscii = Character.toString(codigAscii);
-			assertFalse(juegoTest.VerificaLetra(codiAscii));
-				
+			assertFalse(juegoTest.VerificaLetra(codiAscii));				
 		}
 		
-		//Letras Minusculas (a-z) (97-122)
-		for (int i=0; i<26; i++) {			
-					
+		//Letras Minusculas (a-z) (97-122 codigoAscii)
+		for (int i=0; i<26; i++) {							
 			int codigAscii = (int)Math.floor(97+i);
 			String codiAscii = Character.toString(codigAscii);
-			assertFalse(juegoTest.VerificaLetra(codiAscii));
-						
-		}		
+			assertFalse(juegoTest.VerificaLetra(codiAscii));						
+		}			
 		
-		
-		//Letras Mayusculas (espacio-@) (32-64)
-		for (int i=0; i<32; i++) {			
-					
+		//Letras Mayusculas (espacio-@) (32-64 codigoAscii)
+		for (int i=0; i<32; i++) {						
 			int codigAscii = (int)Math.floor(32+i);
 			String codiAscii = Character.toString(codigAscii);
-			assertFalse(juegoTest.VerificaLetra(codiAscii));
-						
-		}	
-		
+			assertFalse(juegoTest.VerificaLetra(codiAscii));						
+		}			
 
-		//Letras Mayusculas (espacio-@) (123-255) ({-nbsp)
-		for (int i=0; i<134; i++) {			
-					
+		//Letras Mayusculas ({-nbsp) (123-255 codigoAscii) 
+		for (int i=0; i<134; i++) {							
 			int codigAscii = (int)Math.floor(123+i);
 			String codiAscii = Character.toString(codigAscii);
-			assertFalse(juegoTest.VerificaLetra(codiAscii));
-						
+			assertFalse(juegoTest.VerificaLetra(codiAscii));						
 		}
-		
-		
 		
 	}
 	
@@ -410,11 +313,15 @@ public class JuegoTest {
 	 * 
 	 * Tipo: Caja Negra
 	 * 
-	 * Verificamos que todas las posiciones esten libres.
-	 * Luego rellenamos todo el tablero y comporbamos que estas esten ocupadas.
+	 * Explicacion: Verificamos que todas las posiciones esten libres.
+	 * 				Luego rellenamos todo el tablero y comporbamos que estas esten ocupadas.
+	 * 				Recordar que el programa [1-5], para el es [0-4].
 	 * 
-	 * //Recordamos que el programa [1-5], para el es [0-4]
-	 * 
+	 * Valores Frontera: Columnas: 0 y 4, Filas: 0 y 9
+	 * Valores Interiores: Columnas: 2, Filas: [2-7]
+	 * Valores Interiores Frontera: Columnas: 1 y 3, Filas: 1 y 8
+	 * Valores Exteriores Frontera: Columnas: -1 y 5, Filas: -1 y 10
+	 * 	  	 
 	 */
 	@Test public void VerificaPosicionOcupadaTest() {
 		
@@ -423,212 +330,57 @@ public class JuegoTest {
 		String letra = "A";
 		
 		//Ninguna posicion esta Ocupada
-		//Fila 9
-		assertFalse(juegoTest.VerificaPosicionOcupada(9, 0));
-		assertFalse(juegoTest.VerificaPosicionOcupada(9, 1));
-		assertFalse(juegoTest.VerificaPosicionOcupada(9, 2));
-		assertFalse(juegoTest.VerificaPosicionOcupada(9, 3));
-		assertFalse(juegoTest.VerificaPosicionOcupada(9, 4));
-		
-		//Fila 8
-		assertFalse(juegoTest.VerificaPosicionOcupada(8, 1));
-		assertFalse(juegoTest.VerificaPosicionOcupada(8, 1));
-		assertFalse(juegoTest.VerificaPosicionOcupada(8, 2));
-		assertFalse(juegoTest.VerificaPosicionOcupada(8, 3));
-		assertFalse(juegoTest.VerificaPosicionOcupada(8, 4));
-		
-		//Fila 7
-		assertFalse(juegoTest.VerificaPosicionOcupada(7, 0));
-		assertFalse(juegoTest.VerificaPosicionOcupada(7, 1));
-		assertFalse(juegoTest.VerificaPosicionOcupada(7, 2));
-		assertFalse(juegoTest.VerificaPosicionOcupada(7, 3));
-		assertFalse(juegoTest.VerificaPosicionOcupada(7, 4));
-		
-		//Fila6
-		assertFalse(juegoTest.VerificaPosicionOcupada(6, 0));
-		assertFalse(juegoTest.VerificaPosicionOcupada(6, 1));
-		assertFalse(juegoTest.VerificaPosicionOcupada(6, 2));
-		assertFalse(juegoTest.VerificaPosicionOcupada(6, 3));
-		assertFalse(juegoTest.VerificaPosicionOcupada(6, 4));
-		
-		//Fila5
-		assertFalse(juegoTest.VerificaPosicionOcupada(5, 0));
-		assertFalse(juegoTest.VerificaPosicionOcupada(5, 1));
-		assertFalse(juegoTest.VerificaPosicionOcupada(5, 2));
-		assertFalse(juegoTest.VerificaPosicionOcupada(5, 3));
-		assertFalse(juegoTest.VerificaPosicionOcupada(5, 4));
-		
-		//Fila4
-		assertFalse(juegoTest.VerificaPosicionOcupada(4, 0));
-		assertFalse(juegoTest.VerificaPosicionOcupada(4, 1));
-		assertFalse(juegoTest.VerificaPosicionOcupada(4, 2));
-		assertFalse(juegoTest.VerificaPosicionOcupada(4, 3));
-		assertFalse(juegoTest.VerificaPosicionOcupada(4, 4));
-		
-		//Fila3
-		assertFalse(juegoTest.VerificaPosicionOcupada(3, 0));
-		assertFalse(juegoTest.VerificaPosicionOcupada(3, 1));
-		assertFalse(juegoTest.VerificaPosicionOcupada(3, 2));
-		assertFalse(juegoTest.VerificaPosicionOcupada(3, 3));
-		assertFalse(juegoTest.VerificaPosicionOcupada(3, 4));
-		
-		//Fila2
-		assertFalse(juegoTest.VerificaPosicionOcupada(2, 0));
-		assertFalse(juegoTest.VerificaPosicionOcupada(2, 1));
-		assertFalse(juegoTest.VerificaPosicionOcupada(2, 2));
-		assertFalse(juegoTest.VerificaPosicionOcupada(2, 3));
-		assertFalse(juegoTest.VerificaPosicionOcupada(2, 4));
-		
-		//Fila1
-		assertFalse(juegoTest.VerificaPosicionOcupada(1, 0));
-		assertFalse(juegoTest.VerificaPosicionOcupada(1, 1));
-		assertFalse(juegoTest.VerificaPosicionOcupada(1, 2));
-		assertFalse(juegoTest.VerificaPosicionOcupada(1, 3));
-		assertFalse(juegoTest.VerificaPosicionOcupada(1, 4));
-		
-		//Fila0
-		assertFalse(juegoTest.VerificaPosicionOcupada(0, 0));
-		assertFalse(juegoTest.VerificaPosicionOcupada(0, 1));
-		assertFalse(juegoTest.VerificaPosicionOcupada(0, 2));
-		assertFalse(juegoTest.VerificaPosicionOcupada(0, 3));
-		assertFalse(juegoTest.VerificaPosicionOcupada(0, 4));
-		
-		
+		//Valores Frontera
+		for (int i=0; i<10; i++) {			
+			assertFalse(juegoTest.VerificaPosicionOcupada(i, 0));
+			assertFalse(juegoTest.VerificaPosicionOcupada(i, 4));			
+		}
+		for (int i=0; i<5; i++) {		
+			assertFalse(juegoTest.VerificaPosicionOcupada(0, i));
+			assertFalse(juegoTest.VerificaPosicionOcupada(9, i));
+		}			
+		//Valores Interiores		
+		for(int i=1; i<7; i++) {
+			assertFalse(juegoTest.VerificaPosicionOcupada(i, 2));			
+		}		
+		//Valores Interiores Frontera
+		for (int i=0; i<10; i++) {			
+			assertFalse(juegoTest.VerificaPosicionOcupada(i, 1));
+			assertFalse(juegoTest.VerificaPosicionOcupada(i, 3));			
+		}
+		for (int i=0; i<5; i++) {		
+			assertFalse(juegoTest.VerificaPosicionOcupada(1, i));
+			assertFalse(juegoTest.VerificaPosicionOcupada(8, i));
+		}		
 		//Ocupamos todas las posiciones
-		//Fila 9
-		juegoTest.setCasilla(9, 0, letra);
-		juegoTest.setCasilla(9, 1, letra);
-		juegoTest.setCasilla(9, 2, letra);
-		juegoTest.setCasilla(9, 3, letra);
-		juegoTest.setCasilla(9, 4, letra);
-		//Fila 8
-		juegoTest.setCasilla(8, 0, letra);
-		juegoTest.setCasilla(8, 1, letra);
-		juegoTest.setCasilla(8, 2, letra);
-		juegoTest.setCasilla(8, 3, letra);
-		juegoTest.setCasilla(8, 4, letra);
-		//Fila 7
-		juegoTest.setCasilla(7, 0, letra);
-		juegoTest.setCasilla(7, 1, letra);
-		juegoTest.setCasilla(7, 2, letra);
-		juegoTest.setCasilla(7, 3, letra);
-		juegoTest.setCasilla(7, 4, letra);
-		//Fila 6
-		juegoTest.setCasilla(6, 0, letra);
-		juegoTest.setCasilla(6, 1, letra);
-		juegoTest.setCasilla(6, 2, letra);
-		juegoTest.setCasilla(6, 3, letra);
-		juegoTest.setCasilla(6, 4, letra);
-		//Fila 5
-		juegoTest.setCasilla(5, 0, letra);
-		juegoTest.setCasilla(5, 1, letra);
-		juegoTest.setCasilla(5, 2, letra);
-		juegoTest.setCasilla(5, 3, letra);
-		juegoTest.setCasilla(5, 4, letra);
-		//Fila 4
-		juegoTest.setCasilla(4, 0, letra);
-		juegoTest.setCasilla(4, 1, letra);
-		juegoTest.setCasilla(4, 2, letra);
-		juegoTest.setCasilla(4, 3, letra);
-		juegoTest.setCasilla(4, 4, letra);
-		//Fila 3
-		juegoTest.setCasilla(3, 0, letra);
-		juegoTest.setCasilla(3, 1, letra);
-		juegoTest.setCasilla(3, 2, letra);
-		juegoTest.setCasilla(3, 3, letra);
-		juegoTest.setCasilla(3, 4, letra);
-		//Fila 2
-		juegoTest.setCasilla(2, 0, letra);
-		juegoTest.setCasilla(2, 1, letra);
-		juegoTest.setCasilla(2, 2, letra);
-		juegoTest.setCasilla(2, 3, letra);
-		juegoTest.setCasilla(2, 4, letra);
-		//Fila 1
-		juegoTest.setCasilla(1, 0, letra);
-		juegoTest.setCasilla(1, 1, letra);
-		juegoTest.setCasilla(1, 2, letra);
-		juegoTest.setCasilla(1, 3, letra);
-		juegoTest.setCasilla(1, 4, letra);
-		//Fila 0
-		juegoTest.setCasilla(0, 0, letra);
-		juegoTest.setCasilla(0, 1, letra);
-		juegoTest.setCasilla(0, 2, letra);
-		juegoTest.setCasilla(0, 3, letra);
-		juegoTest.setCasilla(0, 4, letra);
-		
-		
+		for(int i = 0; i<10; i++) {
+			for(int j=0; j<5; j++) {				
+				juegoTest.setCasilla(i, j, letra);				
+			}
+		}		
 		//Verificamos que todas las posiciones del tablero estan ocupadas
-		assertTrue(juegoTest.VerificaPosicionOcupada(9, 0));
-		assertTrue(juegoTest.VerificaPosicionOcupada(9, 1));
-		assertTrue(juegoTest.VerificaPosicionOcupada(9, 2));
-		assertTrue(juegoTest.VerificaPosicionOcupada(9, 3));
-		assertTrue(juegoTest.VerificaPosicionOcupada(9, 4));
-		
-		//Fila 8
-		assertTrue(juegoTest.VerificaPosicionOcupada(8, 0));
-		assertTrue(juegoTest.VerificaPosicionOcupada(8, 1));
-		assertTrue(juegoTest.VerificaPosicionOcupada(8, 2));
-		assertTrue(juegoTest.VerificaPosicionOcupada(8, 3));
-		assertTrue(juegoTest.VerificaPosicionOcupada(8, 4));
-		
-		//Fila 7
-		assertTrue(juegoTest.VerificaPosicionOcupada(7, 0));
-		assertTrue(juegoTest.VerificaPosicionOcupada(7, 1));
-		assertTrue(juegoTest.VerificaPosicionOcupada(7, 2));
-		assertTrue(juegoTest.VerificaPosicionOcupada(7, 3));
-		assertTrue(juegoTest.VerificaPosicionOcupada(7, 4));
-		
-		//Fila6
-		assertTrue(juegoTest.VerificaPosicionOcupada(6, 0));
-		assertTrue(juegoTest.VerificaPosicionOcupada(6, 1));
-		assertTrue(juegoTest.VerificaPosicionOcupada(6, 2));
-		assertTrue(juegoTest.VerificaPosicionOcupada(6, 3));
-		assertTrue(juegoTest.VerificaPosicionOcupada(6, 4));
-		
-		//Fila5
-		assertTrue(juegoTest.VerificaPosicionOcupada(5, 0));
-		assertTrue(juegoTest.VerificaPosicionOcupada(5, 1));
-		assertTrue(juegoTest.VerificaPosicionOcupada(5, 2));
-		assertTrue(juegoTest.VerificaPosicionOcupada(5, 3));
-		assertTrue(juegoTest.VerificaPosicionOcupada(5, 4));
-		
-		//Fila4
-		assertTrue(juegoTest.VerificaPosicionOcupada(4, 0));
-		assertTrue(juegoTest.VerificaPosicionOcupada(4, 1));
-		assertTrue(juegoTest.VerificaPosicionOcupada(4, 2));
-		assertTrue(juegoTest.VerificaPosicionOcupada(4, 3));
-		assertTrue(juegoTest.VerificaPosicionOcupada(4, 4));
-		
-		//Fila3
-		assertTrue(juegoTest.VerificaPosicionOcupada(3, 0));
-		assertTrue(juegoTest.VerificaPosicionOcupada(3, 1));
-		assertTrue(juegoTest.VerificaPosicionOcupada(3, 2));
-		assertTrue(juegoTest.VerificaPosicionOcupada(3, 3));
-		assertTrue(juegoTest.VerificaPosicionOcupada(3, 4));
-		
-		//Fila2
-		assertTrue(juegoTest.VerificaPosicionOcupada(2, 0));
-		assertTrue(juegoTest.VerificaPosicionOcupada(2, 1));
-		assertTrue(juegoTest.VerificaPosicionOcupada(2, 2));
-		assertTrue(juegoTest.VerificaPosicionOcupada(2, 3));
-		assertTrue(juegoTest.VerificaPosicionOcupada(2, 4));
-		
-		//Fila1
-		assertTrue(juegoTest.VerificaPosicionOcupada(1, 0));
-		assertTrue(juegoTest.VerificaPosicionOcupada(1, 1));
-		assertTrue(juegoTest.VerificaPosicionOcupada(1, 2));
-		assertTrue(juegoTest.VerificaPosicionOcupada(1, 3));
-		assertTrue(juegoTest.VerificaPosicionOcupada(1, 4));
-		
-		//Fila0
-		assertTrue(juegoTest.VerificaPosicionOcupada(0, 0));
-		assertTrue(juegoTest.VerificaPosicionOcupada(0, 1));
-		assertTrue(juegoTest.VerificaPosicionOcupada(0, 2));
-		assertTrue(juegoTest.VerificaPosicionOcupada(0, 3));
-		assertTrue(juegoTest.VerificaPosicionOcupada(0, 4));
-		
-		
-		
+		//Valores Frontera
+		for (int i=0; i<10; i++) {			
+			assertTrue(juegoTest.VerificaPosicionOcupada(i, 0));
+			assertTrue(juegoTest.VerificaPosicionOcupada(i, 4));				
+		}
+		for (int i=0; i<5; i++) {		
+			assertTrue(juegoTest.VerificaPosicionOcupada(0, i));
+			assertTrue(juegoTest.VerificaPosicionOcupada(9, i));
+		}					
+		//Valores Interiores		
+		for(int i=1; i<7; i++) {
+			assertTrue(juegoTest.VerificaPosicionOcupada(i, 2));			
+		}				
+		//Valores Interiores Frontera
+		for (int i=0; i<10; i++) {			
+			assertTrue(juegoTest.VerificaPosicionOcupada(i, 1));
+			assertTrue(juegoTest.VerificaPosicionOcupada(i, 3));			
+		}
+		for (int i=0; i<5; i++) {		
+			assertTrue(juegoTest.VerificaPosicionOcupada(1, i));
+			assertTrue(juegoTest.VerificaPosicionOcupada(8, i));
+		}		
 	}
 	
 	/**
@@ -636,181 +388,110 @@ public class JuegoTest {
 	 * 
 	 * Tipo: Caja Negra
 	 * 
-	 * Comprueba que el codigo introducido por el usuario coincida con el codigo secreto
+	 * Explicacion: Comprueba que el codigo introducido por el usuario coincida con el codigo secreto.
+	 * 
+	 * Valores Frontera: Columnas: 0 y 4, Filas: 0 y 9
+	 * Valores Interiores: Columnas: 2, Filas: [2-7]
+	 * Valores Interiores Frontera: Columnas: 1 y 3, Filas: 1 y 8
+	 * Valores Exteriores Frontera: Columnas: -1 y 5, Filas: -1 y 10
+	 * 
 	 */
 	@Test public void LetraPosicionCorrectoTest() {
 		
 		//Todas las posiciones son correctas
-		
-		//Fila 9
-		
 		//Forçamos que el codigoSecreto sea {A,B,C,D,E}
-		for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
-					
-			int codigAscii = (int)Math.floor(65+i);
-			String codiAscii = Character.toString(codigAscii);
-			juegoTest.codigoSecreto[i] = codiAscii;			
-			juegoTest.setCasilla(9, i, codiAscii);		
-			assertTrue(juegoTest.LetraPosicionCorrecto(9,i));
-		
-		}
-		
-		//Fila 8
-		
-		//Forçamos que el codigoSecreto sea {A,A,A,A,A}
-		for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
-							
-			int codigAscii = (int)Math.floor(65);
-			String codiAscii = Character.toString(codigAscii);
-			juegoTest.codigoSecreto[i] = codiAscii;
-			juegoTest.setCasilla(8, i, codiAscii);
-			assertTrue(juegoTest.LetraPosicionCorrecto(8,i));
-				
-		}
-		
-		//Fila 7
-		
-		//Forçamos que el codigoSecreto sea {B,B,B,B,B}
-		for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
-			
-			int codigAscii = (int)Math.floor(66);
-			String codiAscii = Character.toString(codigAscii);
-			juegoTest.codigoSecreto[i] = codiAscii;
-			juegoTest.setCasilla(7, i, codiAscii);
-			assertTrue(juegoTest.LetraPosicionCorrecto(7,i));
-			
-		}
-		
-		//Fila 6
-		
-		//Forçamos que el codigoSecreto sea {C,C,C,C,C}
-		for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
-					
-			int codigAscii = (int)Math.floor(67);
-			String codiAscii = Character.toString(codigAscii);
-			juegoTest.codigoSecreto[i] = codiAscii;
-			juegoTest.setCasilla(6, i, codiAscii);
-			assertTrue(juegoTest.LetraPosicionCorrecto(6,i));
-			
-		}
-		
-		//Fila 5
-		
-		//Forçamos que el codigoSecreto sea {D,D,D,D,D}
-		for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
-							
-			int codigAscii = (int)Math.floor(68);
-			String codiAscii = Character.toString(codigAscii);
-			juegoTest.codigoSecreto[i] = codiAscii;
-			juegoTest.setCasilla(5, i, codiAscii);
-			assertTrue(juegoTest.LetraPosicionCorrecto(5,i));
-					
-		}
-		
-		
-		//Fila 4
-		
-		//Forçamos que el codigoSecreto sea {E,E,E,E,E}
-		for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
-					
-			int codigAscii = (int)Math.floor(69);
-			String codiAscii = Character.toString(codigAscii);
-			juegoTest.codigoSecreto[i] = codiAscii;
-			juegoTest.setCasilla(4, i, codiAscii);
-			assertTrue(juegoTest.LetraPosicionCorrecto(4,i));
-					
-		}
-		
-		
-		//Fila 3
-		
-		//Forçamos que el codigoSecreto sea {F,F,F,F,F}
-		for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
-						
-			int codigAscii = (int)Math.floor(70);
-			String codiAscii = Character.toString(codigAscii);
-			juegoTest.codigoSecreto[i] = codiAscii;
-			juegoTest.setCasilla(3, i, codiAscii);
-			assertTrue(juegoTest.LetraPosicionCorrecto(3,i));
-							
-		}
-		
-		
-		//Fila 2
-		
+		for (int j=0; j<10;j++) {		
+			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {				
+				int codigAscii = (int)Math.floor(65+i);
+				String codiAscii = Character.toString(codigAscii);
+				juegoTest.codigoSecreto[i] = codiAscii;			
+				juegoTest.setCasilla(j, i, codiAscii);		
+				assertTrue(juegoTest.LetraPosicionCorrecto(j,i));		
+			}
+		}		
+		//Forçamos que el codigoSecreto sea: {A,A,A,A,A} / {B,B,B,B,B} / {C,C,C,C,C} / {D,D,D,D,D} / {E,E,E,E,E} / {F,F,F,F,F} / {G,G,G,G,G}
+		for (int k=0; k<7;k++) {
+			for (int j=0; j<10;j++) {
+				for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
+					int codigAscii = (int)Math.floor(66+k);
+					String codiAscii = Character.toString(codigAscii);
+					juegoTest.codigoSecreto[i] = codiAscii;
+					juegoTest.setCasilla(j, i, codiAscii);
+					assertTrue(juegoTest.LetraPosicionCorrecto(j,i));			
+				}
+			}
+		}		
 		//Forçamos que el codigoSecreto sea {F,E,D,C,B}
-		for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
-						
-			int codigAscii = (int)Math.floor(70-i);
-			String codiAscii = Character.toString(codigAscii);
-			juegoTest.codigoSecreto[i] = codiAscii;
-			juegoTest.setCasilla(2, i, codiAscii);
-			assertTrue(juegoTest.LetraPosicionCorrecto(2,i));
-			
+		for (int j=0; j<10;j++) {
+			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {						
+				int codigAscii = (int)Math.floor(70-i);
+				String codiAscii = Character.toString(codigAscii);
+				juegoTest.codigoSecreto[i] = codiAscii;
+				juegoTest.setCasilla(j, i, codiAscii);
+				assertTrue(juegoTest.LetraPosicionCorrecto(j,i));			
+			}
 		}
-		
-		
-		//Fila 1
-		
 		//Forçamos que el codigoSecreto sea {A,C,E,G,A}
-		int inc_1 = 2;
-		for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {							
-			
-			int codigAscii = (int)Math.floor(63+inc_1);
-			String codiAscii = Character.toString(codigAscii);
-			juegoTest.codigoSecreto[i] = codiAscii;
-			juegoTest.setCasilla(1, i, codiAscii);
-			assertTrue(juegoTest.LetraPosicionCorrecto(1,i));
-			inc_1 = inc_1*2;
-			if (inc_1==8) {
-				inc_1=2;
-			}
-					
-		}
-		
-		
-		//Fila 0
-		
-		//Forçamos que el codigoSecreto sea {B,D,F,B,D}
-		int inc_0 = 2;
-		for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {							
-					
-			int codigAscii = (int)Math.floor(64+inc_0);
-			String codiAscii = Character.toString(codigAscii);
-			juegoTest.codigoSecreto[i] = codiAscii;
-			juegoTest.setCasilla(0, i, codiAscii);
-			assertTrue(juegoTest.LetraPosicionCorrecto(0,i));
-			inc_0 = inc_0*2;
-			if (inc_0==6) {
-				inc_0=2;
-			}
-							
-		}
-		
-		
-		//Todas las posiciones son incorrectas
-		
-		//Todas las Filas
-				
-		//Forçamos que el codigoSecreto sea {A,B,C,D,E,F} y el codigo insertado {F,E,D,C,B,A}
-		for (int j=1; j<juegoTest.fila; j++) {
+		for (int j=0; j<10;j++) {
+			int inc_1 = 2;
 			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
-								
+				int codigAscii = (int)Math.floor(63+inc_1);
+				String codiAscii = Character.toString(codigAscii);				
+				juegoTest.codigoSecreto[i] = codiAscii;
+				codiAscii = juegoTest.getCodigoSecreto(i);
+				juegoTest.setCasilla(j, i, codiAscii);
+				assertTrue(juegoTest.LetraPosicionCorrecto(j,i));
+				inc_1 = inc_1*2;
+				if (inc_1==8) {
+					inc_1=2;
+				}
+			}
+		}		
+		//Forçamos que el codigoSecreto sea {B,D,F,B,D}
+		for (int j=0; j<10;j++) {
+			int inc_0 = 2;
+			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {				
+				int codigAscii = (int)Math.floor(64+inc_0);
+				String codiAscii = Character.toString(codigAscii);
+				juegoTest.codigoSecreto[i] = codiAscii;
+				juegoTest.setCasilla(j, i, codiAscii);
+				assertTrue(juegoTest.LetraPosicionCorrecto(j,i));
+				inc_0 = inc_0+2;
+				if (inc_0==6) {
+					inc_0=2;
+				}
+			}
+		}		
+		//Todas las posiciones son incorrectas		
+		//Forçamos que el codigoSecreto sea {A,B,C,D,E} y el codigo insertado {F,E,D,C,B}
+		for (int j=0; j<juegoTest.fila; j++) {
+			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {								
 				int codigAscii = (int)Math.floor(65+i);
 				String codiAscii = Character.toString(codigAscii);
 				juegoTest.codigoSecreto[i] = codiAscii;	
 				int codigoAscii = (int)Math.floor(70-i);	
 				String codiiAscii = Character.toString(codigoAscii);
 				juegoTest.setCasilla(j, i, codiiAscii);		
-				assertFalse(juegoTest.LetraPosicionCorrecto(j,i));
-					
-			}
-		
-		}
-		
-		//Falta comprobar si un codigo tiene correctas y incorrectas
-				
-				
+				assertFalse(juegoTest.LetraPosicionCorrecto(j,i));					
+			}		
+		}		
+		//Algunas correctas y otras incorrectas
+		//Forçamos que el codigoSecreto sea {A,B,C,D,E} y el codigo insertado {E,D,C,B,A}
+		for (int j=0; j<juegoTest.fila; j++) {
+			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {								
+				int codigAscii = (int)Math.floor(65+i);
+				String codiAscii = Character.toString(codigAscii);
+				juegoTest.codigoSecreto[i] = codiAscii;	
+				int codigoAscii = (int)Math.floor(69-i);	
+				String codiiAscii = Character.toString(codigoAscii);
+				juegoTest.setCasilla(j, i, codiiAscii);	
+				if (i==2) {
+					assertTrue(juegoTest.LetraPosicionCorrecto(j,i));
+				}else {
+					assertFalse(juegoTest.LetraPosicionCorrecto(j,i));
+				}					
+			}	
+		}		
 	}
 	
 	
@@ -819,89 +500,74 @@ public class JuegoTest {
 	 * 
 	 * Tipo: Caja Negra
 	 * 
-	 * Comprueba que el codigo introducido por el usuario las letras estan en el CodigoSecreto pero en distinas posiciones.
+	 * Explicacion: Se verifica que el codigo introducido por el usuario contenga letras del CodigoSecreto pero en distintas posciones.
 	 */
 	@Test public void LetraCasiCorrectoTest() {
-		
-		//Fila 9
-		
-			
+	
 		//Forçamos que el codigoSecreto sea {A,B,C,D,E} y el introducido {F,F,F,F,F}
-		//for (int j=1; j<juegoTest.fila; j++) {
-			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
-							
+		for (int j=0; j<juegoTest.fila; j++) {
+			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {							
 				int codigAscii = (int)Math.floor(65+i);
 				String codiAscii = Character.toString(codigAscii);
 				juegoTest.codigoSecreto[i] = codiAscii;			
 				int codigoAscii = (int)Math.floor(70);	
 				String codiiAscii = Character.toString(codigoAscii);
-				juegoTest.setCasilla(9, i, codiiAscii);	
-				
-				
-				
-			}
-		
-			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {	
-				//juegoTest.LetraPosicionCorrecto(9, i);
-				assertFalse(juegoTest.LetraCasiCorrecto(9,i));
-			}
-	
-	
-	/*//Forçamos que el codigoSecreto sea {A,B,C,D,E,F} y el introducido {A,B,C,D,E,F}
-			for (int j=1; j<juegoTest.fila; j++) {
-				for (int i = 0; i<juegoTest.longitudCodigo; i++) {			
-								
-				int codigAscii = (int)Math.floor(65+i);
-				String codiAscii = Character.toString(codigAscii);
-				juegoTest.codigoSecreto[i] = codiAscii;					
-				juegoTest.setCasilla(j, i, codiAscii);	
-				juegoTest.LetraPosicionCorrecto(j, i);
-				assertFalse(juegoTest.LetraCasiCorrecto(j,i));
+				juegoTest.setCasilla(j, i, codiiAscii);
+				assertFalse(juegoTest.LetraPosicionCorrecto(j, i));				
+			}				
+		}	
+		//Forçamos que el codigoSecreto sea {A,B,C,D,E} y el introducido {B,C,D,E,A}
+			juegoTest.InicializarTablero();
+			for (int j=0; j<juegoTest.fila; j++) {
+				for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {								
+					int codigAscii = (int)Math.floor(65+i);				
+					String codiAscii = Character.toString(codigAscii);
+					juegoTest.codigoSecreto[i] = codiAscii;
+					int codigo_Ascii = (int)Math.floor(66+i);
+					String LetraIntroducida = Character.toString(codigo_Ascii);	
+					if (i==4) {
+						juegoTest.setCasilla(j, i, "A");	
+					}else {
+						juegoTest.setCasilla(j, i, LetraIntroducida);	
+					}	
+				}
+			}			
+			for (int j=0; j<juegoTest.fila; j++) {
+				for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {						
+				assertTrue(juegoTest.LetraCasiCorrecto(j,i));
 					
 				}
-			}*/
-}
+			}
+		}
 	
 	
 	/**
 	 * Test: LetraCasiCorrecto()
 	 * 
-	 * Tipo: Caja Blanca
+	 * Tipo: Caja Blanca(DecisionCoverage y ConditionCoverage)
 	 * 
-	 * Comprueba que el codigo introducido por el usuario las letras estan en el CodigoSecreto pero en distinas posiciones.
+	 * Explicacion: Comprueba que el codigo introducido por el usuario las letras estan en el CodigoSecreto pero en distinas posiciones.
 	 */
-	@Test public void LetraCasiCorrectoTest2() {
+	@Test public void LetraCasiCorrectoTest2() {	
 		
-		
-		
-		//Decision (IF false)
-					
+		//Decision (IF false)					
 		//Forçamos que el codigoSecreto sea {A,B,C,D,E} y el introducido {F,F,F,F,F}		
-			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
-							
+			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {							
 				int codigAscii = (int)Math.floor(65+i);
 				String codiAscii = Character.toString(codigAscii);
 				juegoTest.codigoSecreto[i] = codiAscii;			
 				int codigoAscii = (int)Math.floor(70);	
 				String codiiAscii = Character.toString(codigoAscii);
-				juegoTest.setCasilla(9, i, codiiAscii);	
-				
-				
-				
+				juegoTest.setCasilla(9, i, codiiAscii);					
 			}
 			juegoTest.InicializarTablero();
 			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {	
 				//juegoTest.LetraPosicionCorrecto(9, i);
 				assertFalse(juegoTest.LetraCasiCorrecto(9,i));
-			}
-			
-		//Decision (IF true: Entra dentro del IF)
-			
-		//Forçamos que el codigoSecreto sea {A,B,C,D,E} y el introducido {B,C,D,E,A}
-			
-			
-			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
-				
+			}			
+		//Decision (IF true: Entra dentro del IF)			
+		//Forçamos que el codigoSecreto sea {A,B,C,D,E} y el introducido {B,C,D,E,A}			
+			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {				
 				int codigAscii = (int)Math.floor(65+i);
 				String codiAscii = Character.toString(codigAscii);
 				juegoTest.codigoSecreto[i] = codiAscii;			
@@ -910,70 +576,43 @@ public class JuegoTest {
 					codigoAscii = (int)Math.floor(65);
 				}
 				String codiiAscii = Character.toString(codigoAscii);
-				juegoTest.setCasilla(9, i, codiiAscii);	
-				
-				
-				
-			}
-		
+				juegoTest.setCasilla(9, i, codiiAscii);					
+			}	
 			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {	
 				//juegoTest.LetraPosicionCorrecto(9, i);
 				assertTrue(juegoTest.LetraCasiCorrecto(9,i));
-			}
-			
-			
-			
-			
-			//Condition (True && False)
-			//Forçamos que el codigoSecreto sea {C,D,E,F,G} y el introducido {G,F,E,D,C}
-			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
-				
+			}		
+		//Condition (True && False)
+		//Forçamos que el codigoSecreto sea {C,D,E,F,G} y el introducido {G,F,E,D,C}
+			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {				
 				int codigoAscii = (int)Math.floor(67+i);
 				int codiAscii = (int)Math.floor(71-i);
 				String LetraSecreta = Character.toString(codigoAscii);
 				String Letra = Character.toString(codiAscii);
 				juegoTest.codigoSecreto[i] = LetraSecreta;					
 				juegoTest.setCasilla(9, i, Letra);
-				juegoTest.setCasilla(9, i+5, juegoTest.acierto);		
-				
-			}
-			
-			
-		
-			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {	
-				
+				juegoTest.setCasilla(9, i+5, juegoTest.acierto);				
+			}		
+			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {				
 				assertFalse(juegoTest.LetraCasiCorrecto(9,i));
-			}
-			
-			
-			//Condition (False && True)
-			//Forçamos que el codigoSecreto sea {C,D,E,F,G} y el introducido {G,F,E,D,C}
-			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
-				
+			}			
+		//Condition (False && True)
+		//Forçamos que el codigoSecreto sea {C,D,E,F,G} y el introducido {G,F,E,D,C}
+			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {				
 				int codigoAscii = (int)Math.floor(67+i);
 				int codiAscii = (int)Math.floor(71-i);
 				String LetraSecreta = Character.toString(codigoAscii);
 				String Letra = Character.toString(codiAscii);
 				juegoTest.codigoSecreto[i] = LetraSecreta;					
 				juegoTest.setCasilla(9, i, Letra);
-				juegoTest.setCasilla(9, i+5, juegoTest.acierto);		
-				
-			}
-			
-			
-		
-			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {	
-				
+				juegoTest.setCasilla(9, i+5, juegoTest.acierto);				
+			}	
+			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {				
 				assertFalse(juegoTest.LetraCasiCorrecto(9,i));
-			}
-			
-			
-			
-			
-			//Condition (False && False)
-			//Forçamos que el codigoSecreto sea {C,D,E,F,G} y el introducido {A,A,A,B,B}
-			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
-				
+			}			
+		//Condition (False && False)
+		//Forçamos que el codigoSecreto sea {C,D,E,F,G} y el introducido {A,A,A,B,B}
+			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {				
 				int codigo_secreto = (int)Math.floor(67+i);
 				int codigo_introducido = (int)Math.floor(65);
 				if (i<2) {
@@ -983,131 +622,99 @@ public class JuegoTest {
 				String Letra = Character.toString(codigo_introducido);
 				juegoTest.codigoSecreto[i] = LetraSecreta;					
 				juegoTest.setCasilla(9, i, Letra);
-				juegoTest.setCasilla(9, i+5, juegoTest.acierto);		
-				
-			}
-			
-			
-		
-			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {	
-				
-				assertFalse(juegoTest.LetraCasiCorrecto(9,i));
-			}
-			
-			
-			//Condition (True && True)
-			//Forçamos que el codigoSecreto sea {C,D,E,F,G} y el introducido {G,F,E,D,C}
-			
-			juegoTest.InicializarTablero();
-			
+				juegoTest.setCasilla(9, i+5, juegoTest.acierto);			
+			}		
 			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
-				
+				assertFalse(juegoTest.LetraCasiCorrecto(9,i));
+			}			
+			//Condition (True && True)
+			//Forçamos que el codigoSecreto sea {C,D,E,F,G} y el introducido {G,F,E,D,C}		
+			juegoTest.InicializarTablero();		
+			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {				
 				int codigoAscii = (int)Math.floor(67+i);
 				int codiAscii = (int)Math.floor(71-i);
 				String LetraSecreta = Character.toString(codigoAscii);
 				String Letra = Character.toString(codiAscii);
 				juegoTest.codigoSecreto[i] = LetraSecreta;					
-				juegoTest.setCasilla(9, i, Letra);				
-				
-			}
-			
-			
-		
-			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {	
-				
+				juegoTest.setCasilla(9, i, Letra);						
+			}		
+			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {				
 				assertTrue(juegoTest.LetraCasiCorrecto(9,i));
-			}
-			
-			
-			
+			}			
 	}
 	
 	
 	/**
 	 * Test: VerificarLimitesColumna()
 	 * 
-	 * Tipo: Caja Blanca
+	 * Tipo: Caja Blanca(DecisionCoverage y ConditionCoverage)
 	 * 
-	 * Se comprueba que se ejecute el if (tanto si es cierto como no) y que se ejecuten las decision (true-true/true-false/false-true/false-false)
+	 * Explicacion: Decision: Se comprueba que se ejecute el if (True/False).
+	 * 				Condition: Se comprueba que se ejecute el predicado(True-True/True-False/False-True/False-False)
 	 */
 	@Test public void VerificarLimitesColumnaTest2() {
 		
 		//Condition (IF True)
-		assertTrue(juegoTest.VerificaLimitesColumna(3));
-		
+		assertTrue(juegoTest.VerificaLimitesColumna(3));		
 		//Condition (IF False)
-		assertFalse(juegoTest.VerificaLimitesColumna(-10));
-		
+		assertFalse(juegoTest.VerificaLimitesColumna(-10));		
 		//Decision (True-True)
-		assertTrue(juegoTest.VerificaLimitesColumna(4));
-		
+		assertTrue(juegoTest.VerificaLimitesColumna(4));		
 		//Decision (False-False)
 		assertFalse(juegoTest.VerificaLimitesColumna(-5));
-		assertFalse(juegoTest.VerificaLimitesColumna(6));
-		
+		assertFalse(juegoTest.VerificaLimitesColumna(6));		
 		//Decision (True-False)
-		assertFalse(juegoTest.VerificaLimitesColumna(5));
-		
+		assertFalse(juegoTest.VerificaLimitesColumna(5));		
 		//Decision (False-True)
-		assertFalse(juegoTest.VerificaLimitesColumna(-1));
-		
-		
+		assertFalse(juegoTest.VerificaLimitesColumna(-1));		
 	}
-	
-	
-	
+		
 	/**
 	 * Test: GenerarPista()
 	 * 
-	 * Tipo: Caja Blanca
+	 * Tipo: Caja Blanca(LoopTesting)
 	 * 
-	 * Se comprueba para los dos fors de la funcion 
+	 * Explicacion: Se comprueba para los dos loops de la funcion que se ejecute n veces o no se ejecute. 
 	 */
-	@Test public void GenerarPistaTest() {
+	@Test public void GenerarPistaTest() {		
 		
-		
-		juegoTest.InicializarTablero();
-		
-		for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
-			
+		juegoTest.InicializarTablero();		
+		for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {				
 			int codigAscii = (int)Math.floor(65+i);
 			String codiAscii = Character.toString(codigAscii);
 			juegoTest.codigoSecreto[i] = codiAscii;			
 			int codigoAscii = (int)Math.floor(65+i);	
 			String codiiAscii = Character.toString(codigoAscii);
-			juegoTest.setCasilla(5, i, codiiAscii);		
-			
-			
-		}
-		
-		//Evitar el Loop
+			juegoTest.setCasilla(5, i, codiiAscii);					
+		}		
+		//Evitamos el Loop
 		juegoTest.longitudCodigoSecreto = 0;		
-		juegoTest.GenerarPista(5);
-		
+		juegoTest.GenerarPista(5);		
 		//Una passada por el loop
 		juegoTest.longitudCodigoSecreto = 1;		
-		juegoTest.GenerarPista(5);
-		
+		juegoTest.GenerarPista(5);		
 		//Dos passadas por el loop
 		juegoTest.longitudCodigoSecreto = 2;		
-		juegoTest.GenerarPista(5);
-		
-		//m passades pel loop m<n
-		juegoTest.longitudCodigoSecreto = 3;		
 		juegoTest.GenerarPista(5);		
-		
-		//(n-1), n passades pel loop
-		juegoTest.longitudCodigoSecreto = 5;		
+		//m passades por el loop m<n
+		juegoTest.longitudCodigoSecreto = 3;		
+		juegoTest.GenerarPista(5);			
+		//(n-1), n passades pel loop (n=5)
+		juegoTest.longitudCodigoSecreto = 4;		
 		juegoTest.GenerarPista(5);
 		
 		
 	}
 	
-	
-	
-	@Test public void GenerarCodigoSecretoTest2() {
-		
-		
+	/**
+	 * Test: GenerarCodigoSecreto
+	 * 
+	 * Tipo: MockObject
+	 * 
+	 * Explicacion: Se comprueba que las letras aleatorias generadas son aceptadas. 
+	 * 
+	 */
+	@Test public void GenerarCodigoSecretoTest2() {	
 		
 		MockAleatorio MockAleatorio = new MockAleatorio();
 		String letra = MockAleatorio.GenerarLetrasAleatorias();
@@ -1135,10 +742,7 @@ public class JuegoTest {
 		letra = MockAleatorio.GenerarLetrasAleatorias();
 		assertEquals(letra,"A");
 		letra = MockAleatorio.GenerarLetrasAleatorias();
-		assertEquals(letra,"C");
-		
-	
-		
+		assertEquals(letra,"C");	
 	}
 	
 	/**
@@ -1146,75 +750,50 @@ public class JuegoTest {
 	 * 
 	 * Tipo: Caja Negra
 	 * 
-	 * Comprueba que el codigo introducido por el usuario sea el mismo que el codigoSecreto.
+	 * Explicacion: Comprueba que el codigo introducido por el usuario sea el mismo que el codigoSecreto.
 	 */
-	@Test public void FinalPartidaTest() {
-	
-	
+	@Test public void FinalPartidaTest() {	
+		
 		//Forçamos que el codigoSecreto sea {A,B,C,D,E} y el introducido {A,B,C,D,E}
 		//Forçamos que se termine la partida
-		for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
-			
-			int codigAscii = (int)Math.floor(65+i);
-			String codiAscii = Character.toString(codigAscii);
-			juegoTest.codigoSecreto[i] = codiAscii;			
-			int codigoAscii = (int)Math.floor(65+i);	
-			String codiiAscii = Character.toString(codigoAscii);
-			juegoTest.setCasilla(9, i, codiiAscii);		
-			
-			
-		}
-		
-		juegoTest.GenerarPista(9);
-		
-		assertTrue(juegoTest.FinalPartida(9));
-		
-		/*//Forçamos que el codigoSecreto sea {A,B,C,B,B} y el introducido {C,B,A,B,B}
-		for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
-			
-			if (i<3) {
+		for (int j=0; j<juegoTest.fila; j++) {
+			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
 				int codigAscii = (int)Math.floor(65+i);
 				String codiAscii = Character.toString(codigAscii);
-				juegoTest.codigoSecreto[i] = codiAscii;			
-				int codigoAscii = (int)Math.floor(67-i);	
-				String codiiAscii = Character.toString(codigoAscii);
-				juegoTest.setCasilla(8, i, codiiAscii);	
-				
-			}else {
-				
-				int codigAscii = (int)Math.floor(66);
+				juegoTest.codigoSecreto[i] = codiAscii;					
+				juegoTest.setCasilla(j, i, codiAscii);				
+			}
+			juegoTest.GenerarPista(j);
+			assertTrue(juegoTest.FinalPartida(j));
+		}
+		//Forçamos que el codigoSecreto sea {C,D,E,F,G} y el introducido {C,D,E,F,G}
+		//Forçamos que se termine la partida
+		for (int j=0; j<juegoTest.fila; j++) {
+			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
+				int codigAscii = (int)Math.floor(67+i);
 				String codiAscii = Character.toString(codigAscii);
 				juegoTest.codigoSecreto[i] = codiAscii;			
-				int codigoAscii = (int)Math.floor(66);	
-				String codiiAscii = Character.toString(codigoAscii);
-				juegoTest.setCasilla(8, i, codiiAscii);	
-				
+				juegoTest.setCasilla(j, i, codiAscii);				
 			}
-			
-			
+			juegoTest.GenerarPista(j);
+			assertTrue(juegoTest.FinalPartida(j));
 		}
-		juegoTest.GenerarPista(8);
-		assertFalse(juegoTest.FinalPartida(8));*/
-		
-		
+		//Forçamos que el codigoSecreto sea {A,B,C,D,E} y el introducido {E,D,C,B,A}
+		//Forçamos que se termine la partida
+		juegoTest.InicializarTablero();
+		for (int j=0; j<juegoTest.fila; j++) {
+			for (int i = 0; i<juegoTest.longitudCodigoSecreto; i++) {			
+				int codigAscii = (int)Math.floor(65+i);
+				String codiAscii = Character.toString(codigAscii);
+				int codigoAscii = (int)Math.floor(69-i);
+				String codiiAscii = Character.toString(codigoAscii);
+				juegoTest.codigoSecreto[i] = codiAscii;			
+				juegoTest.setCasilla(j, i, codiiAscii);				
+			}
+			juegoTest.GenerarPista(j);
+			assertFalse(juegoTest.FinalPartida(j));
+		}		
 	}
-	
-
-		
-		
-		
-				
-		
-
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+}
 	
 	

@@ -1,5 +1,10 @@
 package Modelo;
 
+/**
+ * Classe en la que se comprenden todos los metodos y atributos para desarrollar el computo del juego. 
+ * @author Victor
+ *
+ */
 public class Juego {
 	
 	public static int fila = 10;
@@ -13,6 +18,9 @@ public class Juego {
 	public String acierto = "O";
 	public String casi_acierto = "X";
 
+	/**
+	 * Contructor de la classe
+	 */
 	public Juego() {
 		
 		tablero = new String[fila][columna];
@@ -22,7 +30,7 @@ public class Juego {
 	}
 	
 	/**
-	 * Inicializa el tablero a vacio = 0
+	 * Inicializa el tablero a vacio = "-"
 	 */
 	public void InicializarTablero() {
 		
@@ -31,72 +39,42 @@ public class Juego {
 			
 				setCasilla(i,j,vacio);
 			}
-		}
-		 
+		}		 
 	}
 	
 	/**
-	 * Genera aleatoriamente el CodigoSecreto mediante el codigo Ascii (65=A,66=B,67=C,68=D,69=E,70=F)
-	 * 
+	 * Genera las letras possibles que se podran introducir	  
+	 * Codigo = {A,B,C,D,E,F,G}	 
 	 * @return
 	 */
-	/*public String[] GenerarCodigoSecreto(int i,String letra){
-			
-			
-			 codigoSecreto[i]= letra;
-			         
-			 
-		
-	}*/
-	
-	public void setCodigoSecreto( int i,String  letra) {
-		
-		 codigoSecreto[i]= letra;
-		
-	}
-	
-	
-	/**
-	 * Genera las letras possibles que se podran introducir
-	 * 
-	 * Codigo = {A,B,C,D,E,F,G}
-	 * 
-	 * @return
-	 */
-	public String[] GenerarCodigoGama(){	        
-		
+	public String[] GenerarCodigoGama(){	
 		
 		for (int i=0; i<longitudCodigo; i++) {
 			
 			 int codigAscii = (int)Math.floor(65+i);
 			 String codiAscii = Character.toString(codigAscii);
-			 codigo[i]= codiAscii;
-			
-			
+			 codigo[i]= codiAscii;			
 		}
 		  return codigo; 
 	}
 	
 	/**
-	 * Verifca que la columna introducida sea entre los limites 1-5
-	 * 	  
+	 * Verifca que la columna introducida sea entre los limites [0-4]	  	  
 	 * @return
 	 */
 	public boolean VerificaLimitesColumna(int columna) {		
 		
-		if (columna>-1 && columna<5) {
-			
+		if (columna>-1 && columna<5) {		
 			
 			return true;
 		}
-			
-			return false;
 		
-	}
+			return false;		
+		}
+	
 	
 	/**
-	 * Verifica que la columna introducida por el usuario este libre
-	 * 
+	 * Retorna True si la posicion esta ocupada i False si esta vacia	
 	 * @param fila
 	 * @param columna
 	 * @return
@@ -109,9 +87,7 @@ public class Juego {
 			
 		}else {
 			
-			return true;
-			
-			
+			return true;			
 		}			
 	
 	}	
@@ -119,11 +95,10 @@ public class Juego {
 	
 	/**
 	 * Verifica si la letra introducida es correcta (Mayusculas)
-	 * 
-	 * {A,B,C,D,E,F}
-	 *  
-	 *  @return
-	 */
+	 * {A,B,C,D,E,F}	 	  
+	 * @param letra
+	 * @return
+	 */	 
 	public boolean VerificaLetra(String letra) {
 		
 		boolean letra_correcta = false;		
@@ -132,8 +107,7 @@ public class Juego {
 			
 			if (codigo[i].equals(letra))  {
 				
-				letra_correcta = true;
-				
+				letra_correcta = true;				
 			}	
 		}
 		
@@ -142,8 +116,7 @@ public class Juego {
 	
 	
 	/**
-	 * Genera la Pista en funcion de codigo introducido en cada fila
-	 * 
+	 * Genera la Pista en funcion de codigo introducido en cada fila	 
 	 * @param fila
 	 */
 	public void GenerarPista(int fila) {
@@ -152,48 +125,46 @@ public class Juego {
 			
 			if (LetraPosicionCorrecto(fila, i)) {
 				
-				setCasilla(fila, i+longitudCodigoSecreto, acierto);
-				
-			}
-			
+				setCasilla(fila, i+longitudCodigoSecreto, acierto);				
+			}			
 		}
 		
-		for (int i=0; i<longitudCodigoSecreto; i++) {		
+		for (int i=0; i<longitudCodigoSecreto; i++) {	
 			
 			if (LetraCasiCorrecto(fila, i)) {
 				
-				setCasilla(fila, i+longitudCodigoSecreto, casi_acierto);
-				
-			}
-			
-		}
-		
-		
-		
+				setCasilla(fila, i+longitudCodigoSecreto, casi_acierto);				
+			}			
+		}		
 	}
 	
+	
 	/**
-	 * Verifica si la posicion en la que se ha introducido la letra coincide con la posicion y letra del codigo secreto.
-	 * 
+	 * Retorna True si la posicion en la que se ha introducido la letra coincide con la posicion de la letra del codigo secreto. 
+	 * Por lo contrario, retorna False
+	 * @param fila
+	 * @param columna
 	 * @return
-	 */
+	 */	 
 	public boolean LetraPosicionCorrecto(int fila, int columna) {
 		
 		boolean letraPosicion_correcto = false;	
 		String letra = getCasilla(fila,columna);
 			
-			if (codigoSecreto[columna].equals(letra))  {
+		if (codigoSecreto[columna].equals(letra))  {
 				
-				letraPosicion_correcto = true;		
-			
-		}
-		
-		return letraPosicion_correcto;	
-		
-		
+				letraPosicion_correcto = true;				
+		}		
+		return letraPosicion_correcto;		
 	}
 	
 	
+	/**
+	 * Retorna True si la letra introducida esta en el CodigoSecreto pero en diferente posicion. Por lo contrario, retorna False.
+	 * @param fila
+	 * @param columna
+	 * @return
+	 */
 	public boolean LetraCasiCorrecto(int fila, int columna) {
 		
 		boolean letra_correcto = false;	
@@ -204,16 +175,14 @@ public class Juego {
 			if ((codigoSecreto[i].equals(letra)) && (!getCasilla(fila,columna+5).equals(acierto)) ) {				
 				
 				letra_correcto = true;						
-			}		
-			
-		}
-		
-		return letra_correcto;	
-		
+			}				
+		}		
+		return letra_correcto;		
 	}
 	
+	
 	/**
-	 * Verificamos si la Pista es toda aciertos ('O') para controlar el final de la partida
+	 * Verificamos si la Pista es toda aciertos ('O') para controlar el final de la partida.
 	 * @param fila
 	 * @return
 	 */
@@ -224,53 +193,50 @@ public class Juego {
 		
 		for (int i = 0; i<longitudCodigoSecreto; i++) {		
 			
-			if (getCasilla(fila,i+longitudCodigoSecreto).equals(acierto))  {
-				
+			if (getCasilla(fila,i+longitudCodigoSecreto).equals(acierto))  {			
 				
 				if (aux==4) {
 				fin = true;	
 				}
-				aux++;
-			
+				aux++;			
 			}
 		}
 		
-		return fin;	
-		
+		return fin;		
 	}
 	
 	
 	/**
-	 * 
+	 *  
 	 * Getters y Setters 
 	 * 
-	 */
+	 */	
+	public void setCodigoSecreto( int i,String  letra) {
+		
+	 codigoSecreto[i]= letra;	
+	 
+	}
 	
 	public String getCodigoSecreto(int i) {
 		
 		String letra = codigoSecreto[i];	
-		return letra;
-		
+		return letra;		
 	}
 	
 	public String getCodigo(int i) {
 		
 		String letra = codigo[i];	
-		return letra;
-		
+		return letra;		
 	}
 	
 	public String[][] getTablero() {
 		
-		return tablero;
-		
-	}
-	
+		return tablero;		
+	}	
 	
 	public void setCasilla(int i, int j, String vacio ) {
 		
-		tablero[i][j] = vacio;
-	
+		tablero[i][j] = vacio;	
 	}
 	
 	public String getCasilla(int i, int j) {

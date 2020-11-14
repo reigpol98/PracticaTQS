@@ -1,25 +1,27 @@
 package mastermind;
 import Modelo.Juego;
 import Modelo.MockTeclado;
-
 import org.junit.Test;
-
 import Controlador.Main;
 import Vista.Teclado;
+
+/**
+ * Classe que implementa los Test del Main().
+ * @author Victor
+ */
 public class MainTest {
 	
 	
 	/**
-	 * Test: FinPartida()
+	 * Test: BucleJuego()
 	 * 
-	 * Tipo: Caja Blanca (Loop Testing)
+	 * Tipo: Caja Blanca (Path Coverage)
 	 * 
-	 * 
+	 * Explicacion: Se verifican que se pasa por todos los caminos del metodo. 
 	 */
-	@Test public void BucleJuegoTest() {
+	@Test public void BucleJuegoTest() {		
 		
-		
-		Main mainTest = new Main();
+		Main mainTest = new Main();		
 		Juego juegoTest = new Juego();
 		TecladoTest tecladoTest = new TecladoTest();
 		MockTeclado MockTeclado = new MockTeclado();
@@ -52,13 +54,6 @@ public class MainTest {
 		((Main) mainTest).setTeclat(MockTeclado);		
 		mainTest.BucleJuego();
 		
-	
-		
-		
-		
-	
-		
-	}
-		
+	}	
 
 }
