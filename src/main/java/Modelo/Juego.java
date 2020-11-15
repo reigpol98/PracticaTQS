@@ -2,11 +2,15 @@ package Modelo;
 
 /**
  * Classe en la que se comprenden todos los metodos y atributos para desarrollar el computo del juego. 
- * @author Victor
+ * @author Victor-1456556
  *
  */
+
 public class Juego {
 	
+	/**
+	 * Atributos
+	 */
 	public static int fila = 10;
 	public static int columna = 10;
 	public int longitudCodigoSecreto = 5;
@@ -14,9 +18,13 @@ public class Juego {
 	public String[][] tablero;
 	public String codigo[];
 	public String codigoSecreto[];
+	public String codigoPista[];
 	public String vacio = "-";
 	public String acierto = "O";
 	public String casi_acierto = "X";
+	public String pista = "*";
+	public boolean letra_correcto = false;	
+	
 
 	/**
 	 * Contructor de la classe
@@ -26,8 +34,8 @@ public class Juego {
 		tablero = new String[fila][columna];
 		codigo = new String[longitudCodigo];
 		codigoSecreto = new String[longitudCodigoSecreto];
-		
-	}
+		codigoPista = new String[longitudCodigoSecreto];		
+	}	
 	
 	/**
 	 * Inicializa el tablero a vacio = "-"
@@ -53,7 +61,8 @@ public class Juego {
 			
 			 int codigAscii = (int)Math.floor(65+i);
 			 String codiAscii = Character.toString(codigAscii);
-			 codigo[i]= codiAscii;			
+			 codigo[i]= codiAscii;	
+			 
 		}
 		  return codigo; 
 	}
@@ -79,6 +88,7 @@ public class Juego {
 	 * @param columna
 	 * @return
 	 */
+	
 	public boolean VerificaPosicionOcupada(int fila, int columna) {	
 			
 		if (getCasilla(fila, columna).equals(vacio)) {
@@ -92,7 +102,6 @@ public class Juego {
 	
 	}	
 	
-	
 	/**
 	 * Verifica si la letra introducida es correcta (Mayusculas)
 	 * {A,B,C,D,E,F}	 	  
@@ -104,22 +113,26 @@ public class Juego {
 		boolean letra_correcta = false;		
 		
 		for (int i=0; i<longitudCodigo; i++) {			
-			
+		
 			if (codigo[i].equals(letra))  {
 				
-				letra_correcta = true;				
+				letra_correcta = true;	
+				
 			}	
 		}
 		
 		return letra_correcta;		
-	}
-	
+	}	
 	
 	/**
 	 * Genera la Pista en funcion de codigo introducido en cada fila	 
 	 * @param fila
 	 */
 	public void GenerarPista(int fila) {
+		
+		for (int i=0; i<longitudCodigoSecreto; i++) {	
+			codigoPista[i] = vacio;
+		}
 		
 		for (int i=0; i<longitudCodigoSecreto; i++) {		
 			
@@ -136,8 +149,7 @@ public class Juego {
 				setCasilla(fila, i+longitudCodigoSecreto, casi_acierto);				
 			}			
 		}		
-	}
-	
+	}	
 	
 	/**
 	 * Retorna True si la posicion en la que se ha introducido la letra coincide con la posicion de la letra del codigo secreto. 
@@ -153,11 +165,11 @@ public class Juego {
 			
 		if (codigoSecreto[columna].equals(letra))  {
 				
-				letraPosicion_correcto = true;				
+				letraPosicion_correcto = true;	
+				codigoPista[columna] = pista;
 		}		
 		return letraPosicion_correcto;		
-	}
-	
+	}	
 	
 	/**
 	 * Retorna True si la letra introducida esta en el CodigoSecreto pero en diferente posicion. Por lo contrario, retorna False.
@@ -165,21 +177,25 @@ public class Juego {
 	 * @param columna
 	 * @return
 	 */
-	public boolean LetraCasiCorrecto(int fila, int columna) {
-		
-		boolean letra_correcto = false;	
-		String letra = getCasilla(fila,columna);
-		
-		for (int i = 0; i<longitudCodigoSecreto; i++) {
+	public boolean LetraCasiCorrecto(int fila, int columna) {	
 			
-			if ((codigoSecreto[i].equals(letra)) && (!getCasilla(fila,columna+5).equals(acierto)) ) {				
+		String letra = getCasilla(fila,columna);
+		int i = 0;		
+		while((i<longitudCodigoSecreto) && (!letra_correcto))
+		{
+			
+			if ((codigoSecreto[i].equals(letra)) && (!getCasilla(fila,columna+5).equals(acierto)) && (!codigoPista[i].equals(pista))) {				
 				
-				letra_correcto = true;						
-			}				
+				codigoPista[i] = pista;
+				letra_correcto = true;			
+			}
+			
+			i++;					
+		}				
+			
+		return letra_correcto;			
+			
 		}		
-		return letra_correcto;		
-	}
-	
 	
 	/**
 	 * Verificamos si la Pista es toda aciertos ('O') para controlar el final de la partida.
@@ -203,8 +219,7 @@ public class Juego {
 		}
 		
 		return fin;		
-	}
-	
+	}	
 	
 	/**
 	 *  

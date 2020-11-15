@@ -3,13 +3,13 @@ import Modelo.Juego;
 import Modelo.MockTeclado;
 import org.junit.Test;
 import Controlador.Main;
-import Vista.Teclado;
 
 /**
- * Classe que implementa los Test del Main().
- * @author Victor
+ * Classe que implementa los Test de la classe Main().
+ * @author Victor-1456556
  */
 public class MainTest {
+	
 	
 	
 	/**
@@ -54,6 +54,20 @@ public class MainTest {
 		((Main) mainTest).setTeclat(MockTeclado);		
 		mainTest.BucleJuego();
 		
-	}	
+	
+		//Final partida Ganador		
+		mainTest.j.setCodigoSecreto(0,"A");
+		mainTest.j.setCodigoSecreto(1,"B");
+		mainTest.j.setCodigoSecreto(2,"C");
+		mainTest.j.setCodigoSecreto(3,"D");
+		mainTest.j.setCodigoSecreto(4,"E");
+		mainTest.fila = 9;
+		mainTest.control = 0;
+		((Main) mainTest).setTeclat(MockTeclado);		
+		mainTest.BucleJuego();
+		
+		
+		
+	}
 
 }

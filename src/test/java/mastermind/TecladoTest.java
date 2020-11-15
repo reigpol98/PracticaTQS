@@ -1,15 +1,14 @@
 package mastermind;
-
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import Modelo.Juego;
 import Modelo.MockTeclado;
 
 /**
- * Classe que implementa los Test de la classe Teclado()
- * @author Victor
- *
+ * Classe que implementa los Test de la classe Teclado().
+ * @author Victor-1456556
  */
+
 public class TecladoTest {
 	
 	Juego juegoTest = new Juego();
@@ -57,7 +56,7 @@ public class TecladoTest {
 		letra = MockTeclado.IntroducirLetra();
 		assertEquals(letra,"A");		
 		
-		for (int i=0; i<7; i++) {
+		for (int i=0; i<5; i++) {
 			
 			int codigAscii = (int)Math.floor(65+i);
 			String compruebaLetra = Character.toString(codigAscii);	

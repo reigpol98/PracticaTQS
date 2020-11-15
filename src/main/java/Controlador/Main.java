@@ -5,10 +5,12 @@ import Vista.Teclado;
 import Vista.Tablero;
 
 /**
- * Classe Main: Es el Controlador que comunica la interaccion entre el controlador y la vista.
+ * Classe Main: Es el Controlador que comunica la interaccion entre el moelo y la vista.
  */
+
 public class Main {
 		
+	
 	public static Juego j = new Juego();
 	static Tablero t = new Tablero();
 	static Aleatorio a = new Aleatorio();
@@ -16,12 +18,14 @@ public class Main {
 	public static int control = 0;	
 	public static	int fila = 9;
 	public static int columna = 0;
-	static String letra;	
+	static String letra;
+	public static boolean fin = false;
 	
 	public static void main(String[] args) {
 		
 		InicializarJuego();
 		BucleJuego();
+		
 	}
 	
 	/**
@@ -35,6 +39,7 @@ public class Main {
 		String letra = a.GenerarLetrasAleatorias();
 		j.setCodigoSecreto(i, letra);
 		
+		
 		}	
 	}
 	
@@ -43,7 +48,7 @@ public class Main {
 	 */
 	public static void BucleJuego() {	
 		
-		while(fila>-1) {								
+		while((fila>-1)&&(!fin)) {								
 			t.DibujaTablero(j.getTablero());
 			columna = e.IntroducirColumna();			
 			columna = columna-1;		
@@ -61,7 +66,7 @@ public class Main {
 						
 					}else {
 						
-						System.out.print("\n Color Incorrecto! Debe de ser{A,B,C,D,E,F,G} \n");
+						System.out.print("\n Letra Incorrecta! Debe de ser {A,B,C,D,E,F,G} \n");
 						
 					}
 				}else {
@@ -78,16 +83,18 @@ public class Main {
 			
 			if (control==5) {
 						
-				j.GenerarPista(fila);					
+				j.GenerarPista(fila);
+				fin = j.FinalPartida(fila);
 				control = 0;
 				fila = fila-1;			
 						
 			}		
 			
 		}
-		
-		
+		t.DibujaTablero(j.getTablero());
+		t.DibujaFinal(j.codigoSecreto,fin);
 	}
+		
 	
 	public static void setTeclat(Teclado tec) {e = tec;}	
 

@@ -1,11 +1,11 @@
 package Vista;
-
 import java.util.Scanner;
+
 /**
  * Classe que implementa los metodos para la intereccion con el usuario.
- * @author Victor
- *
+ * @author Victor-1456556 
  */
+
 public class Teclado {
 	
 	/**
@@ -16,16 +16,13 @@ public class Teclado {
 	/**
 	 * Constructor
 	 */
-	public Teclado() {		
-		
-	}
+	public Teclado() {	}
 	
 	/**
 	 * Printa por pantalla el mensaje de introducir Columna y espera a que el usuario la introduzca.
 	 * @return
 	 */
-	public int IntroducirColumna() {
-		
+	public int IntroducirColumna() {		
 	
 		System.out.print("\n Introduce una columna 1-5:");		
 		int columna = sn.nextInt();	
