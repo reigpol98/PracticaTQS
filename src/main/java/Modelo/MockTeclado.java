@@ -14,7 +14,7 @@ public class MockTeclado extends Teclado {
 	private int i = 0;
 	private int j = 0;
 	private int columnas[] = {-1,1,2,3,1,2,3,4,5};
-	private String letras[] = {"H","A","A","B","C","D","E","F"};
+	private String letras[] = {"H","A","A","B","C","D","E","F","G"};
 	
 	public int IntroducirColumna() {		
 		

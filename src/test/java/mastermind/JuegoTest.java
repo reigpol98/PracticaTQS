@@ -776,7 +776,7 @@ public class JuegoTest {
 	 * Explicacion: Se comprueba que las letras aleatorias generadas por el metodo GeneraLetrasAleatorias() son validas. 
 	 * 
 	 */
-	@Test public void GenerarCodigoSecretoTest2() {	
+	@Test public void GenerarLetrasAleatoriasTest() {	
 		
 		MockAleatorio MockAleatorio = new MockAleatorio();
 		String letra = MockAleatorio.GenerarLetrasAleatorias();
