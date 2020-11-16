@@ -504,7 +504,7 @@ public class JuegoTest {
 	 * 
 	 * Tipo: Caja Blanca(DecisionCoverage y ConditionCoverage)
 	 * 
-	 * Explicacion: Comprueba que el codigo introducido por el usuario las letras estan en el CodigoSecreto pero en distinas posiciones.
+	 * Explicacion: Comprueba que el codigo introducido por el usuario las letra estan en el CodigoSecreto pero en distinas posiciones.
 	 */
 	@Test public void LetraCasiCorrectoTest2() {		
 		
