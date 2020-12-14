@@ -38,7 +38,7 @@ public class Main {
 		for (int i=0; i<5; i++) {
 		String letra = a.GenerarLetrasAleatorias();
 		j.setCodigoSecreto(i, letra);
-		
+
 		
 		}	
 	}
@@ -48,7 +48,7 @@ public class Main {
 	 */
 	public static void BucleJuego() {	
 		
-		while((fila>-1)&&(!fin)) {								
+		while((fila>-1)&&(!fin)) { 								
 			t.DibujaTablero(j.getTablero());
 			columna = e.IntroducirColumna();			
 			columna = columna-1;		

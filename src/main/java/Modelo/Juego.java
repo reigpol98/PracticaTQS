@@ -228,7 +228,8 @@ public class Juego {
 	 */	
 	public void setCodigoSecreto( int i,String  letra) {
 		
-	 codigoSecreto[i]= letra;	
+	 codigoSecreto[i]= letra;
+	 System.out.print("CHIVATO: "+codigoSecreto[i]);
 	 
 	}
 	
